@@ -1,4 +1,4 @@
-### Mmereki-Traders
+## Mmereki-Traders
 A web system that will connect Plumbers, Electricians, Builders and many more tradespeople with clients. 
 
 This system is made with the Laravel Framework, a php framework for web system development.
