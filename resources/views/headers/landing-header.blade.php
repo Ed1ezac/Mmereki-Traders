@@ -11,7 +11,7 @@
 
         @stack('page-css')
     </head>
-    <body>
+    <body class="bg-gray-50">
         <div id="app">
             <!--- navbar -->
             @yield('content')
