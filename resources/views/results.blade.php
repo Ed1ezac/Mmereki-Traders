@@ -5,7 +5,7 @@
 <div class="flex flex-col rounded mt-16 mx-16 bg-white shadow">
     <div class='flex flex-row  bg-red-200 shadow'>
         <div class=' w-3/4 mt-2 ml-4 p-2 bg-blue-500 shadow'>
-            <h2 class="capitalize font-bold text-gray-900  tracking-widest">bj sons</h2>
+            <a href="/trader-details"><h2 class="capitalize font-bold text-gray-900  tracking-widest">bj sons</h2></a>
             <p class="my-2">The quick brown fox  lorem ipsum dolor...</p>
         </div>
 
