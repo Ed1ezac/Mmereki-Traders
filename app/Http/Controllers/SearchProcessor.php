@@ -23,4 +23,9 @@ class SearchProcessor extends Controller
         //results
         return redirect('/results');
     }
+
+    public function tradersDetails(){
+        return view('trader-details');
+    } 
+    
 }
