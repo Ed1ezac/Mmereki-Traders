@@ -1,0 +1,32 @@
+@extends('headers.landing-header')
+
+@section('content')
+
+<section>
+    <!---Todo-->
+    <div class="flex justify-center lg:justify-center sm:justify-end">
+        <div class="p-8 lg:mt-28 mt-20">
+            <form method="post" action="/search">
+                @csrf
+                <div class="py-4 bg-white max-w-sm lg:max-w-5xl rounded-sm shadow-md px-4">
+                    <div class="flex flex-col items-center justify-center lg:flex-row gap-10">
+
+                        <div class="w-80">
+                            <input type="text" name="trade" class="bg-gray-300 w-full" placeholder="Trader e.g. plumber">
+                        </div>
+
+                        <div class="w-80">
+                            <input type="text" name="location" class="bg-gray-300 w-full" placeholder="Location, e.g. Gaborone">
+                        </div>
+
+                        <div class="flex w-80">
+                            <button type="submit" class="bg-gray-700 px-4 py-2 rounded w-full text-white">Search</button>
+                        </div>
+                    </div>
+                </div> 
+            </form>
+        </div>
+    </div>
+</section>
+@endsection
+

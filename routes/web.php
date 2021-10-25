@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchProcessor;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [SearchProcessor::class, 'search']);
+
+Route::post('/search', [SearchProcessor::class, 'processSearchRequest']);
+Route::get('/results', [SearchProcessor::class, 'results']);
+
+Auth::routes();
+
+Route::get('/home', [DashboardController::class, 'index'])->name('home');
