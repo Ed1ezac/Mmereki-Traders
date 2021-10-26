@@ -27,5 +27,10 @@ class SearchProcessor extends Controller
     public function tradersDetails(){
         return view('trader-details');
     } 
+
+
+    public function invalidDetails(){
+        return view('invalid-search');
+    }
     
 }

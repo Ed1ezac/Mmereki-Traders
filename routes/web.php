@@ -19,4 +19,5 @@ Route::get('/', [SearchProcessor::class, 'search']);
 Route::post('/search', [SearchProcessor::class, 'processSearchRequest']);
 Route::get('/results', [SearchProcessor::class, 'results']);
 Route::get('/trader-details', [SearchProcessor::class, 'tradersDetails']);
+Route::get('/invalid-search', [SearchProcessor::class, 'invalidDetails']);
 
