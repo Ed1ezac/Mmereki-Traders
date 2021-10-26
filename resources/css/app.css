@@ -3,3 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .my-form-input{
+        @apply bg-gray-300 focus:border-gray-600 focus:ring-gray-600 font-semibold text-gray-900 shadow-sm sm:text-sm w-full;
+    }
+}
