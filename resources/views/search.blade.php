@@ -12,11 +12,11 @@
                     <div class="flex flex-col items-center justify-center lg:flex-row gap-10">
 
                         <div class="w-80">
-                            <input type="text" name="trade" class="bg-gray-300 w-full" placeholder="Trader e.g. plumber">
+                            <input type="text" name="trade" class="my-form-input" placeholder="Trader e.g. plumber">
                         </div>
 
                         <div class="w-80">
-                            <input type="text" name="location" class="bg-gray-300 w-full" placeholder="Location, e.g. Gaborone">
+                            <input type="text" name="location" class="my-form-input" placeholder="Location, e.g. Gaborone">
                         </div>
 
                         <div class="flex w-80">
