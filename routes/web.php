@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchProcessor;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,6 @@ Route::get('/results', [SearchProcessor::class, 'results']);
 Route::get('/trader-details', [SearchProcessor::class, 'tradersDetails']);
 Route::get('/invalid-search', [SearchProcessor::class, 'invalidDetails']);
 
+Auth::routes();
+
+Route::get('/home', [DashboardController::class, 'index'])->name('home');

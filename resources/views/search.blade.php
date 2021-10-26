@@ -2,28 +2,31 @@
 
 @section('content')
 
+<section>
+    <!---Todo-->
+    <div class="flex justify-center lg:justify-center sm:justify-end">
+        <div class="p-8 lg:mt-28 mt-20">
+            <form method="post" action="/search">
+                @csrf
+                <div class="py-4 bg-white max-w-sm lg:max-w-5xl rounded-sm shadow-md px-4">
+                    <div class="flex flex-col items-center justify-center lg:flex-row gap-10">
 
-<div class="mx-8 mt-28">
-    <form method="post" action="/search">
-        @csrf
-        <div class="py-4 bg-white rounded-sm shadow px-4">
-            <div class="flex flex-row align-content-center gap-12">
+                        <div class="w-80">
+                            <input type="text" name="trade" class="bg-gray-300 w-full" placeholder="Trader e.g. plumber">
+                        </div>
 
-                <div class="justify-center">
-                    <input type="text" name="trade" class="bg-gray-300 w-80" placeholder="Trader e.g. plumber">
-                </div>
+                        <div class="w-80">
+                            <input type="text" name="location" class="bg-gray-300 w-full" placeholder="Location, e.g. Gaborone">
+                        </div>
 
-                <div class="col-span-12 sm:col-span-3">
-                    <input type="text" name="location" class="bg-gray-300 w-80" placeholder="Region, e.g. Location">
-                </div>
-
-                <div class="">
-                    <button type="submit" class="bg-gray-700 px-4 py-2 rounded sm:w-64 w-80 text-white">Search</button>
-                </div>
-            </div>
+                        <div class="flex w-80">
+                            <button type="submit" class="bg-gray-700 px-4 py-2 rounded w-full text-white">Search</button>
+                        </div>
+                    </div>
+                </div> 
+            </form>
         </div>
-        <div class="mt-10 bg-yellow-300 shadow p-8"></div>        
-    </form>
-</div>
+    </div>
+</section>
 @endsection
 
