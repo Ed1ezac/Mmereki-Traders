@@ -1,7 +1,22 @@
 @extends('headers.landing-header')
 
-@section('content')
+@push('page-css')
+    <style>
+    .birthday-field{
+        display: none;
+    }
+    </style>
+@endpush
 
+@section('content')
+<!--Electrical contractors for installation and maintenance-->
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+        <div class="py-2 px-2 bg-red-500 text-white">
+            {{  $error }}
+        </div>
+        @endforeach
+    @endif
 <section>
 <!--Hero Section--->
 </section>
@@ -80,12 +95,12 @@
                             <label for="trades" class="block text-sm font-medium text-gray-700">Trade (s)</label>
                             <select id="trades" name="trades" required autocomplete="trades" class="mt-1 block w-full py-2 px-3 border bg-gray-300 shadow-sm focus:outline-none sm:text-sm
                             @error('address') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror">
-                                <option>Plumbing</option>
-                                <option>Electrician</option>
-                                <option>Builder</option>
-                                <option>Gardener</option>
-                                <option>Roofer</option>
-                                <option>Tiler</option>
+                                <option value="0">Plumbing</option>
+                                <option value="1">Electrician</option>
+                                <option value="2">Builder</option>
+                                <option value="3">Gardener</option>
+                                <option value="4">Roofer</option>
+                                <option value="5">Tiler</option>
                             </select>
                             @error('trades')
                             <span class="text-xs font-normal text-red-500" role="alert">
@@ -176,6 +191,10 @@
                                 </span>
                                 @enderror
                             </div>
+                            <div class="birthday-field">
+                                <label for="birthday">Birthday</label>
+                                <input type="text" name="birthday" id="birthday" value=""/>
+                            </div>
                             <!--Email-->
                             <div class="col-span-6 sm:col-span-4">
                                 <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
@@ -250,6 +269,7 @@
 </div>
 </form>
 </section>
+@endsection
 
 <!--div class="container">
     <div class="row justify-content-center">
@@ -324,4 +344,4 @@
         </div>
     </div>
 </!--div -->
-@endsection
+

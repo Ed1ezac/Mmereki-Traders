@@ -20,11 +20,9 @@ class Company extends Model
         'about', 
         'email', 
         'location', 
-        'post_address', 
-        'telephone', 
+        'address',
+        'telephone',
         'mobile'
     ];
-
-    //-----
 
 }

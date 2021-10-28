@@ -15,6 +15,6 @@ return [
 
     'failed' => 'Email le password tse o di tsentseng ga se tsone.',
     'password' => 'Password e o tsentseng ga se yone.',
-    'throttle' => 'O lekile gantsi.O tla leka gape morago ga :seconds seconds.',
+    'throttle' => 'O lekile gantsi. O tla leka gape morago ga :seconds seconds.',
 
 ];

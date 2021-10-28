@@ -21,9 +21,9 @@ class CreateCompaniesTable extends Migration
             $table->text('intro');
             $table->enum('verification', ['verified', 'pending'])->default('pending');
             $table->text('about')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email');
             $table->string('location');
-            $table->string('post_address');
+            $table->string('address');
             $table->string('telephone');
             $table->string('mobile');
             $table->timestamps();
