@@ -25,4 +25,35 @@ class Company extends Model
         'mobile'
     ];
 
+    public function scopeWithName($query, $name)
+    {
+        return $query->where('name', 'LIKE', '%'.$name.'%');
+    }
+
+    public function scopeWithExactName($query, $name)
+    {
+        return $query->where('name', $name);
+    }
+
+    public function scopeWithTrade($query, $trade)
+    {
+        return $query->whereHas('trades', function ($inner) use ($trade) {
+                $inner->where('trade_id', '=', $trade->id);
+        });
+    }
+
+    public function scopeAtLocation($query, $loc)
+    {
+        return $query->where('location', 'LIKE', '%'.$loc.'%');
+    }
+
+    public function scopeAtExactLocation($query, $loc)
+    {
+        return $query->where('location', $loc);
+    }
+
+    public function trades(){
+
+        return $this->belongsToMany(Trade::class, 'company_has_trade');
+    }
 }

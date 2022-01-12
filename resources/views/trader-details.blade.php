@@ -2,11 +2,12 @@
 
 
 @section('content')
-<section>
+@include('components.navbar')
+<section class="pt-20">
     <div class='space-y-108 flex flex-col rounded mt-16 mx-16 bg-white shadow'>
         <div class='flex flex-row  bg-white shadow'>
             <div class=' w-3/4 mt-2 ml-4 p-2 bg-white shadow'>
-                <h2 class="capitalize font-bold text-gray-900  tracking-widest">bj sons</h2>
+                <h2 class="capitalize font-bold text-gray-900  tracking-widest">{{ $company->name }}</h2>
                 <p class="my-2">location...</p>
             </div>
             <div class='pd-20 w-1/4 ml-4 p-2 bg-gray-200 shadow'>

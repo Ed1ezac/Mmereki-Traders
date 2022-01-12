@@ -61,7 +61,7 @@ class RegisterController extends Controller
 
         return Validator::make($data, [
             'company-name' => ['required', 'string', 'max:100'],
-            'intro' => ['required', 'string', 'max:200'],
+            'intro' => ['required', 'string', 'max:160'],
             'address' => ['required','string', 'max:100'],
             'location' => ['required','string', 'max:60'],
             'trades' => ['required',],
@@ -146,83 +146,4 @@ class RegisterController extends Controller
             'expiration' => $time_now->addDays(184),//6 months
         ]);
     }
-
 }
-/*----
-try{
-    $user = User::create([
-        'name' => $request->get('name').' '.$request->get('surname'),
-        'email' => $request->get('email'),
-        'contact' => $request->get('mobile'),
-        'pw_len' => strlen($request->get('password')),
-        'password' => Hash::make($request->get('password')),
-    ]);
-}catch(\Illuminate\Database\QueryException $e){
-    $errorCode = $e->errorInfo[1];
-    if($errorCode == 1062){
-        // houston, we have a duplicate entry problem
-        return redirect()->back()
-            ->withErrors('The email you entered has been used to create an account. Please enter a different one.');
-    }
-}
-
-if($user->id != null){
-    //Register the Company Next
-    $company = Company::create([
-        'user_id' => $user->id,
-        'name' => $request->get('company'),
-        'company_size' => $request->get('company-size'),
-        'location' => $request->get('location'),
-        'post_address' => $request->get('postal_address').', '.$request->get('post_location'),
-        'telephone' => $request->get('telephone'),
-        'mobile' => $request->get('mobile'),
-    ]);
-
-    //------Bonus Bid Credit
-    //kick start them with 5 bids
-    BidCredit::create([
-        'company_id' => $company->id,
-        'balance' => 30000000,
-    ]);
-
-    //----- TRADES  !!!!!!!!
-    $trades = $request->get('trades');
-    $tradeIds = explode(',', $trades);
-
-    foreach($tradeIds as $tradeId){
-        CompanyTrades::create([
-            'company_id' => $company->id,
-            'trade_id' => $tradeId,
-        ]);
-    }
-
-    //-Create the company's Membership
-    $time_now = Carbon::now('+2.00');//timezoned current time
-    $memb_id = $company->id;
-    if($memb_id < 100){
-        //check if the company ID is less than 100 so that we add
-        //leading zeros to it: 5 becomes 005, 23 becomes 023...
-        $memb_id = sprintf('%03d', $memb_id);
-    }
-
-    //-----The *type* field is habndled by default value
-    Membership::create([
-        'membership_id' => 'TM'.$memb_id,
-        'company_id' => $company->id,
-        'status' => 'Pending',
-        'expiration' => $time_now->addDays(184),//6 months
-    ]);
-
-    //Create a default Rating for the newly created Company: DEFAULT is 3.00
-    //we only need the company id, the rest is handled by the defaults.
-    Rating::create([
-        'company_id' => $company->id,
-    ]);
-
-    $user->company_id = $company->id;
-    $user->assignRole('tradesman');//role
-    $user->notify(new Welcome());
-
-    $user->save();//update user
-    $this->sendVerificationEmail($user);
-*/
