@@ -9,11 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -21,8 +16,16 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $company = Company::forUser(Auth::user());
+        $membership = Membership::forCompany($company);
 
-        $company = Comapany::forUser(Auth::user());
-        return view('dashboard.home');
+        return view('dashboard.home', compact('company', 'membership'));
     }
+
+    public function settings(){
+        
+        return view('dashboard.settings');
+    }
+
+    
 }

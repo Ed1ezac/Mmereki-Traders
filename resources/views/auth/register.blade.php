@@ -1,4 +1,4 @@
-@extends('headers.landing-header')
+@extends('layouts.landing-header')
 
 @push('page-css')
     <style>

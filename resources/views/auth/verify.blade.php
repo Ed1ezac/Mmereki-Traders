@@ -1,4 +1,4 @@
-@extends('headers.landing-header')
+@extends('layouts.landing-header')
 
 @section('content')
 <section class="pt-20 max-w-7xl">

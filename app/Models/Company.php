@@ -26,7 +26,7 @@ class Company extends Model
     ];
 
     public function scopeForUser($query, $user){
-        return $query->where('user_id', $user->id);
+        return $query->where('user_id', $user->id)->first();
     }
 
     public function scopeWithName($query, $name)
@@ -60,4 +60,9 @@ class Company extends Model
     {
         return $this->hasMany(CompanyTrades::class);//, 'company_has_trade');
     }
+
+    public function membership(){
+        return $this->hasOne(Membership::class);
+    }
+
 }

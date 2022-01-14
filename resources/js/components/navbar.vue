@@ -9,10 +9,11 @@
             </div>
 
             <div class="sm:flex hidden sm:items-center pt-0 pb-0 px-2">
-                <a v-if="isAuth" href="/logout" v-on:click.prevent="logout" class="my-btn block px-2 py-1 rounded text-white hover:no-underline hover:bg-gray-400 border-transparent focus:ring-offset-0 focus:ring-gray-300">Logout</a>
+                <a v-if="isAuth" href="/home" class="block px-2 py-1 rounded text-white hover:no-underline hover:bg-gray-400 border-transparent focus:ring-offset-0 focus:ring-gray-300">Home</a>
+                <a v-if="isAuth" href="/logout" v-on:click.prevent="logout" class="block px-2 py-1 sm:ml-2 rounded text-white hover:no-underline hover:bg-gray-400 border-transparent focus:ring-offset-0 focus:ring-gray-300">Logout</a>
                 <!---->
                 <a v-if="!isAuth" href="/login" class="block text-white rounded-sm border border-white px-2 py-1 hover:no-underline hover:bg-gray-400 border-transparent focus:ring-offset-0 focus:ring-gray-300">Login</a>
-                <a v-if="!isAuth" href="/register" class="block text-white rounded-sm border border-white px-2 py-1 border-transparent hover:no-underline hover:bg-gray-400 focus:ring-offset-0 focus:ring-gray-300 sm:ml-2">Register</a>
+                <a v-if="!isAuth" href="/register" class="block sm:ml-2 text-white rounded-sm border border-white px-2 py-1 border-transparent hover:no-underline hover:bg-gray-400 focus:ring-offset-0 focus:ring-gray-300">Register</a>
             </div>
         </div>
         <!----->

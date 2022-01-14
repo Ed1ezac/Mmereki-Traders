@@ -23,6 +23,8 @@ class Membership extends Model
         'expiration'
     ];
 
-    
+    public function scopeForCompany($query, $company){
+        return $query->where('company_id', $company->id)->first();
+    }
 
 }

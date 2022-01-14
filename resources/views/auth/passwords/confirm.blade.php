@@ -1,4 +1,4 @@
-@extends('headers.landing-header')
+@extends('layouts.landing-header')
 
 @section('content')
 <!--div class="container">
