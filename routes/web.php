@@ -18,8 +18,7 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/', [SearchProcessor::class, 'search']);
 
-Route::post('/search', [SearchProcessor::class, 'processSearchRequest']);
-Route::get('/results', [SearchProcessor::class, 'results']);
+Route::get('/results', [SearchProcessor::class, 'processSearchRequest'])->name('search.results');
 Route::get('/trader/{id?}/details', [SearchProcessor::class, 'traderDetails']);
 Route::get('/invalid-search', [SearchProcessor::class, 'invalidDetails']);
 

@@ -25,6 +25,10 @@ class Company extends Model
         'mobile'
     ];
 
+    public function scopeForUser($query, $user){
+        return $query->where('user_id', $user->id);
+    }
+
     public function scopeWithName($query, $name)
     {
         return $query->where('name', 'LIKE', '%'.$name.'%');
@@ -52,8 +56,8 @@ class Company extends Model
         return $query->where('location', $loc);
     }
 
-    public function trades(){
-
-        return $this->belongsToMany(Trade::class, 'company_has_trade');
+    public function trades()
+    {
+        return $this->hasMany(CompanyTrades::class);//, 'company_has_trade');
     }
 }

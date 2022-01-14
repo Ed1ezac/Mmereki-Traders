@@ -88,7 +88,6 @@ class RegisterController extends Controller
     {
         //dd($data);
         DB::transaction(function() use ($data) {
-
             $this->user = User::create([
                 'name' => $data['first-name'].' '.$data['last-name'],
                 'email' => $data['email'],

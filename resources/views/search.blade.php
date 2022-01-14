@@ -5,12 +5,10 @@
 <section>
     <!---Todo-->
     <div class="flex justify-center lg:justify-center sm:justify-end">
-        <div class="p-8 lg:mt-28 mt-20">
-            <form method="post" action="/search">
-                @csrf
+        <div class="p-8 lg:mt-32 mt-24">
+            <form method="GET" action="{{ route('search.results') }}">
                 <div class="py-4 bg-white max-w-sm lg:max-w-5xl rounded-sm shadow-md px-4">
                     <div class="flex flex-col items-center justify-center lg:flex-row gap-10">
-
                         <div class="w-80">
                             <input type="text" name="trader" class="my-form-input" placeholder="Trader e.g. plumber" required>
                         </div>

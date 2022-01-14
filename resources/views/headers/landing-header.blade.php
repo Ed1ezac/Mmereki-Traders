@@ -13,8 +13,13 @@
     </head>
     <body class="bg-gray-100">
         <div id="app">
-            <!--- navbar -->
-            @yield('content')
+            <navbar
+                current-url="{{ Request::segment(1) }}"
+                v-bind:is-auth="{{ json_encode(Auth::check()) }}">
+            </navbar>
+            <main class="pt-20">
+                @yield('content')
+            </main>
         </div>
 
         <script src="{{ asset('js/app.js') }}"></script>

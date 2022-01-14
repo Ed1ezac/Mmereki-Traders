@@ -1,12 +1,10 @@
 @extends('headers.landing-header')
 
 @section('content')
-  @include('components.navbar')
-  <section class="pt-20">
+  <section>
     <div class="-mt-2 mb-4 rounded-md mx-4">
       <div class="flex justify-center">
-        <form method="post" action="/search">
-          @csrf
+        <form method="GET" action="{{ route('search.results') }}">
           <div class="flex flex-col sm:flex-row items-center justify-center gap-1">
             <div class="w-56 sm:w-52 lg:w-60">
               <input type="text" name="trader" class="my-form-input" placeholder="Trader e.g. plumber" required>
@@ -27,8 +25,8 @@
     @endif
     @foreach ($results as $result)
     <div class="flex flex-col md:flex my-6 mx-3 sm:mx-8 max-w-4xl rounded bg-gray-50 shadow-lg">
-      <div class="flex flex-row justify-between shadow">
-        <div class="w-full pr-6 pl-4 pt-4 p-2 shadow">
+      <div class="flex flex-row justify-between">
+        <div class="w-full pr-6 pl-4 pt-4 p-2">
             <div class="flex items-center">
               <a href="/trader/{{ $result->id }}/details">
                 <h2 class="text-xl capitalize font-bold text-blue-900 tracking-wider hover:underline">{{$result->name}}</h2>
@@ -48,13 +46,13 @@
         </div>
       </div> 
 
-      <div class="flex flex-col sm:flex-row text-sm p-2 space-y-4 sm:space-y-0 sm:space-x-4 space-x-0 shadow">
-        <!--div class="hidden md:flex flex-1 p-1 border-solid border-2 text-gray-900 border-gray-200 font-bold">
+      <div class="flex flex-col sm:flex-row text-sm p-2 space-y-4 sm:space-y-0 sm:space-x-4 space-x-0">
+        <div class="flex flex-1 p-1 font-bold text-gray-900 border-solid border-2 border-gray-200">
           <svg xmlns="http://www.w3.org/2000/svg" class=" text-blue-900 h-6 w-6 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-            Register Guranteed
-        </!--div -->
+            {{ $result->location }}
+        </div>
         
         <div class="flex text-sm font-bold flex-1 p-1 text-gray-900 border-gray-200 border-solid border-2">
             <svg xmlns="http://www.w3.org/2000/svg" class=" text-blue-900 h-6 w-6 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -70,7 +68,7 @@
         </div>
         <div class="flex flex-1 p-1 text-sm font-bold text-gray-900 border-solid border-gray-200 border-2">
           <svg xmlns="http://www.w3.org/2000/svg" class=" text-blue-900 blue- h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>  
           {{$result->email}}
         </div>

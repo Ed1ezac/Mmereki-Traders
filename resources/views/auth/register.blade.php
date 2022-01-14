@@ -9,9 +9,8 @@
 @endpush
 
 @section('content')
-@include('components.navbar')
 <!--Electrical contractors for installation and maintenance-->
-<section class="pt-20">
+<section>
     @if ($errors->any())
         @foreach ($errors->all() as $error)
         <div class="py-2 px-2 bg-red-500 text-white">
@@ -32,7 +31,7 @@
                         <div class="px-4 sm:px-0">
                             <h3 class="text-lg font-medium leading-6 text-gray-900">Company Info</h3>
                             <p class="mt-1 text-sm text-gray-600">
-                                This information will be displayed as the search result so make sure it's accurate.
+                                This information will be displayed on the search result so make sure it's accurate.
                             </p>
                         </div>
                     </div>
@@ -57,7 +56,7 @@
                                         <label for="intro" class="block text-sm font-medium text-gray-700">Introduction</label>
                                         <div class="mt-1">
                                             <textarea maxlength="160" name="intro" rows="2" class="my-form-input required 
-                                            @error('intro') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror" placeholder="Mention your operating areas here">{{ old('intro') }}</textarea>
+                                            @error('intro') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror" placeholder="Short introduction of your work here">{{ old('intro') }}</textarea>
                                         </div>
                                         @if(!empty($errors) && $errors->has('intro'))
                                             @error('intro')

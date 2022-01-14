@@ -1,9 +1,8 @@
 @extends('headers.landing-header')
 
 @section('content')
-@include('components.navbar')
-<section class="pt-20">
-    <h3 class="flex sm:mt-10 2xl:mt-16 text-gray-700 justify-center bg-green-100 p-2 text-3xl font-medium mx-6 my-2">Welcome Back!</h3>
+<section>
+    <h3 class="flex sm:mt-2 2xl:mt-8 text-gray-700 justify-center p-2 text-3xl font-medium mx-6">Welcome Back!</h3>
     <div class="flex justify-center mt-4 mb-12">
         <div class="bg-white shadow-md overflow-hidden w-full max-w-sm rounded-md">
             <form method="POST" action="{{ route('login') }}">

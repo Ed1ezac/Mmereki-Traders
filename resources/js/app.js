@@ -6,7 +6,7 @@
 
 require('./bootstrap');
 import { createApp } from 'vue';
-import Hello from './components/hello-vue.vue';
+import Navbar from './components/navbar.vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -14,7 +14,7 @@ import Hello from './components/hello-vue.vue';
  */
  const app = createApp({
      components:{
-        Hello,
+        Navbar,
      }
  });
  app.mount("#app");
