@@ -1,8 +1,7 @@
 @extends('layouts.landing-header')
 
 @section('content')
-@include('components.sidebar')
-    <main class="pl-8 sm:pl-56 xl:pl-60 pr-6">
+    <main class="px-8 sm:px-16 2xl:px-0 max-w-7xl 2xl:mx-auto">
         @yield('features')
     </main>
 @endsection

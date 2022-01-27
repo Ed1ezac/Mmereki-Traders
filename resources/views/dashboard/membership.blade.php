@@ -2,14 +2,23 @@
 
 @section('features')
 
-<div class="bg-white rounded shadow p-4 max-w-lg">
-    <div class="flex justify-between">
-        <h3 class="text-gray-800 font-semibold text-base">Company Name</h3>
-        <div class="rounded-full bg-red-200 text-red-700 text-center pt-1 px-2 text-xs font-semibold">Pending</div>
-    </div>
-    <div class="flex-col">
-        <p>Membership id</p>
-        <p>expires</p>
+<div class="bg-white rounded shadow p-4 max-w-2xl">
+    <div class="flex justify-between divide-x-2 space-x-4">
+        <div>
+            <h6 class="text-gray-400 text-xs font-bold">MT-023</h6>
+            <h3 class="text-gray-800 font-semibold text-base">Company Name</h3>
+            <p class="text-sm text-gray-500">User Name</p>
+        </div>
+        <div class="pl-8 pr-0">
+            <h6 class="text-gray-400 text-xs font-bold">Type</h6>
+            <h3 class="text-gray-800 font-semibold text-base">Standard Membership</h3>
+            <p class="text-sm text-gray-500">P50</p>
+        </div>
+        <div class="px-8">
+            <h6 class="text-gray-400 text-xs font-bold">Status</h6>
+            <h3 class="text-gray-800 font-semibold text-base">Active</h3>
+            <p class="text-sm text-gray-500">Expires in 2 days</p>
+        </div>
     </div>
 </div>
 
@@ -29,8 +38,6 @@
             <div class="mx-4 text-xs text-gray-600">
                 <ul class="space-y-2">
                     <li>Searchable</li>
-                    <li>100 Qoutes</li>
-                    <li>10 Job Cards</li>
                     <li>Free Member Verification</li>
                 </ul>
             </div>
@@ -49,14 +56,12 @@
             </div>
             <div class="flex align-top py-4 bg-gray-200">
                 <h6 class="text-xl ml-4 mt-1">P</h6>
-                <h3 class="text-6xl font-light">80</h3>
+                <h3 class="text-6xl font-light">100</h3>
                 <p class="text-gray-600 mx-4 mt-2 text-xs">Billed annually via a once off payment</p>
             </div>
             <div class="mx-4 text-xs text-gray-600">
                 <ul class="space-y-2">
                     <li>Searchable</li>
-                    <li>Unlimited Qoutes</li>
-                    <li>50 Job Cards</li>
                     <li>Free Member Verification</li>
                 </ul>
             </div>

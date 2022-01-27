@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Trade;
 use App\Models\Company;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
 use App\Http\Requests\SearchRequest;
 
 class SearchProcessor extends Controller
@@ -43,7 +42,7 @@ class SearchProcessor extends Controller
             $results = Company::withTrade($trade)->paginate(8);
             $comment = "No results for \"".$location."\". Showing all traders with trade: ".$trade->name;
         }
-        //$url = URL::defaults(['trader'=>$trader, 'location'=>$location]);
+        
         return view('results', compact('results', 'trader', 'location', 'comment'));
     }
 
