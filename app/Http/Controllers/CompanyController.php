@@ -6,6 +6,7 @@ use App\Models\Trade;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CompanyUpdateRequest;
 
 class CompanyController extends Controller
 {
@@ -15,12 +16,19 @@ class CompanyController extends Controller
         return view('dashboard.edit-profile' ,compact('company'));
     }
 
-    public function update(){
-        //post
+    public function update(CompanyUpdateRequest $request){
+        //dd($request->validated());
+        $company = Company::find($request->id);
+        $company->updateRecord($request->validated());
+        
+        return back()->with('status', 'Your company profile has been updated successfully!');
     }
 
     public function delete(){
         //post
     }
+
+    //drifting
+    
 
 }

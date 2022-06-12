@@ -65,4 +65,17 @@ class Company extends Model
         return $this->hasOne(Membership::class);
     }
 
+    public function updateRecord(array $values){
+        return $this->update([
+            'name'  => $values['company-name'],  
+            'intro' => $values['intro'],
+            'about' => $values['about'], 
+            'email' => $values['company-email'], 
+            'location' => $values['location'], 
+            'address' => $values['address'],
+            'telephone' => $values['tel'],
+            'mobile' => $values['mobile']
+        ]);
+    }
+
 }

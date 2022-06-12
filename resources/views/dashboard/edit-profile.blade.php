@@ -2,16 +2,61 @@
 
 @section('features')
 <div class="mt-4 mb-4">
-    <div class="flex justify-between items-center">
-    <h3 class="text-lg font-medium mb-6 leading-6 text-gray-900">Edit Profile</h3>
-    <a href="/trader/{{ $company->id }}/details" class="bg-gray-300 p-1 mb-6">View Profile</a>
+    <div class="flex justify-between items-end">
+        <h3 class="text-lg font-semibold leading-6 text-gray-900">Edit Profile</h3>
+        <a href="/trader/{{ $company->id }}/details" class="my-btn">View Profile</a>
     </div>
     <div class="border-t-2 border-gray-300 my-4"></div>
 </div>
 
+<!---Logo--->
+<section class="mt-10 sm:mt-0">
+    <form action="#" method="post" enctype="multipart/form-data">
+        @csrf
+        <div>
+            <div class="md:grid md:grid-cols-3 md:gap-6">
+                <div class="md:col-span-1">
+                    <div class="px-4 sm:px-0">
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">Company Logo</h3>
+                        <p class="mt-1 text-sm text-gray-600">
+                            A logo makes your company profile look proffessional and increases your chances of getting hired.
+                        </p>
+                    </div>
+                </div>
+            
+                <div class="mt-5 md:mt-0 md:col-span-2">
+                    <div class="shadow sm:rounded-md sm:overflow-hidden">
+                        <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                            <div class="sm:grid sm:grid-cols-9 sm:gap-6">
+                                <div class="sm:col-span-2">
+                                    <div class="h-24 w-24 bg-green-400"></div>
+                                </div>
+                                <div class="sm:col-span-7">
+                                    <div class="flex h-24 items-center justify-center p-4 border-2 border-gray-200 border-dashed">
+                                        drag and drop file or click here to upload image
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="flex justify-end items-center">
+                                <button type="submit" class="my-btn">Upload</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </form>
+</section>
+<!---separator--->
+<div class="hidden sm:block" aria-hidden="true">
+    <div class="py-5">
+        <div class="border-t border-gray-200"></div>
+    </div>
+</div>
+
 <!---Info-->
-<section>
-    <form action="#" method="post"><!------>
+<section class="mt-10 sm:mt-0">
+    <form action="/update-profile" method="post"><!------>
         @csrf
         <div>
             <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -28,6 +73,7 @@
                     <div class="shadow sm:rounded-md sm:overflow-hidden">
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                             <div class="grid grid-cols-6 gap-6">
+                                <input type="hidden" name="id" value="{{ $company->id }}">
                                 <!--Company Name-->
                                 <div class="col-span-6 sm:col-span-4">
                                     <label for="company-name" class="block text-sm font-medium text-gray-700">Company name</label>
@@ -92,7 +138,8 @@
                                 <!---location-->
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
-                                    <input type="text" name="location" value="{{ $company->location }}" required autocomplete="location" class="mt-1 my-form-input required">
+                                    <input type="text" name="location" value="{{ $company->location }}" required autocomplete="location" class="mt-1 my-form-input 
+                                    @error('location') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror">
                                     @error('location')
                                     <span class="text-xs font-normal text-red-500" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -103,7 +150,7 @@
                                 <div class="col-span-6">
                                     <label for="trades" class="block text-sm font-medium text-gray-700">Trade (s)</label>
                                     <select id="trades" name="trades" required autocomplete="trades" class="mt-1 block w-full py-2 px-3 border bg-gray-300 shadow-sm focus:outline-none sm:text-sm
-                                    @error('address') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror">
+                                    @error('trades') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror">
                                         <option value="1">Plumber</option>
                                         <option value="2">Electrician</option>
                                         <option value="3">Builder</option>
@@ -120,7 +167,7 @@
                                 <!--telephone-->
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="tel" class="block text-sm font-medium text-gray-700">Telephone</label>
-                                    <input type="tel" name="tel" value="{{ $company->telephone }}" required autocomplete="mobile" class="mt-1 my-form-input  
+                                    <input type="tel" name="tel" value="{{ $company->telephone }}" required autocomplete="tel" class="mt-1 my-form-input  
                                     @error('tel') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror">
                                     @error('tel')
                                     <span class="text-xs font-normal text-red-500" role="alert">
@@ -151,9 +198,9 @@
                                     @enderror
                                 </div>
                             </div>
-                            <!-------->
-                            <div class="flex justify-end items-center bg-gray-100">
-                                <button type="submit" class="p-1">Save</button>
+                            <!------>
+                            <div class="flex justify-end items-center">
+                                <button type="submit" class="my-btn">Save</button>
                             </div>
                         </div>
                     </div>
@@ -171,27 +218,39 @@
 </div>
 
 <!---Logo--->
-<section class="mt-10 sm:mt-0">
+<section class="mt-10 sm:mt-0 mb-16">
     <form action="#" method="post" enctype="multipart/form-data">
         @csrf
         <div>
             <div class="md:grid md:grid-cols-3 md:gap-6">
-                <div class="md:col-span-1">
-                    <div class="px-4 sm:px-0">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900">Company Logo</h3>
-                        <p class="mt-1 text-sm text-gray-600">
-                            A logo makes your company profile look proffessional and increases your chances of getting hired.
-                        </p>
-                    </div>
+            <div class="md:col-span-1">
+                <div class="px-4 sm:px-0">
+                    <h3 class="text-lg font-medium leading-6 text-gray-900">Trade Qualifications</h3>
+                    <p class="mt-1 text-sm text-gray-600">
+                        Your qualifications give clients more confidence when hiring you.
+                    </p>
                 </div>
-            
-                <div class="mt-5 md:mt-0 md:col-span-2">
-                    <div class="shadow sm:rounded-md sm:overflow-hidden">
-                        <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
-                            
+            </div>
+        
+            <div class="mt-5 md:mt-0 md:col-span-2">
+                <div class="shadow sm:rounded-md sm:overflow-hidden">
+                    <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                        <div class="sm:grid sm:grid-cols-9 sm:gap-6">
+                            <div class="sm:col-span-4">
+                                <div class="h-24 bg-green-400"></div>
+                            </div>
+                            <div class="sm:col-span-5">
+                                <div class="flex h-24 items-center p-4 border-2 justify-center border-gray-200 border-dashed">
+                                    drag and drop file or click here to upload Document
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end items-center">
+                            <button type="submit" class="my-btn">Upload</button>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </form>
 </section>
