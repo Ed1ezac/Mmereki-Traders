@@ -167,7 +167,7 @@
                         </div>
 
                         <div class="mt-5 md:mt-0 md:col-span-2">
-                            <div class="shadow overflow-hidden sm:">
+                            <div class="shadow sm:rounded-md sm:overflow-hidden">
                                 <div class="px-4 py-5 bg-white sm:p-6">
                                     <div class="grid grid-cols-6 gap-6">
                                         <!--First Name-->
@@ -247,7 +247,7 @@
                             <div class="pr-2 py-5 sm:pr-6">
                                 <div class="flex items-start">
                                     <div class="flex items-center h-5">
-                                        <input name="terms" type="checkbox" class="focus:ring-gray-500 h-4 w-4 text-gray-600 border-gray-300 rounded-sm" required>
+                                        <input name="terms" type="checkbox" class="focus:ring-gray-500 h-4 w-4 text-gray-600 border-gray-300" required>
                                     </div>
                                     <div class="ml-3 text-sm">
                                         <label for="terms" class="font-medium text-gray-700">Terms and Conditions</label>
@@ -259,7 +259,7 @@
                             </div>
 
                             <div class="w-80 mt-4">
-                                <button type="submit" class="inline-flex justify-center py-2 w-full rounded px-4 border border-transparent shadow-sm text-sm font-medium  text-white bg-gray-700 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
+                                <button type="submit" class="w-full font-medium  text-white my-btn">
                                 Register
                                 </button>
                             </div>
