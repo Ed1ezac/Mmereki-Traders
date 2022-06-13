@@ -7,6 +7,7 @@
 require('./bootstrap');
 import { createApp } from 'vue';
 import Navbar from './components/navbar.vue';
+import UploadField from './components/file-upload-field.vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -15,6 +16,7 @@ import Navbar from './components/navbar.vue';
  const app = createApp({
      components:{
         Navbar,
+        UploadField,
      }
  });
  app.mount("#app");
