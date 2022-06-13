@@ -32,9 +32,7 @@
                                     <div class="h-24 w-24 bg-green-400"></div>
                                 </div>
                                 <div class="sm:col-span-7">
-                                    <div class="flex h-24 items-center justify-center p-4 border-2 border-gray-200 border-dashed">
-                                        drag and drop file or click here to upload image
-                                    </div>
+                                    <upload-field hint="(Image) .jpg or .png files less than 5MB."></upload-field>
                                 </div>
                                 
                             </div>
@@ -240,9 +238,7 @@
                                 <div class="h-24 bg-green-400"></div>
                             </div>
                             <div class="sm:col-span-5">
-                                <div class="flex h-24 items-center p-4 border-2 justify-center border-gray-200 border-dashed">
-                                    drag and drop file or click here to upload Document
-                                </div>
+                                <upload-field hint="(Document) .doc/.docx or .pdf files less than 2MB."></upload-field>
                             </div>
                         </div>
                         <div class="flex justify-end items-center">

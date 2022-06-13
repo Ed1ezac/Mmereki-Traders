@@ -17,7 +17,6 @@ class CompanyController extends Controller
     }
 
     public function update(CompanyUpdateRequest $request){
-        //dd($request->validated());
         $company = Company::find($request->id);
         $company->updateRecord($request->validated());
         

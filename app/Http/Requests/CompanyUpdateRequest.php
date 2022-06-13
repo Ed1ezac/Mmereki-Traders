@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CompanyUpdateRequest extends FormRequest
@@ -23,6 +24,7 @@ class CompanyUpdateRequest extends FormRequest
      */
     public function rules()
     {
+        $request = request();
         return [
             'id' => ['required','numeric'],
             'company-name' => ['required', 'string', 'max:100'],
@@ -33,7 +35,9 @@ class CompanyUpdateRequest extends FormRequest
             'trades' => ['required',],
             'tel' => ['required', 'numeric', 'min:7'],
             'mobile' => ['required', 'numeric', 'min:8'],
-            'company-email'=> ['required', 'email'],
+            'company-email' => ['required', 'email',
+                Rule::unique('companies','email')->ignore($request->input('id')),
+            ],
         ];
     }
 

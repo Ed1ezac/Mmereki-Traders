@@ -22,9 +22,12 @@ class DashboardController extends Controller
         return view('dashboard.home', compact('company', 'membership'));
     }
 
+
+    
     public function settings(){
-        
-        return view('dashboard.settings');
+        $userName = Auth::user()->name;
+        $email = Auth::user()->email;
+        return view('dashboard.settings', compact('userName', 'email'));
     }
 
     
