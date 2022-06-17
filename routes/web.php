@@ -6,6 +6,7 @@ use App\Http\Controllers\SearchProcessor;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\TradeQualificationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +33,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/home', [DashboardController::class, 'index'])->name('home');
     //profile
     Route::get('/edit-profile', [CompanyController::class, 'edit']);
+    Route::post('/upload-logo', [CompanyController::class,'uploadLogo']);
     Route::post('/update-profile', [CompanyController::class, 'update']);
     //user
     Route::get('/settings', [UserController::class, 'editUser']);
     Route::post('/settings/update-user', [UserController::class, 'updateUser']);
+    //qualification
+    Route::post('/upload-document', [TradeQualificationController::class, 'uploadQualification']);
+    Route::get('/document/{id?}/download', [TradeQualificationController::class, 'downloadQualification']);
+    Route::get('/document/{id?}/delete', [TradeQualificationController::class, 'deleteQualification']);
 });

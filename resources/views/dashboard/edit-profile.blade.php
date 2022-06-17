@@ -11,7 +11,7 @@
 
 <!---Logo--->
 <section class="mt-10 sm:mt-0">
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="/upload-logo" method="post" enctype="multipart/form-data">
         @csrf
         <div>
             <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -29,10 +29,14 @@
                         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                             <div class="sm:grid sm:grid-cols-9 sm:gap-6">
                                 <div class="sm:col-span-2">
-                                    <div class="h-24 w-24 bg-green-400"></div>
+                                    <div class="h-24 w-24 bg-green-100">
+                                        <img class="w-24 h-24" 
+                                        src="{{ url('storage/'.$company->logo) }}" 
+                                        alt="">
+                                    </div>
                                 </div>
                                 <div class="sm:col-span-7">
-                                    <upload-field hint="(Image) .jpg or .png files less than 5MB."></upload-field>
+                                    <upload-field hint="(Image) .jpg or .png file less than 5MB."></upload-field>
                                 </div>
                                 
                             </div>
@@ -45,6 +49,7 @@
         </div>
     </form>
 </section>
+
 <!---separator--->
 <div class="hidden sm:block" aria-hidden="true">
     <div class="py-5">
@@ -217,7 +222,7 @@
 
 <!---Logo--->
 <section class="mt-10 sm:mt-0 mb-16">
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="/upload-document" method="post" enctype="multipart/form-data">
         @csrf
         <div>
             <div class="md:grid md:grid-cols-3 md:gap-6">
@@ -234,11 +239,35 @@
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                         <div class="sm:grid sm:grid-cols-9 sm:gap-6">
-                            <div class="sm:col-span-4">
-                                <div class="h-24 bg-green-400"></div>
+                            <div class="sm:col-span-3">
+                                <div class="">
+                                @for($i=0; $i< count($qualifications); $i++)
+                                    <div class="flex px-3 py-1 mb-2 bg-gray-700 items-center justify-between rounded-sm">
+                                        <div class="text-white text-sm">
+                                            {{ "Document".($i+1) }}
+                                        </div>
+                                        <div class="flex space-x-3">
+                                            <div>
+                                                <a href="/document/{{$qualifications[$i]->id}}/download" class="text-white hover:text-gray-400">
+                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="/document/{{$qualifications[$i]->id}}/delete" class="text-white hover:text-red-500">
+                                                    <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                        <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endfor
+                                </div>
                             </div>
-                            <div class="sm:col-span-5">
-                                <upload-field hint="(Document) .doc/.docx or .pdf files less than 2MB."></upload-field>
+                            <div class="sm:col-span-6">
+                                <upload-field hint="(Document) .doc/.docx or .pdf file less than 2MB."></upload-field>
                             </div>
                         </div>
                         <div class="flex justify-end items-center">

@@ -13,6 +13,9 @@ class User extends Authenticatable
 {
     use Notifiable;//HasFactory,
 
+    const Trader = 'Trader';
+    const Moderator = 'Moderator';
+    const Administrator = 'Administrator';
     /**
      * The attributes that are mass assignable.
      *
@@ -43,6 +46,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function company(){
+        return $this->hasOne(Company::class);
+    }
+
     public function updateRecord(array $values){
         return $this->update([
             'name' => $values['first-name'].' '.$values['last-name'],
@@ -50,4 +57,5 @@ class User extends Authenticatable
             'password' => Hash::make($values['password']),
         ]);
     }
+
 }
