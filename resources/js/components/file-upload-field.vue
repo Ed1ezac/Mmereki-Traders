@@ -17,7 +17,7 @@
                     <div class="flex text-sm text-gray-600">
                         <label for="data-file" class="relative cursor-pointer rounded-md font-medium text-accent-800 hover:text-accent-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-accent-500">
                             <span>Click to select a file</span>
-                            <input id="data-file" name="data-file" type="file" multiple required ref="file" @change="onChange" class="sr-only"><!--  -->
+                            <input id="file" name="file" type="file" multiple required ref="file" @change="onChange" class="sr-only"><!--  -->
                         </label>
                         <p class="pl-1">or drag and drop</p>
                     </div>
@@ -103,7 +103,7 @@
                 var c = 1024, 
                     d = b||2,
                     e = ["Bytes","KB","MB"],
-                    f=Math.floor(Math.log(a)/Math.log(c));
+                    f = Math.floor(Math.log(a)/Math.log(c));
                 return parseFloat((a/Math.pow(c,f)).toFixed(d))+" "+e[f];
 	        }
         }

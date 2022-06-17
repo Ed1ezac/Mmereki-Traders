@@ -61,6 +61,10 @@ class Company extends Model
         return $this->hasMany(CompanyTrades::class);//, 'company_has_trade');
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     public function membership(){
         return $this->hasOne(Membership::class);
     }
@@ -76,6 +80,12 @@ class Company extends Model
             'telephone' => $values['tel'],
             'mobile' => $values['mobile']
         ]);
+    }
+
+    public function updateLogo(string $path){
+        return $this->update([
+            'logo' => $path
+        ]);  
     }
 
 }
