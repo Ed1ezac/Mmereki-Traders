@@ -39,4 +39,17 @@ class CompanyController extends Controller
         //post
     }
 
+    ///---------------Admin
+    public function adminCompaniesList(){
+        $companies = Company::latest()->take(8)->get();
+
+        return view('admin.traders.companies', compact('companies'));
+    }
+
+    public function adminCompanyDetail($id){
+        $company = Company::find($id);
+
+        return view('admin.traders.company-details', compact('company'));
+    }
+    
 }

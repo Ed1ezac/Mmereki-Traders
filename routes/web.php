@@ -43,3 +43,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/document/{id?}/download', [TradeQualificationController::class, 'downloadQualification']);
     Route::get('/document/{id?}/delete', [TradeQualificationController::class, 'deleteQualification']);
 });
+
+Route::group(['prefix' =>'admin', 'middleware' =>'auth'], function () {
+    //- 'middleware' =>'admin'
+    Route::get('/comapanies', [CompanyController::class, 'adminCompaniesList']);
+    Route::get('/company/{id?}/details', [CompanyController::class, 'adminCompanyDetail']);
+    
+});

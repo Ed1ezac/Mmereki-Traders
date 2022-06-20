@@ -35,6 +35,13 @@
                         </p>
                     </div>
                 </a>
+                <a v-if="isAuth" href="/admin/comapanies" class="flex justify-center items-center py-1 h-full hover:no-underline">
+                    <div class="">
+                        <p class="text-sm font-bold text-gray-400 hover:text-white">
+                            Traders
+                        </p>
+                    </div>
+                </a>
             </div>
 
             <div class="sm:flex hidden sm:items-center pt-0 pb-0 px-2">
