@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trade;
 use App\Models\Company;
+use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\TradeQualification;
 use Illuminate\Support\Facades\Auth;
@@ -39,17 +40,29 @@ class CompanyController extends Controller
         //post
     }
 
-    ///---------------Admin
+    //--------------Admin
     public function adminCompaniesList(){
         $companies = Company::latest()->take(8)->get();
-
         return view('admin.traders.companies', compact('companies'));
     }
 
     public function adminCompanyDetail($id){
         $company = Company::find($id);
-
         return view('admin.traders.company-details', compact('company'));
     }
     
+    public function adminVerifyCompany(Request $request){
+        $company = Company::find($request->input('id'));
+        $company->updateVerification(Company::Verified);
+        $company->membership->update(['status' => Membership::Accepted]);
+        return back()->with('status', $company->name.' is now a verified Mmereki Trader!');
+    }
+
+    public function adminUnverifyCompany(Request $request){
+        $company = Company::find($request->input('id'));
+        $company->updateVerification(Company::Pending);
+        $company->membership->update(['status' => Membership::Pending]);
+        return back()->withErrors($company->name.'\'s verification has now been reverted!');
+    }
+
 }

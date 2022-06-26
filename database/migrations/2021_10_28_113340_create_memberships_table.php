@@ -19,7 +19,7 @@ class CreateMembershipsTable extends Migration
             $table->foreignId('company_id');
             $table->enum('type', ['Standard', 'Professional'] )->default("Standard");
             $table->integer('billing')->default("100");
-            $table->enum('status', ['pending', 'accepted', 'revoked']);
+            $table->enum('status', ['pending', 'accepted', 'expired', 'revoked'])->default("pending");
             $table->date('expiration');
             $table->timestamps();
         });
@@ -29,7 +29,6 @@ class CreateMembershipsTable extends Migration
      * Reverse the migrations.
      * @return void
      */
-    
     public function down()
     {
         Schema::dropIfExists('memberships');

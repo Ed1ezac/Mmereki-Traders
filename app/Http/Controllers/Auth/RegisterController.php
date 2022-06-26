@@ -86,7 +86,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        //dd($data);
         DB::transaction(function() use ($data) {
             $this->user = User::create([
                 'name' => $data['first-name'].' '.$data['last-name'],
@@ -141,7 +140,6 @@ class RegisterController extends Controller
         return Membership::create([
             'code' => 'MT'.$memb_id,
             'company_id' => $companyId,
-            'status' => Membership::Pending,
             'expiration' => $time_now->addDays(184),//6 months
         ]);
     }

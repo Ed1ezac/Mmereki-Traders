@@ -45,8 +45,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::group(['prefix' =>'admin', 'middleware' =>'auth'], function () {
-    //- 'middleware' =>'admin'
+    // 'middleware' =>'admin'
     Route::get('/comapanies', [CompanyController::class, 'adminCompaniesList']);
+    Route::post('/company/verify/', [CompanyController::class, 'adminVerifyCompany']);
+    Route::post('/company/unverify/', [CompanyController::class, 'adminUnverifyCompany']);
     Route::get('/company/{id?}/details', [CompanyController::class, 'adminCompanyDetail']);
-    
+    Route::get('/document/{id?}/download', [TradeQualificationController::class, 'adminDownloadQualification']);
+    Route::get('/membership/{id?}/revoke', [MembershipController::class, 'adminRevokeMembership']);
+    Route::get('/membership/{id?}/invoke-expiry', [MembershipController::class, 'adminSetMembershipAsExpired']);
 });

@@ -56,8 +56,7 @@ class Company extends Model
         return $query->where('location', $loc);
     }
 
-    public function trades()
-    {
+    public function trades(){
         return $this->hasMany(CompanyTrades::class);//, 'company_has_trade');
     }
 
@@ -67,6 +66,14 @@ class Company extends Model
 
     public function membership(){
         return $this->hasOne(Membership::class);
+    }
+
+    public function subscriptions(){
+        return null;//hasMany(Subscriptions)
+    }
+
+    public function qualifications(){
+        return $this->hasMany(TradeQualification::class);
     }
 
     public function updateRecord(array $values){
@@ -86,6 +93,12 @@ class Company extends Model
         return $this->update([
             'logo' => $path
         ]);  
+    }
+
+    public function updateVerification($value){
+        return $this->update([
+            'verification' => $value
+        ]);
     }
 
 }

@@ -51,4 +51,14 @@ class TradeQualificationController extends Controller
             return back()->withErrors('Invalid file.');
         }
     }
+
+    //----Admin
+    public function adminDownloadQualification($file_id){
+        $item = TradeQualification::find($file_id);
+        try{
+            return Storage::download($item->path);
+        }catch(Throwable $t){
+            return back()->withErrors($t->getMessage());
+        }
+    }
 }
