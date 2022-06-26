@@ -17,4 +17,8 @@
     .my-btn{
         @apply flex justify-center py-1-and-half px-10 text-white border border-transparent bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-gray-600 focus:ring-2 focus:ring-offset-2;
     }
+
+    .my-btn-small{
+        @apply text-white text-xs bg-gray-500 p-1 border border-transparent hover:bg-gray-700 focus:outline-none focus:ring-gray-600 focus:ring-1 focus:ring-offset-2;
+    }
 }
