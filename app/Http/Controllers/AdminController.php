@@ -17,7 +17,7 @@ class AdminController extends Controller
 
     //for the Future!
     public function giveUserRole(){
-
+    
     }
     
 }

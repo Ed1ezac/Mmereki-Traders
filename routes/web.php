@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SearchProcessor;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MembershipController;
@@ -42,6 +43,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/upload-document', [TradeQualificationController::class, 'uploadQualification']);
     Route::get('/document/{id?}/download', [TradeQualificationController::class, 'downloadQualification']);
     Route::get('/document/{id?}/delete', [TradeQualificationController::class, 'deleteQualification']);
+    //
+    Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin']);
 });
 
 Route::group(['prefix' =>'admin', 'middleware' =>'auth'], function () {
