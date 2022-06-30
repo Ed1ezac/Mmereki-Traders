@@ -57,8 +57,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        //dd($data);
-
         return Validator::make($data, [
             'company-name' => ['required', 'string', 'max:100'],
             'intro' => ['required', 'string', 'max:160'],
@@ -80,7 +78,6 @@ class RegisterController extends Controller
 
     /**
      * Create a new user instance after a valid registration.
-     *
      * @param  array  $data
      * @return \App\Models\User
      */
@@ -96,8 +93,10 @@ class RegisterController extends Controller
             $company = $this->registerCompany($this->user->id, $data);
             //trades
             $this->registerCompanyTrades($company->id, $data);
-            //
+            //membership
             $this->registerMembership($company->id);
+            //roles
+            $this->user->assignRole(User::Trader);
         }, 5);
 
         return $this->user;
