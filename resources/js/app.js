@@ -6,7 +6,10 @@
 
 require('./bootstrap');
 import { createApp } from 'vue';
-import Hello from './components/hello-vue.vue';
+import Navbar from './components/navbar.vue';
+import ErrorBanner from './components/error-banner.vue';
+import StatusBanner from './components/status-banner.vue';
+import UploadField from './components/file-upload-field.vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -14,7 +17,10 @@ import Hello from './components/hello-vue.vue';
  */
  const app = createApp({
      components:{
-        Hello,
+        Navbar,
+        UploadField,
+        ErrorBanner,
+        StatusBanner,
      }
  });
  app.mount("#app");

@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use \Carbon\Carbon;
 use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Models\Company;
+use App\Rules\EmptyField;
+use App\Models\Membership;
+use App\Models\CompanyTrades;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -23,6 +29,8 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+   
+    private $user;
 
     /**
      * Where to redirect users after registration.
@@ -50,24 +58,88 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'company-name' => ['required', 'string', 'max:100'],
+            'intro' => ['required', 'string', 'max:160'],
+            'address' => ['required','string', 'max:100'],
+            'location' => ['required','string', 'max:60'],
+            'trades' => ['required',],
+            'tel' => ['required', 'numeric', 'min:6'],
+            'mobile' => ['required', 'numeric', 'min:8'],
+            'birthday' => [new EmptyField],
+            'company-email'=> ['required', 'email', 'unique:companies,email'],
+            //
+            'first-name' => ['required', 'string', 'max:100'],
+            'last-name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:100', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'terms' => ['required', 'accepted']
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
-     *
      * @param  array  $data
      * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        DB::transaction(function() use ($data) {
+            $this->user = User::create([
+                'name' => $data['first-name'].' '.$data['last-name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
+            //
+            $company = $this->registerCompany($this->user->id, $data);
+            //trades
+            $this->registerCompanyTrades($company->id, $data);
+            //membership
+            $this->registerMembership($company->id);
+            //roles
+            $this->user->assignRole(User::Trader);
+        }, 5);
+
+        return $this->user;
+    }
+
+    private function registerCompany($userId, array $data){
+        return Company::create([
+            'user_id' => $userId,
+            'name' => $data['company-name'],
+            'intro' => $data['intro'],
+            'email' => $data['company-email'],
+            'location' => $data['location'],
+            'address' => $data['address'],
+            'telephone' => $data['tel'],
+            'mobile' => $data['mobile'],
+        ]);
+    }
+
+    private function registerCompanyTrades($companyId, array $data){
+        $trades = $data['trades'];
+        $tradeIds = explode(',', $trades);
+
+        foreach($tradeIds as $tradeId){
+            CompanyTrades::create([
+                'company_id' => $companyId,
+                'trade_id' => $tradeId,
+            ]);
+        }
+    }
+
+    private function registerMembership($companyId){
+        $time_now = Carbon::now('+2.00');
+        $memb_id = $companyId;
+        if($memb_id < 100){
+            //if the company ID is less than 100 we add
+            //leading zeros to it: 5 becomes 005, 23 becomes 023...
+            $memb_id = sprintf('%03d', $memb_id);
+        }
+        //Absent fields are handled by Defaults
+        return Membership::create([
+            'code' => 'MT'.$memb_id,
+            'company_id' => $companyId,
+            'expiration' => $time_now->addDays(184),//6 months
         ]);
     }
 }
