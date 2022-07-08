@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::group(['prefix' =>'admin', 'middleware' =>'auth'], function () {
     // 'middleware' =>'admin'
-    Route::get('/comapanies', [CompanyController::class, 'adminCompaniesList']);
+    Route::get('/companies', [CompanyController::class, 'adminCompaniesList']);
     Route::post('/company/verify/', [CompanyController::class, 'adminVerifyCompany']);
     Route::post('/company/unverify/', [CompanyController::class, 'adminUnverifyCompany']);
     Route::get('/company/{id?}/details', [CompanyController::class, 'adminCompanyDetail']);
