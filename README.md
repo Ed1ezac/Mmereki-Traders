@@ -1,7 +1,7 @@
 ## Mmereki-Traders
 A web system that will connect Plumbers, Electricians, Builders and many more tradespeople with clients. 
 
-##Technology Used
+## Technology Used
 This system is made with the Laravel Framework (V8.x), a php framework for web system development.
 
 <a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="100"></a> The Laravel Framework
@@ -14,13 +14,13 @@ This system is made with the Laravel Framework (V8.x), a php framework for web s
 
 <a href="https://mysql.com"><img height=48 src="https://github.com/PrinceCorwin/Useful-tech-icons/blob/main/images/mysql-logo.png?raw=true"></a> MySQL Database
 
-##Requirements
+## Requirements
 If you intend to make additions to this projec you need to meet the following (Minimum requirements):
 -Php V7.3.0 
 -Composer V2.0.11
 -Node V14.16.0
 
-##Architecture & Directories
+## Architecture & Directories
 This project's architecture follows the Laravel framework architecture and directory structure that can be [found here](https://laravel.com/docs/8.x/structure)
 
 ## Local Configuration
@@ -31,11 +31,11 @@ This project's architecture follows the Laravel framework architecture and direc
 -Navigate to http://localhost:8000 to view it
 -In order to create accounts and log in you will need a database. I uses xampp for that and configured it in the .env file in the project dir
 
-##Testing
+## Testing
 In order to test the app....
 
 ##Possible Improvements
 
-##Support
+## Support
 
-##Evolution
+## Evolution
