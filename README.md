@@ -16,25 +16,25 @@ This system is made with the Laravel Framework (V8.x), a php framework for web s
 
 ## Requirements
 If you intend to make additions to this projec you need to meet the following (Minimum requirements):
--Php V7.3.0 
--Composer V2.0.11
--Node V14.16.0
+- Php V7.3.0 
+- Composer V2.0.11
+- Node V14.16.0
 
 ## Architecture & Directories
 This project's architecture follows the Laravel framework architecture and directory structure that can be [found here](https://laravel.com/docs/8.x/structure)
 
 ## Local Configuration
--Download and unzip the project 
--Install the necessary packages by running `npm i`
--Compile the javascript & css by running `npm run dev`
--Serve the application by using the artisan command `php artisan serve`
--Navigate to http://localhost:8000 to view it
--In order to create accounts and log in you will need a database. I uses xampp for that and configured it in the .env file in the project dir
+- Download and unzip the project 
+- Install the necessary packages by running `npm i`
+- Compile the javascript & css by running `npm run dev`
+- Serve the application by using the artisan command `php artisan serve`
+- Navigate to http://localhost:8000 to view it
+- In order to create accounts and log in you will need a database. I uses xampp for that and configured it in the .env file in the project dir
 
 ## Testing
 In order to test the app....
 
-##Possible Improvements
+## Possible Improvements
 
 ## Support
 
