@@ -14,10 +14,10 @@ This system was made using the Laravel framework, a php framework for web system
 |:---------------:|:------------:|
 | <a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="120"></a> | Laravel Framework v8.x |
 | <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> | PhP v7.3.0 |
-| <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="80"/> </a>| NodeJS v14.16|
+| <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="80"/> </a>| Nodejs v14.16|
 | <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a> | Tailwind CSS v2.2.16 |
 | <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> | MySQL Database |
-| <a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a> | VueJS v3.2.19 |
+| <a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a> | Vuejs v3.2.19 |
 
 ## Requirements
 If you intend to make additions to this projec you need to meet the following (Minimum requirements):
@@ -41,6 +41,7 @@ In order to test the app you can use Laravel built in testing:
 - Create your test file from the commandline e.g. `php artisan make:test MyTest` 
 - To run the tests you can use the `php artisan test` command
 - An >ExampleTest.php file exists in the Test directory to help you get started
+
 Visit the [Laravel documentation on testing](https://laravel.com/docs/8.x/testing) to learn more
 
 ## Possible Improvements
@@ -65,4 +66,4 @@ This app is intended to be a fully fledged community of tradespoeple and homeown
 
 
 ## License
-This project is under the GNU General Public License v3.0
+This project is under the [GNU General Public License v3.0](https://choosealicense.com/licenses/gpl-3.0/)
