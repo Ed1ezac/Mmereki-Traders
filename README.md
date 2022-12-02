@@ -1,18 +1,23 @@
 ## Mmereki-Traders
 Mmereki Traders is a web system that aims to help home owners find tradespeople like plumbers, electricians and painters in their area. The system allows tradespeople to create an account and add details about their trades, including line of work, areas covered, years of experience and qualifications amongst others, on their public profile. A homeowner then searches the database for a particular tradesperson when in need. It works like an online directory. 
 
+##Project Status
+<p align="center">
+<img src="https://img.shields.io/badge/development-Slow Development-orange" alt="development status" width="40" height="40"/>
+</p>
+
 ## Technology Used
 This system wass made with the Laravel Framework (V8.x), a php framework for web system development.
 
 
 |Technology       |Description   |
 |:---------------:|:------------:|
-| <a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="120" height="120"></a> | The Laravel Framework |
-| <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> | PhP |
-| <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>| NodeJs |
-| <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a> | Tailwind CSS |
+| <a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="120" height="120"></a> | Laravel Framework v8.x |
+| <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> | PhP v7.3.0 |
+| <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>| NodeJS v14.16|
+| <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a> | Tailwind CSS v2.2.16 |
 | <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> | MySQL Database |
-| <a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a> | VueJS |
+| <a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a> | VueJS v3.2.19 |
 
 ## Requirements
 If you intend to make additions to this projec you need to meet the following (Minimum requirements):
@@ -36,6 +41,21 @@ In order to test the app....
 
 ## Possible Improvements
 
-## Support
+## Support & Contribution
+Contributions are welcome. Please contact me to give me a heads-up and to agree on code standard and conventions. I am very particular on readable and consice code practices.
 
 ## Evolution
+At the moment, this system is a basic search engine page, results page where the paginated list of tradespeople are shown, a details page for further information on the tradesperson along with authentication pages and some pages for the logged in tradespeople. A minimum working prototype.
+
+This app is intended to be a fully fledged community of tradespoeple and homeowners and will include:
+
+- Job Board (where users post a specific job to be done)
+- Quoting system
+- Instant messaging
+- Payment processing
+- Invoice issuing and reconciliation
+- Blog 
+
+
+## License
+
