@@ -1,18 +1,21 @@
 ## Mmereki-Traders
-A web system that will connect Plumbers, Electricians, Builders and many more tradespeople with clients. 
+Mmereki Traders is a web system that aims to help home owners find tradespeople like plumbers, electricians and painters in their area. The system allows tradespeople to create an account and add details about their trades, including line of work, areas covered, years of experience and qualifications amongst others, on their public profile. A homeowner then searches the database for a particular tradesperson when in need. It works like an online directory. 
 
 ## Technology Used
-This system is made with the Laravel Framework (V8.x), a php framework for web system development.
+This system wass made with the Laravel Framework (V8.x), a php framework for web system development.
 
-<a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="100"></a> The Laravel Framework
+|Technology|Description|
+|<a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="60" height="40"></a>| The Laravel Framework |
 
-<a href="https://www.php.net"><img height=48 src="https://github.com/PrinceCorwin/Useful-tech-icons/blob/main/images/php.png?raw=true"></a> PhP
+|<a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a>| PhP |
 
-<a href="https://nodejs.org"><img height=48 src="https://raw.githubusercontent.com/caiogondim/javascript-server-side-logos/master/node.js/standard/454x128.png"></a> NodeJs
+|<a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>| NodeJs |
 
-<a href="https://tailwindcss.com"><img height=48 src="https://github.com/PrinceCorwin/Useful-tech-icons/blob/main/images/tailwind.png?raw=true"></a> Tailwind CSS
+|<a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a>| Tailwind CSS |
 
-<a href="https://mysql.com"><img height=48 src="https://github.com/PrinceCorwin/Useful-tech-icons/blob/main/images/mysql-logo.png?raw=true"></a> MySQL Database
+|<a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a>| MySQL Database |
+
+|<a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a>| VueJS |
 
 ## Requirements
 If you intend to make additions to this projec you need to meet the following (Minimum requirements):
