@@ -1,5 +1,5 @@
 ## Mmereki-Traders
-Mmereki Traders is a web system that aims to help home owners find tradespeople like plumbers, electricians and painters in their area. The system allows tradespeople to create an account and add details about their trades, including line of work, areas covered, years of experience and qualifications amongst others, on their public profile. A homeowner then searches the database for a particular tradesperson when in need. It works like an online directory. 
+Mmereki Traders is a web system that aims to help home owners find tradespeople like plumbers, electricians and painters in their area. The system allows tradespeople to create an account and add details about their trades, including line of work, areas covered, years of experience and qualifications amongst others, on their public profile. A homeowner then searches the database for a particular tradesperson when in need. It works like an online yellow pages of a telephone directory. 
 
 ## Project Status
 <p align="center">
