@@ -40,7 +40,7 @@ This project's architecture follows the Laravel framework architecture and direc
 In order to test the app you can use Laravel built in testing:
 - Create your test file from the commandline e.g. `php artisan make:test MyTest` 
 - To run the tests you can use the `php artisan test` command
-- An >ExampleTest.php file exists in the Test directory to help you get started
+- An `ExampleTest.php` file exists in the `\tests\` directory of the app to help you get started
 
 Visit the [Laravel documentation on testing](https://laravel.com/docs/8.x/testing) to learn more
 
