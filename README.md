@@ -1,20 +1,20 @@
 ## Mmereki-Traders
 Mmereki Traders is a web system that aims to help home owners find tradespeople like plumbers, electricians and painters in their area. The system allows tradespeople to create an account and add details about their trades, including line of work, areas covered, years of experience and qualifications amongst others, on their public profile. A homeowner then searches the database for a particular tradesperson when in need. It works like an online directory. 
 
-##Project Status
+## Project Status
 <p align="center">
-<img src="https://img.shields.io/badge/development-Slow Development-orange" alt="development status" width="40" height="40"/>
+<img src="https://img.shields.io/badge/development-Slow Development-orange" alt="development status"/>
 </p>
 
 ## Technology Used
-This system wass made with the Laravel Framework (V8.x), a php framework for web system development.
+This system wass made with the Laravel Framework, a php framework for web system development and these technologies.
 
 
 |Technology       |Description   |
 |:---------------:|:------------:|
-| <a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="120" height="120"></a> | Laravel Framework v8.x |
+| <a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="120"></a> | Laravel Framework v8.x |
 | <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="php" width="40" height="40"/> </a> | PhP v7.3.0 |
-| <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>| NodeJS v14.16|
+| <a href="https://nodejs.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="80"/> </a>| NodeJS v14.16|
 | <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/> </a> | Tailwind CSS v2.2.16 |
 | <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/> </a> | MySQL Database |
 | <a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a> | VueJS v3.2.19 |
