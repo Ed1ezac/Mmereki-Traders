@@ -29,8 +29,10 @@ If you intend to make additions to this projec you need to meet the following (M
 This project's architecture follows the Laravel framework architecture and directory structure that can be [found here](https://laravel.com/docs/8.x/structure)
 
 ## Local Configuration
-- Download and unzip the project 
-- Install the necessary packages by running `npm i`
+- Download and unzip the project
+- If you have Visual Studio Code IDE you can use its built-in command processor by clicking `Terminal`->`New Terminal` on top ribbon menu
+- Otherwise fire up your console app *(e.g command prompt on windows)* and navigate to the project folder 
+- Install the necessary packages by running `npm i` command
 - Compile the javascript & css by running `npm run dev`
 - Serve the application by using the artisan command `php artisan serve`
 - Navigate to http://localhost:8000 to view it
