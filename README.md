@@ -7,7 +7,7 @@ Mmereki Traders is a web system that aims to help home owners find tradespeople 
 </p>
 
 ## Technology Used
-This system wass made with the Laravel Framework, a php framework for web system development and these technologies.
+This system was made using the Laravel framework, a php framework for web system development and these technologies.
 
 
 |Technology       |Description   |
@@ -37,9 +37,16 @@ This project's architecture follows the Laravel framework architecture and direc
 - In order to create accounts and log in you will need a database. I uses xampp for that and configured it in the .env file in the project dir
 
 ## Testing
-In order to test the app....
+In order to test the app you can use Laravel built in testing:
+- Create your test file from the commandline e.g. `php artisan make:test MyTest` 
+- To run the tests you can use the `php artisan test` command
+- An >ExampleTest.php file exists in the Test directory to help you get started
+Visit the [Laravel documentation on testing](https://laravel.com/docs/8.x/testing) to learn more
 
 ## Possible Improvements
+- Aesthetics
+- Search optimization *(of the internal app search engine)*
+- Admin Metrics like data visualization, customer journey mapping
 
 ## Support & Contribution
 Contributions are welcome. Please contact me to give me a heads-up and to agree on code standard and conventions. I am very particular on readable and consice code practices.
@@ -58,4 +65,4 @@ This app is intended to be a fully fledged community of tradespoeple and homeown
 
 
 ## License
-
+This project is under the GNU General Public License v3.0
