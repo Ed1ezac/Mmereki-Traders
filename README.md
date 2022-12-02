@@ -20,7 +20,7 @@ This system was made using the Laravel framework, a php framework for web system
 | <a href="https://vuejs.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original-wordmark.svg" alt="vuejs" width="40" height="40"/> </a> | Vuejs v3.2.19 |
 
 ## Requirements
-If you intend to make additions to this projec you need to meet the following (Minimum requirements):
+If you intend to make additions to this project you need to meet the following (Minimum requirements):
 - Php V7.3.0 
 - Composer V2.0.11
 - Node V14.16.0
