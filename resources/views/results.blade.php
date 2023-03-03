@@ -2,7 +2,7 @@
 
 @section('content')
   <section>
-    <div class="-mt-2 mb-4 rounded-md mx-4">
+    <div class="mb-4 rounded-md mx-4">
       <div class="flex justify-center">
         <form method="GET" action="{{ route('search.results') }}">
           <div class="flex flex-col sm:flex-row items-center justify-center gap-1">
@@ -21,10 +21,12 @@
     </div>
   @if($results->count()>0)
     @if(!empty($comment))
-      <h3 class="mx-3 sm:mx-8 text-gray-800">{{ $comment }}</h3>
+      <h3 class="mx-3 my-4 sm:mx-8 text-center text-gray-800">{{ $comment }}</h3>
     @endif
+  <div class="md:flex justify-center">
+    
     @foreach ($results as $result)
-    <div class="flex flex-col md:flex my-6 mx-3 sm:mx-8 max-w-4xl rounded bg-gray-50 shadow-lg">
+    <div class="flex flex-col my-6 mx-6 sm:mx-8 max-w-4xl rounded bg-gray-50 shadow-lg">
       <div class="flex flex-row justify-between">
         <div class="w-full pr-6 pl-4 pt-4 p-2">
             <div class="flex items-center">
@@ -46,12 +48,12 @@
         </div>
       </div> 
 
-      <div class="flex flex-col sm:flex-row text-sm p-2 space-y-4 sm:space-y-0 sm:space-x-4 space-x-0">
+      <div class="flex flex-col sm:flex-row text-sm truncate p-2 space-y-4 sm:space-y-0 sm:space-x-4 space-x-0">
         <div class="flex flex-1 p-1 font-bold text-gray-900 border-solid border-2 border-gray-200">
           <svg xmlns="http://www.w3.org/2000/svg" class=" text-blue-900 h-6 w-6 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-            {{ $result->location }}
+          {{ $result->location }}
         </div>
         
         <div class="flex text-sm font-bold flex-1 p-1 text-gray-900 border-gray-200 border-solid border-2">
@@ -66,17 +68,18 @@
           </svg>
           {{$result->mobile}}
         </div>
-        <div class="flex flex-1 p-1 text-sm font-bold text-gray-900 border-solid border-gray-200 border-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class=" text-blue-900 blue- h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div class="flex flex-1 p-1 text-sm font-bold text-gray-900 border-solid border-gray-200 border-2 text-ellipsis">
+          <svg xmlns="http://www.w3.org/2000/svg" class=" text-blue-900 blue- h-6 w-6 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
           </svg>  
-          {{$result->email}}
+          {{$result->email}} 
         </div>
       </div>
     </div>
     @endforeach
-    <!--- pagination --->
+    <!--- pagination  --->
     {{ $results->links() }}
+  </div>
   @else
     <!---Invalid/ No result--->
     <div class="text-gray-900 text-2xl mt-32 text-center font-medium">No results found for {{$trader}}</div>

@@ -91,7 +91,7 @@
                                         </span>
                                         @enderror
                                     </div>
-                                    <!--trades-->
+                                    <!--trades ->
                                     <div class="col-span-6">
                                         <label for="trades" class="block text-sm font-medium text-gray-700">Trade (s)</label>
                                         <select id="trades" name="trades" required autocomplete="trades" class="mt-1 block w-full py-2 px-3 border bg-gray-300 shadow-sm focus:outline-none sm:text-sm
@@ -108,6 +108,12 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
+                                    </div --->
+                                    <div class="col-span-6">
+                                        <label for="trades" class="block mb-1 text-sm font-medium text-gray-700">Trade(s)</label>                                        
+                                        <trade-selector
+                                            v-bind:trades="{{ json_encode(\App\Models\Trade::get('name','id')) }}">
+                                        </trade-selector>
                                     </div>
                                     <!--telephone-->
                                     <div class="col-span-6 sm:col-span-3">
