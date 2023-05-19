@@ -52,5 +52,21 @@ class TradeSeeder extends Seeder
         Trade::create(['name' => 'Tree Surgeon']);  
         Trade::create(['name' => 'Kitchen Fitter / Kitchen Specialist']);
         Trade::create(['name' => 'Signs / Board Specialists']);
+        Trade::create(['name' => 'Refridgerator Specialists']);
+        Trade::create(['name' => 'Clay Worker']);
+        Trade::create(['name' => 'Car Ports & Shade Installer']);
+        Trade::create(['name' => 'Water Fountain Installation']);
+        Trade::create(['name' => 'Cleaning (Domestic/Commercial)']);
+        Trade::create(['name' => 'Computer Repairs & Servicing']);
+        Trade::create(['name' => 'Intercomm Installer']);
+        Trade::create(['name' => 'Pond Maintenance']);
+        Trade::create(['name' => 'Borehole Drilling and Installation']);
+        Trade::create(['name' => 'Electrical Gates Specialist']);
+        Trade::create(['name' => 'Carpet & Upholstery Cleaning']);
+        Trade::create(['name' => 'Door Installers']);
+        Trade::create(['name' => 'Skip Hire']);
+        Trade::create(['name' => 'IT Services']);
+        Trade::create(['name' => 'Aerial & Satellite Installation']);
+        Trade::create(['name' => 'Interior Designer']);
     }
 }
