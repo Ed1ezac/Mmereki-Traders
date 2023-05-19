@@ -5,18 +5,18 @@
 <div class="bg-white rounded shadow p-4 max-w-2xl">
     <div class="flex justify-between divide-x-2 space-x-4">
         <div>
-            <h6 class="text-gray-400 text-xs font-bold">MT-023</h6>
-            <h3 class="text-gray-800 font-semibold text-base">Company Name</h3>
-            <p class="text-sm text-gray-500">User Name</p>
+            <h6 class="text-gray-400 text-xs font-bold">{{ $membership->code }}</h6>
+            <h3 class="text-gray-800 font-semibold text-base">{{ Auth::user()->company->name }}</h3>
+            <p class="text-sm text-gray-500">{{ Auth::user()->name }}</p>
         </div>
         <div class="pl-8 pr-0">
             <h6 class="text-gray-400 text-xs font-bold">Type</h6>
-            <h3 class="text-gray-800 font-semibold text-base">Standard Membership</h3>
-            <p class="text-sm text-gray-500">P50</p>
+            <h3 class="text-gray-800 font-semibold text-base">{{ $membership->type }} Membership</h3>
+            <p class="text-sm text-gray-500">P{{ $membership->billing }}</p>
         </div>
         <div class="px-8">
             <h6 class="text-gray-400 text-xs font-bold">Status</h6>
-            <h3 class="text-gray-800 font-semibold text-base">Active</h3>
+            <h3 class="text-gray-800 font-semibold text-base">{{ $membership->status }}</h3>
             <p class="text-sm text-gray-500">Expires in 2 days</p>
         </div>
     </div>
@@ -74,5 +74,4 @@
 </div>
 
 <!--Subscription Options--->
-
 @endsection
