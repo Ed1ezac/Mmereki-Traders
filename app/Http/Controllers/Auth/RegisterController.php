@@ -86,7 +86,7 @@ class RegisterController extends Controller
     {
         DB::transaction(function() use ($data) {
             $this->user = User::create([
-                'name' => $data['first-name'].' '.$data['last-name'],
+                'name' => trim($data['first-name']).' '.trim($data['last-name']),
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
             ]);

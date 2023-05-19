@@ -9,7 +9,6 @@ use App\Http\Requests\SearchRequest;
 
 class SearchProcessor extends Controller
 {
-    //
 
     public function search(){
         return view('search');

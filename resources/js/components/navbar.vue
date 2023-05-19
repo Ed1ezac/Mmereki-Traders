@@ -3,8 +3,8 @@
         <!--Normal View-->
         <div class="flex justify-between px-4 h-16 2xl:mx-auto max-w-7xl"> 
             <div class="flex">
-                <a href="/" class="self-center">
-                    <img class="h-9 w-12 bg-green-600 rounded sm:inline-block" alt="logo">
+                <a href="/" class="self-center text-white text-center">
+                    <img class="h-9 w-12 bg-green-600 rounded-full sm:inline-block" alt="logo">
                 </a>
 
                 <div class="hidden md:flex md:ml-12 md:space-x-12">
@@ -17,7 +17,7 @@
                     </a>
                     <a v-if="isAuth" href="/edit-profile" v-bind:class="currentUrl == 'edit-profile' ? 'text-white border-b-4 border-white hover:text-gray-800':'text-gray-400 hover:text-white py-1'" class="my-navbar-link">
                         <div class="text-sm font-bold">
-                            Profile
+                            Edit Profile
                         </div>
                     </a>
                     <a v-if="isAuth" href="/membership" v-bind:class="currentUrl == 'membership' ? 'text-white border-b-4 border-white hover:text-gray-800':'text-gray-400 hover:text-white py-1'" class="my-navbar-link">
@@ -25,16 +25,16 @@
                             Membership
                         </div>
                     </a>
-                    <a v-if="isAuth" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white border-b-4 border-white hover:text-gray-800':'text-gray-400 hover:text-white py-1'" class="my-navbar-link">
+                    <a v-if="isAuth && isAdmin" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white border-b-4 border-white hover:text-gray-800':'text-gray-400 hover:text-white py-1'" class="my-navbar-link">
                         <div class="text-sm font-bold">
-                            Traders
+                            Companies
                         </div>
                     </a>
                 </div>
             </div>
             
             <div class="block md:hidden self-center">
-                <button @click="isOpen = !isOpen" type="button" class="text-primary-200 text-white focus:text-white focus:outline-none" 
+                <button @click="isOpen = !isOpen" type="button" :class="currentUrl == ''? 'text-gray-500 focus:text-gray-500':'text-white focus:text-white'" class="focus:outline-none" 
                 aria-controls="mobile-menu" aria-expanded="false">     
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path v-if="isOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -50,7 +50,7 @@
                         <MenuButton type="button" class="bg-gray-800 relative z-10 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-gray-300" id="user-menu" aria-expanded="false" aria-haspopup="true">
                             <span class="sr-only">Open user menu</span>
                             <div class="w-8 h-8 bg-gray-700 rounded-full overflow-hidden shadow-inner text-center bg-purple table">
-                                <span class="table-cell text-sm text-white font-bold align-middle">MT</span>
+                                <span class="table-cell text-sm text-white font-bold align-middle uppercase">{{ initials }}</span>
                             </div>
                         </MenuButton>
                         <transition
@@ -63,9 +63,9 @@
                             <MenuItems class="absolute right-0 w-52 mt-2 origin-top-right bg-white border border-gray-200 rounded-md shadow-lg outline-none">
                                  <MenuItem>
                                     <div class="flex-col border-b py-1 bg-gray-50 border-gray-100">
-                                        <h3 class="whitespace-normal px-4 w-52 text-gray-800">Toto Kelapile</h3>
-                                        <h3 class="whitespace-normal px-4 text-sm w-52 text-gray-400">Toto Pty Ltd</h3>
-                                        <h3 class="whitespace-normal px-4 text-xs w-52 text-gray-400">toto@gmail.com</h3>
+                                        <h3 class="whitespace-normal px-4 w-52 text-gray-800">{{ username }}</h3>
+                                        <h3 class="whitespace-normal px-4 text-sm w-52 text-gray-400">{{ company }}</h3>
+                                        <h3 class="whitespace-normal px-4 text-xs w-52 text-gray-400">{{ email }}</h3>
                                     </div>
                                 </MenuItem>
                                  <MenuItem v-slot="{ active }">
@@ -79,12 +79,13 @@
                     </Menu>
                 </div>
                 <!---->
-                <a v-if="!isAuth" href="/login" class="block text-white rounded-sm border border-white px-2 py-1 hover:no-underline hover:bg-gray-400 border-transparent focus:ring-offset-0 focus:ring-gray-300">Login</a>
-                <a v-if="!isAuth" href="/register" class="block sm:ml-2 text-white rounded-sm border border-white px-2 py-1 border-transparent hover:no-underline hover:bg-gray-400 focus:ring-offset-0 focus:ring-gray-300">Register</a>
+                <a v-if="!isAuth && currentUrl != 'login'" href="/login" class="block text-white bg-gray-700 px-8 py-1.5 hover:no-underline hover:bg-gray-800 border-transparent focus:ring-offset-0 focus:ring-gray-300">Trades Login</a>
+                <a v-if="!isAuth && currentUrl != 'register'" href="/register" class="block sm:ml-2 text-white bg-gray-700 px-8 py-1.5 border-transparent hover:no-underline hover:bg-gray-800 focus:ring-offset-0 focus:ring-gray-300">Trades Register</a>
             </div>
         </div>
 
-        <div :class="isOpen ? 'block': 'hidden'" class="md:hidden overflow-auto px-4 pt-1 pb-4">
+        <!---Mobile Veiw---->
+        <div :class="isOpen ? isAuth && currentUrl == '' ? 'bg-gray-600 block':'block' : 'hidden'" class="md:hidden overflow-auto px-4 pt-1 pb-4">
             <a v-if="isAuth" href="/home" v-bind:class="currentUrl == 'home' ? 'text-white bg-gray-900 border-white hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
                 <div class="text-sm font-bold">
                     Dashboard
@@ -92,7 +93,7 @@
             </a>
             <a v-if="isAuth" href="/edit-profile" v-bind:class="currentUrl == 'edit-profile' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
                 <div class="text-sm font-bold">
-                    Profile
+                    Edit Profile
                 </div>
             </a>
             <a v-if="isAuth" href="/membership" v-bind:class="currentUrl == 'membership' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
@@ -100,9 +101,9 @@
                     Membership
                 </div>
             </a>
-            <a v-if="isAuth" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
+            <a v-if="isAuth && isAdmin" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
                 <div class="text-sm font-bold">
-                    Traders
+                    Companies
                 </div>
             </a>
             <div v-if="isAuth" class="border-b border-gray-50 my-1"></div>
@@ -113,9 +114,9 @@
                         <span class="table-cell text-sm text-white font-bold align-middle">MT</span>
                     </div>
                     <div class="flex flex-col">
-                        <h3 class="whitespace-normal px-4 text-white">Toto Kelapile</h3>
-                        <h3 class="whitespace-normal px-4 text-xs text-gray-200">Toto Pty Ltd</h3>
-                        <h3 class="whitespace-normal px-4 text-xs text-gray-300">toto@gmail.com</h3>
+                        <h3 class="whitespace-normal px-4 text-white">{{ username }}</h3>
+                        <h3 class="whitespace-normal px-4 text-xs text-gray-200">{{ company }}</h3>
+                        <h3 class="whitespace-normal px-4 text-xs text-gray-300">{{ email }}</h3>
                     </div>
                 </div>
                 <a v-if="isAuth" href="/settings" v-bind:class="currentUrl == 'settings' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
@@ -126,8 +127,8 @@
                 <a v-if="isAuth" href="/logout" v-on:click.prevent="logout" class="block mt-1 px-2 py-2 font-bold text-sm hover:no-underline rounded text-gray-400 hover:text-white hover:bg-gray-900 border-transparent focus:ring-offset-0 focus:ring-gray-300">Logout</a>
             </div>
             <!----Un-Authenticated----->
-            <a v-if="!isAuth" href="/login" class="block text-white rounded border border-white px-2 py-1 hover:no-underline hover:bg-gray-400 border-transparent focus:ring-offset-0 focus:ring-gray-300">Login</a>
-            <a v-if="!isAuth" href="/register" class="block mt-1 text-white rounded border border-white px-2 py-1 hover:no-underline hover:bg-gray-400 focus:ring-offset-0 focus:ring-gray-300">Register</a>
+            <a v-if="!isAuth && currentUrl != 'login'" href="/login" :class="currentUrl == ''? 'border-gray-600 text-gray-500 hover:text-white':'border-white text-white'" class="block border px-2 py-1 hover:no-underline hover:bg-gray-700 border-transparent focus:ring-offset-0 focus:ring-gray-300">Login</a>
+            <a v-if="!isAuth && currentUrl != 'register'" href="/register" :class="currentUrl == ''? 'border-gray-600 text-gray-500 hover:text-white':'border-white text-white'" class="block mt-1 border px-2 py-1 hover:no-underline hover:bg-gray-700 focus:ring-offset-0 focus:ring-gray-300">Register</a>
         </div>
 
         <!----->
@@ -148,17 +149,27 @@
             }
         },
         props:{
-            currentUrl: String,
+            email:{
+                type: String,
+                default: '',
+            },
+            company: {
+                type: String,
+                default: '',
+            },
             isAuth: Boolean,
+            isAdmin: Boolean,
             /*currentAdminUrl: {
                 type: String,
                 default: '',
             },*/
             //logoUri: String,
-            //username: String,
-            //initials: String,
-            //loginRoute: String,
-            //registerRoute: String,
+            username: {
+                type: String,
+                default: '',
+            },
+            currentUrl: String,
+            initials: String,
         },
         computed: {
             /*isOnAdmin(){

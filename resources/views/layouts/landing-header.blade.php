@@ -13,10 +13,26 @@
     </head>
     <body class="bg-gray-100">
         <div id="app">
+            @if(Auth::check())
+            <navbar
+                email="{{ Auth::user()->email }}"
+                username="{{ Auth::user()->name }}"
+                current-url="{{ Request::segment(1) }}"
+                initials ="{{ Auth::user()->initials }}"
+                company="{{ Auth::user()->company->name }}"
+                v-bind:is-admin="{{ json_encode(
+                Auth::check() ?
+                    Auth::user()->hasRole('Administrator')
+                    : false
+                ) }}"
+                v-bind:is-auth="{{ json_encode(Auth::check()) }}">
+            </navbar>    
+            @else
             <navbar
                 current-url="{{ Request::segment(1) }}"
                 v-bind:is-auth="{{ json_encode(Auth::check()) }}">
             </navbar>
+            @endif
             <main class="pt-20">
                 @yield('content')
             </main>
