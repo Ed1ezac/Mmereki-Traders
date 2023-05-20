@@ -57,7 +57,7 @@ class Company extends Model
     }
 
     public function trades(){
-        return $this->hasMany(CompanyTrades::class);//, 'company_has_trade');
+        return $this->belongsToMany(Trade::class, 'company_has_trade');
     }
 
     public function user(){
@@ -87,6 +87,19 @@ class Company extends Model
             'telephone' => $values['tel'],
             'mobile' => $values['mobile']
         ]);
+    }
+
+    public function updateTrades(array $trades){
+        $ids = [];
+        foreach($trades as $trade){
+            foreach($trade as $key => $value){
+                if($key == 'id'){
+                    $ids[] = $value;
+                }
+            }
+        }
+        //Bad Method Call: Collection::sync does not exist.
+        return $this->trades()->sync($ids);
     }
 
     public function updateLogo(string $path){

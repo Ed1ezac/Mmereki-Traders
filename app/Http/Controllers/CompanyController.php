@@ -16,14 +16,23 @@ use App\Http\Requests\DocumentUploadRequest;
 class CompanyController extends Controller
 {
     public function edit(){
+        $trades = Trade::all('id', 'name');
         $company = Company::forUser(Auth::user());
+        $my_trades = [];
         $qualifications = TradeQualification::forUser(Auth::user());
-        return view('dashboard.edit-profile' ,compact('company', 'qualifications'));
+        //--
+        foreach($company->trades()->get() as $item){
+            $my_trades[] = Trade::find($item->id, ['id', 'name']);
+        }
+        //dd($my_trades);
+        return view('dashboard.edit-profile' , compact('company', 'qualifications', 'trades', 'my_trades'));
     }
 
     public function update(CompanyUpdateRequest $request){
+        //todo: onsider try-catch
         $company = Company::find($request->id);
         $company->updateRecord($request->validated());
+        $company->updateTrades($request->get('trades'));
         
         return back()->with('status', 'Your company profile has been updated successfully!');
     }
