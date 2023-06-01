@@ -21,8 +21,10 @@ use App\Http\Controllers\TradeQualificationController;
 */
 
 Route::get('/', [SearchProcessor::class, 'search']);
+Route::get('/about', [SearchProcessor::class, 'about']);
+Route::get('/terms', [SearchProcessor::class, 'terms']);
+Route::get('/privacy-policy', [SearchProcessor::class, 'privacy']);
 
-Route::get('/invalid-search', [SearchProcessor::class, 'invalidDetails']);
 Route::get('/trader/{id?}/details', [SearchProcessor::class, 'traderDetails']);
 Route::get('/results', [SearchProcessor::class, 'processSearchRequest'])->name('search.results');
 

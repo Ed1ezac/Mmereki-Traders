@@ -8,7 +8,7 @@
             Mmereki Trades is a platform for tradespeople like plumbers, builders 
             and painter to showcase themselves to potential clients while still 
             allowing potential clients to have a single place to find all the tradespeople 
-            they may need for a job that they require to be done.  
+            they may need for a job that they require to be done.
         </p>
     </div>
 </section>

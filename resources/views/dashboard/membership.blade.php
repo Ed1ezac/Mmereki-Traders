@@ -51,7 +51,7 @@
     <div class="bg-white shadow rounded w-56 py-4">
         <div class="flex-col justify-center space-y-6">
             <div>
-                <h3 class="text-gray-800 font-semibold text-base mx-4">Proffessional Plan</h3>
+                <h3 class="text-gray-800 font-semibold text-base mx-4">Professional Plan</h3>
                 <p class="text-gray-600 text-xs mt-1 mb-4 mx-4">Perfect for experienced traders to get the most out of the platform</p>
             </div>
             <div class="flex align-top py-4 bg-gray-200">
