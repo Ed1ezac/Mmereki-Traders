@@ -14,6 +14,19 @@ class SearchProcessor extends Controller
         return view('search');
     }
 
+    public function about(){
+        $trades = Trade::all();
+        return view('info.about', compact('trades'));
+    }
+
+    public function terms(){
+        return view('legal.terms');
+    }
+
+    public function privacy(){
+        return view('legal.privacy');
+    }
+
     public function results(){
         return view('results');
     }
@@ -50,10 +63,6 @@ class SearchProcessor extends Controller
         return view('trader-details', compact('company'));
     } 
 
-
-    public function invalidDetails(){
-        return view('invalid-search');
-    }
 
     private function findCompanyByTrade(){
         Company::where([

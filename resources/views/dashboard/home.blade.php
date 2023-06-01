@@ -6,8 +6,8 @@
     Your profile is incomplete <a href="/edit-profile" class="border rounded p-1 border-gray-300">Complete Your Profile</a>
 </div>
 
-<div class="bg-gray-400 rounded p-4">
-    <div class="text-white">
+<div class="bg-gray-500 max-w-2xl rounded-lg p-4">
+    <div class="text-white py-36 px-8">
         <span class="text-lg font-semibold underline">{{ $company->name }}</span> of membership 
         <span class="text-lg font-semibold underline">{{ $membership->code }}</span> registered on the &copy;Mmmereki Traders platform 
         subject to termination upon breach of the <a href="/code-of-conduct" class="text-gray-200 hover:no-underline hover:font-sembold hover:text-gray-600">Traders Code of Conduct</a>

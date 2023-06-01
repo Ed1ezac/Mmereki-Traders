@@ -66,10 +66,10 @@
         </div>
         <div class="border-t-4 mt-8 md:mt-12 border-gray-400 p-4">
             <h3 class="text-gray-800 font-semibold text-base">Trades</h3>
-            <div class="flex flex-wrap my-2">
+            <div class="flex flex-wrap space-x-2 my-2">
                 @foreach ($company->trades as $trade )
-                    <div class="bg-gray-400 text-white font-semibold rounded-full py-1 px-2">
-                    {{\App\Models\Trade::find($trade->trade_id)->name}}
+                    <div class="bg-gray-400 text-sm text-white font-semibold rounded-full py-1 px-3">
+                    {{\App\Models\Trade::find($trade->id)->name}}
                     </div>
                 @endforeach
             </div>
