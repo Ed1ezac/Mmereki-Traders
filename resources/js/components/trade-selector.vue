@@ -3,8 +3,8 @@
         <Combobox v-model="selectedTrades" name="trades" multiple>
             <div class="relative overflow-visible">
                 <ul class="flex flex-row flex-wrap space-x-2 justify-items-start items-start rounded-t px-3 py-2 bg-gray-100" v-if="selectedTrades.length > 0">
-                    <li class="text-xs px-2 my-1 text-center text-white leading-5 font-semibold rounded-full bg-gray-700" v-for="trade in selectedTrades" :key="trade.id">
-                        <div class="flex justify-start items-center">
+                    <li class="text-xs px-2 my-1 text-center text-white leading-5 font-semibold rounded-full bg-primary-600" v-for="trade in selectedTrades" :key="trade.id">
+                        <div class="flex justify-start py-0.5 px-0.5 items-center">
                             {{ trade.name }}
                             <div @click="deSelectTrade(trade)" class="ml-1 text-white hover:text-red-500">
                                 <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -24,7 +24,7 @@
                         @change="query = $event.target.value"/>
                     <ComboboxButton class="absolute inset-y-0 right-0 flex items-center pr-2">                        
                         <!---SelectorIcon---->
-                        <div class="text-gray-600" aria-hidden="true">
+                        <div class="text-primary-600 hover:text-primary-300" aria-hidden="true">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                 <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>
@@ -49,7 +49,7 @@
                             :value="trade"
                             v-slot="{ selected, active }">
                                 <li class="relative cursor-default select-none py-2 pl-10 pr-4"
-                                    :class="{ 'bg-gray-600 text-white': active, 'text-gray-900': !active,}">
+                                    :class="{ 'bg-primary-500 text-white': active, 'text-gray-900': !active,}">
                                     <span class="block truncate"
                                         :class="{ 'font-semibold': selected, 'font-normal': !selected }">
                                         {{ trade.name }}
@@ -57,7 +57,7 @@
                                     <span v-if="selected" class="absolute inset-y-0 left-0 flex items-center pl-3"
                                         :class="{ 'text-white': active, 'text-green-600': !active }">
                                     <!---CheckIcon---->
-                                        <div class="text-gray-400" aria-hidden="true">
+                                        <div class="text-primary-300" aria-hidden="true">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
                                             </svg>

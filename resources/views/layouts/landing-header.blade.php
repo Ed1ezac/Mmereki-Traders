@@ -11,7 +11,7 @@
 
         @stack('page-css')
     </head>
-    <body class="bg-gray-100">
+    <body class="bg-gray-50">
         <div id="app">
             @if(Auth::check())
             <navbar

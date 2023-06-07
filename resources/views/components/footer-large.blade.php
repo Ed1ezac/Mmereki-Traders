@@ -12,6 +12,9 @@
             <div class="mt-4 sm:mt-0 min-w-48 flex flex-col space-y-2">
                 <h3 class="font-semibold text-primary-100 tracking-wider">Useful Links</h3>
                 <div> 
+                    <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/about">About</a>
+                </div>
+                <div> 
                     <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/terms">Terms of Service</a>
                 </div>
                 <div> 

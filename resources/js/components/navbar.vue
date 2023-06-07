@@ -1,31 +1,29 @@
 <template>
-    <nav v-bind:class="isLanding ? 'fixed w-full z-50 mt-0 bg-transparent':'fixed w-full z-50 shadow-md mt-0 bg-gray-600'">
+    <nav v-bind:class="isLanding ? 'bg-transparent':'shadow-md bg-primary-500'" class="fixed w-full z-50 mt-0">
         <!--Normal View-->
-        <div class="flex justify-between px-4 h-16 2xl:mx-auto max-w-7xl"> 
+        <div class="flex justify-between px-6 h-16 2xl:mx-auto 2xl:max-w-7xl"> 
             <div class="flex">
-                <a href="/" class="self-center text-white text-center">
-                    <img class="h-9 w-12 bg-green-600 rounded-full sm:inline-block" alt="logo">
+                <a href="/" class="self-center">
+                    <img :src="logoUri" class="h-6 w-24 sm:inline-block" alt="logo">
                 </a>
 
                 <div class="hidden md:flex md:ml-12 md:space-x-12">
-                    <a v-if="isAuth" href="/home" v-bind:class="currentUrl == 'home' ? 'text-white border-b-4 border-white hover:text-gray-800':'text-gray-400 hover:text-white py-1'" class="my-navbar-link">
-                        <div class="-mb-1">
-                            <p class="text-sm font-bold">
-                                Dashboard
-                            </p>
+                    <a v-if="isAuth" href="/home" v-bind:class="currentUrl == 'home' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-white py-1'" class="my-navbar-link">
+                        <div class="text-sm font-bold">                           
+                            Dashboard
                         </div>
                     </a>
-                    <a v-if="isAuth" href="/edit-profile" v-bind:class="currentUrl == 'edit-profile' ? 'text-white border-b-4 border-white hover:text-gray-800':'text-gray-400 hover:text-white py-1'" class="my-navbar-link">
+                    <a v-if="isAuth" href="/edit-profile" v-bind:class="currentUrl == 'edit-profile' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-white py-1'" class="my-navbar-link">
                         <div class="text-sm font-bold">
                             Edit Profile
                         </div>
                     </a>
-                    <a v-if="isAuth" href="/membership" v-bind:class="currentUrl == 'membership' ? 'text-white border-b-4 border-white hover:text-gray-800':'text-gray-400 hover:text-white py-1'" class="my-navbar-link">
+                    <a v-if="isAuth" href="/membership" v-bind:class="currentUrl == 'membership' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-white py-1'" class="my-navbar-link">
                         <div class="text-sm font-bold">
                             Membership
                         </div>
                     </a>
-                    <a v-if="isAuth && isAdmin" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white border-b-4 border-white hover:text-gray-800':'text-gray-400 hover:text-white py-1'" class="my-navbar-link">
+                    <a v-if="isAuth && isAdmin" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-white py-1'" class="my-navbar-link">
                         <div class="text-sm font-bold">
                             Companies
                         </div>
@@ -79,34 +77,50 @@
                     </Menu>
                 </div>
                 <!---->
-                <a v-if="!isAuth && currentUrl != 'login'" href="/login" class="block text-white bg-gray-700 px-8 py-1.5 hover:no-underline hover:bg-gray-800 border-transparent focus:ring-offset-0 focus:ring-gray-300">Trades Login</a>
-                <a v-if="!isAuth && currentUrl != 'register'" href="/register" class="block sm:ml-2 text-white bg-gray-700 px-8 py-1.5 border-transparent hover:no-underline hover:bg-gray-800 focus:ring-offset-0 focus:ring-gray-300">Trades Register</a>
+                <a v-if="!isAuth && currentUrl != 'login'" href="/login" :class="currentUrl == ''? 'shadow-lg':' text-white'" class="inline-flex group my-btn hover:no-underline">
+                    <span class="mr-3 flex items-center">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z" />
+                            <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z" />
+                        </svg>
+                    </span>
+                    Trades Login
+                </a>
+                <a v-if="!isAuth && currentUrl != 'register'" href="/register" :class="currentUrl == ''? 'shadow-lg':' text-white'" class="inline-flex my-btn group sm:ml-3 hover:no-underline">
+                      
+                    <span class="mr-3 flex items-center">
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
+                        </svg>
+                    </span>
+                Trades Register
+                </a>
             </div>
         </div>
 
         <!---Mobile Veiw---->
-        <div :class="isOpen ? isAuth && currentUrl == '' ? 'bg-gray-600 block':'block' : 'hidden'" class="md:hidden overflow-auto px-4 pt-1 pb-4">
-            <a v-if="isAuth" href="/home" v-bind:class="currentUrl == 'home' ? 'text-white bg-gray-900 border-white hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
+        <div :class="isOpen ? isAuth && currentUrl == '' ? 'bg-primary-500 block':'block' : 'hidden'" class="md:hidden overflow-auto px-4 pt-1 pb-4">
+            <a v-if="isAuth" href="/home" v-bind:class="currentUrl == 'home' ? 'text-white bg-primary-300':'text-primary-300 hover:text-white hover:bg-primary-300'" class="rounded my-navbar-link-mobile">
                 <div class="text-sm font-bold">
                     Dashboard
                 </div>
             </a>
-            <a v-if="isAuth" href="/edit-profile" v-bind:class="currentUrl == 'edit-profile' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
+            <a v-if="isAuth" href="/edit-profile" v-bind:class="currentUrl == 'edit-profile' ? 'text-white bg-primary-300':'text-primary-300 hover:text-white hover:bg-primary-300'" class="rounded my-navbar-link-mobile">
                 <div class="text-sm font-bold">
                     Edit Profile
                 </div>
             </a>
-            <a v-if="isAuth" href="/membership" v-bind:class="currentUrl == 'membership' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
+            <a v-if="isAuth" href="/membership" v-bind:class="currentUrl == 'membership' ? 'text-white bg-primary-300':'text-primary-300 hover:text-white hover:bg-primary-300'" class="rounded my-navbar-link-mobile">
                 <div class="text-sm font-bold">
                     Membership
                 </div>
             </a>
-            <a v-if="isAuth && isAdmin" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
+            <a v-if="isAuth && isAdmin" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white bg-primary-300':'text-primary-300 hover:text-white hover:bg-primary-300'" class="rounded my-navbar-link-mobile">
                 <div class="text-sm font-bold">
                     Companies
                 </div>
             </a>
-            <div v-if="isAuth" class="border-b border-gray-50 my-1"></div>
+            <div v-if="isAuth" class="border-b border-primary-200 my-1"></div>
             <!---Avatar And All---->
             <div>
                 <div v-if="isAuth" class="flex items-center py-1">
@@ -119,16 +133,16 @@
                         <h3 class="whitespace-normal px-4 text-xs text-gray-300">{{ email }}</h3>
                     </div>
                 </div>
-                <a v-if="isAuth" href="/settings" v-bind:class="currentUrl == 'settings' ? 'text-white bg-gray-900 hover:text-gray-400':'text-gray-400 hover:text-white hover:bg-gray-900'" class="rounded my-navbar-link-mobile">
+                <a v-if="isAuth" href="/settings" v-bind:class="currentUrl == 'settings' ? 'text-white bg-primary-300':'text-primary-300 hover:text-white hover:bg-primary-300'" class="rounded my-navbar-link-mobile">
                     <div class="text-sm font-bold">
                         Settings
                     </div>
                 </a>   
-                <a v-if="isAuth" href="/logout" v-on:click.prevent="logout" class="block mt-1 px-2 py-2 font-bold text-sm hover:no-underline rounded text-gray-400 hover:text-white hover:bg-gray-900 border-transparent focus:ring-offset-0 focus:ring-gray-300">Logout</a>
+                <a v-if="isAuth" href="/logout" v-on:click.prevent="logout" class="block mt-1 px-2 py-2 font-bold text-sm hover:no-underline rounded text-primary-300 hover:text-white hover:bg-primary-300 border-transparent focus:ring-offset-0 focus:ring-gray-300">Logout</a>
             </div>
             <!----Un-Authenticated----->
-            <a v-if="!isAuth && currentUrl != 'login'" href="/login" :class="currentUrl == ''? 'border-gray-600 text-gray-500 hover:text-white':'border-white text-white'" class="block border px-2 py-1 hover:no-underline hover:bg-gray-700 border-transparent focus:ring-offset-0 focus:ring-gray-300">Login</a>
-            <a v-if="!isAuth && currentUrl != 'register'" href="/register" :class="currentUrl == ''? 'border-gray-600 text-gray-500 hover:text-white':'border-white text-white'" class="block mt-1 border px-2 py-1 hover:no-underline hover:bg-gray-700 focus:ring-offset-0 focus:ring-gray-300">Register</a>
+            <a v-if="!isAuth && currentUrl != 'login'" href="/login" :class="currentUrl == ''? 'shadow-lg':' text-white'" class="block my-btn">Login</a>
+            <a v-if="!isAuth && currentUrl != 'register'" href="/register" :class="currentUrl == ''? 'shadow-lg ':' text-white'" class="block mt-2 my-btn">Register</a>
         </div>
 
         <!----->
@@ -163,7 +177,7 @@
                 type: String,
                 default: '',
             },*/
-            //logoUri: String,
+            logoUri: String,
             username: {
                 type: String,
                 default: '',

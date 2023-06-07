@@ -6,12 +6,7 @@
 
 @layer components{
     .my-form-input{
-        @apply bg-gray-300 focus:border-gray-600 focus:ring-gray-600 font-semibold text-gray-900 shadow-sm sm:text-sm w-full;
-    }
-
-    .py-1-and-half{
-        padding-top:0.375rem;
-        padding-bottom:0.375rem;
+        @apply bg-gray-300 focus:border-primary-600 focus:ring-primary-600 font-semibold text-gray-900 shadow-sm sm:text-sm w-full;
     }
 
     .my-navbar-link{
@@ -26,8 +21,12 @@
         @apply bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500;
     }
 
+    .my-link{
+        @apply text-primary-300 hover:text-primary-500 underline focus:outline-none focus:ring-1 focus:ring-primary-500;
+    }
+
     .my-btn{
-        @apply flex justify-center py-1-and-half px-10 text-white border border-transparent bg-gray-500 hover:bg-gray-700 focus:outline-none focus:ring-gray-600 focus:ring-2 focus:ring-offset-2;
+        @apply flex justify-center py-1.5 px-8 rounded-sm shadow text-white border border-none bg-primary-400 hover:bg-primary-600 focus:outline-none focus:ring-primary-600 focus:ring-2 focus:ring-offset-1;
     }
 
     .my-btn-small{
