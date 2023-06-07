@@ -1,50 +1,40 @@
-<footer>
-    <div class="mt-3 p-2 bg-gray-800 shadow">
-        <div class="flex flex-row justify-around">
-            <div class='flex flex-col'>
-                <h2 class='capitalize font-bold text-white  tracking-widest'>Useful links</h2>
-                <div class=' bg-gray-200 mt-3'>About us</div>
-                <div class='mt-3 bg-gray-200'>Help and Advice</div>
-                <div class=' mt-3 bg-gray-200'>News</div>
-                <div class='mt-3 bg-gray-200'>Customer gurantee</div>
+<footer class="bg-primary-900">
+    <div class="pt-10 pb-6 max-w-7xl 2xl:mx-auto px-16 divide-y divide-primary-700">
+        <div class="flex flex-col sm:flex-row sm:space-x-4 justify-around">
+            <div class="flex flex-col max-w-sm">
+                <h3 class="font-semibold text-primary-100 tracking-wider">About</h3>
+                <p class="text-primary-500 mt-4">
+                    Mmereki is a platform for all qualified tradespeople to enlist so
+                    that its easier for clients to find them. All listed trades are vetted and 
+                    verified.
+                </p>
             </div>
-            <div class='flex flex-col'>
-                <div class=' bg-gray-200'>Trade associations</div>
-                <div class=' bg-gray-200 mt-3'>Trade directory</div>
-                <div class=' bg-gray-200 mt-3'>Payment service</div>
-            </div>
-            <div class='flex flex-col'>
-                <div class='bg-gray-200'>Privacy policy</div>
-                <div class='bg-gray-200 mt-3'>Disclaimer</div>
-                <div class='bg-gray-200 mt-3 flex flex-row'> Social pages</div>
+            <div class="mt-4 sm:mt-0 min-w-48 flex flex-col space-y-2">
+                <h3 class="font-semibold text-primary-100 tracking-wider">Useful Links</h3>
+                <div> 
+                    <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/terms">Terms of Service</a>
+                </div>
+                <div> 
+                    <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/privacy-policy">Privacy policy</a>
+                </div>  
+               <!--a class="text-gray-400 hover:text-gray-500 hover:underline" href="/terms">Trade directory</a -->
+                <div> 
+                    <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/refund-policy">Payments & Refund Policy</a>
+                </div> 
             </div>
 
-            <div class='flex flex-col'>
-                <div class='bg-gray-200'>Adversing</div>
-                <div class='bg-gray-200 mt-3'>Contact us</div>
-                <div class='bg-gray-200 mt-3'>Terms </div>
+            <div class="mt-4 sm:mt-0 flex flex-col space-y-3">
+                <h3 class="font-semibold text-primary-100 tracking-wider">Contact Us</h3>
+                <div class="text-primary-500">buffaloitbotswana@gmail.com</div>
+                <div class="text-primary-500">(+267) 75 275 918</div>
             </div>
         </div>
 
-        <div class='mt-3'>
+        <div class="px-8 md:px-16 pt-3 pb-3 mt-8">
             <div class="flex justify-between">
-                 <div class="bg-gray-200 order-last flex flex-row ">
-                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                    </svg>
-                    app store
-                </div>
-                <div class='bg-gray-200 mt-3 flex flex-row'>
-                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                    </svg>
-                    social media platform
-                </div>
-                <div class='bg-gray-200 mt-3 flex flex-row'>
-                    <svg class="h-6 w-6 text-red-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                    </svg>
-                    google play
+                <p class="text-primary-200">&copy; 2023 Mmereki Trades</p>
+                <div class="">
+                    <a class="font-medium text-primary-200 hover:underline hover:text-primary-500" href="#">Created by Buffalo I.T </a>
                 </div>
             </div> 
         </div>

@@ -25,12 +25,14 @@
                     Auth::user()->hasRole('Administrator')
                     : false
                 ) }}"
-                v-bind:is-auth="{{ json_encode(Auth::check()) }}">
+                v-bind:is-auth="{{ json_encode(Auth::check()) }}"
+                logo-uri="{{ Request::segment(1) == '' ? asset('logo-gr.png') : asset('logo.png')  }}">
             </navbar>    
             @else
             <navbar
                 current-url="{{ Request::segment(1) }}"
-                v-bind:is-auth="{{ json_encode(Auth::check()) }}">
+                v-bind:is-auth="{{ json_encode(Auth::check()) }}"
+                logo-uri="{{ Request::segment(1) == '' ? asset('logo-gr.png') : asset('logo.png') }}">
             </navbar>
             @endif
             <main class="pt-20">

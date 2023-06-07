@@ -240,19 +240,19 @@
                             <div class="pr-2 py-5 sm:pr-6">
                                 <div class="flex items-start">
                                     <div class="flex items-center h-5">
-                                        <input name="terms" type="checkbox" class="focus:ring-gray-500 h-4 w-4 text-gray-600 border-gray-300" required>
+                                        <input name="terms" type="checkbox" class="focus:ring-primary-500 h-4 w-4 text-primary-400 border-primary-400" required>
                                     </div>
                                     <div class="ml-3 text-sm">
                                         <label for="terms" class="font-medium text-gray-700">Terms and Conditions</label>
-                                        <p class="text-gray-500">By clicking accept, you will be agreeing to &copyMmereki Traders <a class="text-blue-400 underline" href="/terms">Terms & Conditions</a> , 
-                                        <a class="text-blue-400 underline" href="/privacy-policy">Privacy Policy</a> and code of conduct.
+                                        <p class="text-gray-500">By clicking accept, you will be agreeing to &copy; Mmereki Trades <a class="my-link" href="/terms">Terms & Conditions</a> , 
+                                        <a class="my-link" href="/privacy-policy">Privacy Policy</a> and code of conduct.
                                         </p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="w-80 mt-4">
-                                <button type="submit" class="w-full font-medium  text-white my-btn">
+                                <button type="submit" class="w-full font-medium my-btn">
                                 Register
                                 </button>
                             </div>
@@ -263,6 +263,10 @@
             </div>
         </form>
     </section>
+</section>
+
+<section>
+    @include('components.footer-large')
 </section>
 @endsection
 
