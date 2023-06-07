@@ -27,6 +27,10 @@ class SearchProcessor extends Controller
         return view('legal.privacy');
     }
 
+    public function refunds(){
+        return view('legal.refunds');
+    }
+
     public function results(){
         return view('results');
     }

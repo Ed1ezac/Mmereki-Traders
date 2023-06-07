@@ -19,9 +19,10 @@ class MembershipController extends Controller
         //
     }
 
-    public function subscribe(){
+    public function subscribe(Request $request){
         //To payment form
-        return view('dashboard.payment.pay');
+        $amount = $request->get('price');
+        return view('dashboard.payment.pay', compact('amount'));
     }
 
     //admin
