@@ -24,6 +24,7 @@ Route::get('/', [SearchProcessor::class, 'search']);
 Route::get('/about', [SearchProcessor::class, 'about']);
 Route::get('/terms', [SearchProcessor::class, 'terms']);
 Route::get('/privacy-policy', [SearchProcessor::class, 'privacy']);
+Route::get('/refund-policy', [SearchProcessor::class, 'refunds']);
 
 Route::get('/trader/{id?}/details', [SearchProcessor::class, 'traderDetails']);
 Route::get('/results', [SearchProcessor::class, 'processSearchRequest'])->name('search.results');
@@ -38,6 +39,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/edit-profile', [CompanyController::class, 'edit']);
     Route::post('/upload-logo', [CompanyController::class,'uploadLogo']);
     Route::post('/update-profile', [CompanyController::class, 'update']);
+    Route::post('/update-intro', [CompanyController::class, 'updateIntro']);
+    Route::post('/update-location', [CompanyController::class, 'updateLocation']);
+    Route::post('/update-tel', [CompanyController::class, 'updateTel']);
+    Route::post('/update-mobile', [CompanyController::class, 'updateMobile']);
+    Route::post('/update-about', [CompanyController::class, 'updateAbout']);
     //user
     Route::get('/settings', [UserController::class, 'editUser']);
     Route::post('/settings/update-user', [UserController::class, 'updateUser']);
@@ -46,6 +52,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/document/{id?}/download', [TradeQualificationController::class, 'downloadQualification']);
     Route::get('/document/{id?}/delete', [TradeQualificationController::class, 'deleteQualification']);
     //
+    Route::get('/membership/subscribe', [MembershipController::class, 'subscribe']);
     Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin']);
 });
 
