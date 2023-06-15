@@ -24,7 +24,6 @@ class CompanyController extends Controller
         foreach($company->trades()->get() as $item){
             $my_trades[] = Trade::find($item->id, ['id', 'name']);
         }
-        //dd($my_trades);
         return view('dashboard.edit-profile' , compact('company', 'qualifications', 'trades', 'my_trades'));
     }
 
@@ -35,6 +34,46 @@ class CompanyController extends Controller
         $company->updateTrades($request->get('trades'));
         
         return back()->with('status', 'Your company profile has been updated successfully!');
+    }
+
+    public function updateIntro(Request $request){
+        $company = Auth::user()->company;
+        $company->update([
+            'intro' => $request->get('intro')
+        ]);
+        return redirect('/home')->with('status', 'Intro updated successfully.');
+    }
+
+    public function updateMobile(Request $request){
+        $company = Auth::user()->company;
+        $company->update([
+            'mobile' => $request->get('mobile')
+        ]);
+        return redirect('/home')->with('status', 'Mobile updated successfully.');
+    }
+
+    public function updateAbout(Request $request){
+        $company = Auth::user()->company;
+        $company->update([
+            'about' => $request->get('about')
+        ]);
+        return redirect('/home')->with('status', 'About updated successfully.');
+    }
+
+    public function updateTel(Request $request){
+        $company = Auth::user()->company;
+        $company->update([
+            'telephone' => $request->get('telephone')
+        ]);
+        return redirect('/home')->with('status', 'Telephone updated successfully.');
+    }
+
+    public function updateLocation(Request $request){
+        $company = Auth::user()->company;
+        $company->update([
+            'location' => $request->get('location')
+        ]);
+        return redirect('/home')->with('status', 'Location updated successfully.');
     }
 
     public function uploadLogo(ImageUploadRequest $request){
