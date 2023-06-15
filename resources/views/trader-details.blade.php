@@ -5,8 +5,8 @@
     <div class="sm:h-80 bg-primary-600 -mt-4 z-0 px-16">
         <!---Background Image HERE--->
         <div class="flex items-end pb-10 h-full max-w-7xl 2xl:mx-auto">
-            <div class="flex flex-col pt-14 sm:pt-0 sm:flex-row">
-                <div class="border-primary-800 border-2 bg-gray-100 shadow md:flex-shrink-0">
+            <div class="flex flex-col items-start pt-14 sm:pt-0 sm:flex-row">
+                <div class="border-primary-800 border-2 bg-gray-100 shadow flex-shrink-0">
                     @if ($company->logo === null)
                         <svg xmlns="http://www.w3.org/2000/svg" class="text-primary-700 w-32 h-32" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
@@ -86,7 +86,7 @@
             <h3 class="text-gray-800 font-semibold text-base">Trades</h3>
             <div class="flex flex-wrap space-x-2 my-2">
                 @foreach ($company->trades as $trade )
-                    <div class="bg-orange-500 text-sm text-white font-semibold rounded-full py-1 mb-2 px-3">
+                    <div class="bg-orange-200 text-sm text-orange-600 font-semibold rounded-full py-1 mb-2 px-3">
                     {{\App\Models\Trade::find($trade->id)->name}}
                     </div>
                 @endforeach

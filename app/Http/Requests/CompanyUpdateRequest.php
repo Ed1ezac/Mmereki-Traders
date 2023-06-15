@@ -29,7 +29,7 @@ class CompanyUpdateRequest extends FormRequest
             'id' => ['required','numeric'],
             'company-name' => ['required', 'string', 'max:100'],
             'intro' => ['required', 'string', 'max:160'],
-            'about' => ['required', 'string', 'max:160'],
+            'about' => ['required', 'string', 'max:1200'],
             'address' => ['required','string', 'max:100'],
             'location' => ['required','string', 'max:60'],
             'trades' => ['required',],

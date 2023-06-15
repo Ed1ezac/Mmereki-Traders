@@ -110,7 +110,7 @@
                             <div class="col-span-6">
                                 <label for="about" class="block text-sm font-medium text-gray-700">About</label>
                                 <div class="mt-1">
-                                    <textarea maxlength="500" name="about" rows="4" class="my-form-input required 
+                                    <textarea maxlength="1200" name="about" rows="4" class="my-form-input required 
                                     @error('about') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror" placeholder="Full Description of your work here">{{ $company->about }}</textarea>
                                 </div>
                                 @if(!empty($errors) && $errors->has('about'))

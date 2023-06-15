@@ -25,7 +25,7 @@
 <!---PLANS-->
 <!--- P90,   P162-27, save 11%,  P300 save 20%  ---->
 <div class="flex flex-wrap gap-8 mt-12 mb-8">
-    <div class="bg-white shadow rounded w-56 py-4 mr-8">
+    <div class="bg-white shadow rounded-b w-56 py-4 mr-8 border-t-4 border-yellow-400">
         <div class="flex-col justify-center space-y-6">
             <div>
                 <h3 class="text-gray-800 font-semibold text-base mx-4">3 Months Plan</h3>
@@ -52,7 +52,7 @@
         </div>
     </div>
 
-    <div class="bg-white shadow rounded w-56 py-4 mr-8">
+    <div class="bg-white shadow rounded-b w-56 py-4 mr-8 border-t-4 border-purple-400">
         <div class="flex-col justify-center space-y-6">
             <div>
                 <h3 class="text-gray-800 font-semibold text-base mx-4">6 Months Plan</h3>
@@ -78,10 +78,9 @@
                 </form>
             </div>
         </div>
-        
     </div>
 
-    <div class="bg-white shadow rounded w-56 py-4">
+    <div class="bg-white shadow rounded-b w-56 py-4 border-t-4 border-blue-400">
         <div class="flex-col justify-center space-y-6">
             <div>
                 <h3 class="text-gray-800 font-semibold text-base mx-4">12 Months Plan</h3>
