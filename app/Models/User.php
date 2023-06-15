@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 //use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -53,10 +52,16 @@ class User extends Authenticatable
 
     public function updateRecord(array $values){
         return $this->update([
-            'name' => $values['first-name'].' '.$values['last-name'],
+            'name' => trim($values['first-name']).' '.trim($values['last-name']),
             'email' => $values['email'],
             'password' => Hash::make($values['password']),
         ]);
+    }
+
+    public function getInitialsAttribute(){
+        //call with usr->initials
+        $names = explode(' ', $this->name);
+        return $names[0][0].$names[count($names)-1][0];
     }
 
 }

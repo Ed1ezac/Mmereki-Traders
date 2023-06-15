@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use \Carbon\Carbon;
 use App\Models\User;
+use App\Models\Trade;
 use App\Models\Company;
 use App\Rules\EmptyField;
 use App\Models\Membership;
@@ -85,7 +86,7 @@ class RegisterController extends Controller
     {
         DB::transaction(function() use ($data) {
             $this->user = User::create([
-                'name' => $data['first-name'].' '.$data['last-name'],
+                'name' => trim($data['first-name']).' '.trim($data['last-name']),
                 'email' => $data['email'],
                 'password' => Hash::make($data['password']),
             ]);
@@ -117,13 +118,17 @@ class RegisterController extends Controller
 
     private function registerCompanyTrades($companyId, array $data){
         $trades = $data['trades'];
-        $tradeIds = explode(',', $trades);
-
-        foreach($tradeIds as $tradeId){
-            CompanyTrades::create([
-                'company_id' => $companyId,
-                'trade_id' => $tradeId,
-            ]);
+        
+        //trades is an array of arrays;
+        foreach($trades as $trade){
+            foreach($trade as $key => $val){
+                if($key  == "id"){
+                    CompanyTrades::create([
+                        'company_id' => $companyId,
+                        'trade_id' => $val,
+                    ]);
+                }
+            }
         }
     }
 

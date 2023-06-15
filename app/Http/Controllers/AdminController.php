@@ -17,7 +17,8 @@ class AdminController extends Controller
 
     //for the Future!
     public function giveUserRole(){
-    
+        //Auth::user()->assignRole(User::Trader);
+        return back()->withErrors('Due Roles granted!');
     }
     
 }

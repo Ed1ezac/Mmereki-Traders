@@ -4,21 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Membership;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MembershipController extends Controller
 {
     //
     public function index(){
-        return view('dashboard.membership');
+        $membership = Membership::forCompany(Auth::user()->company);
+        //($membership);
+        return view('dashboard.membership', compact('membership'));
     }
 
     public function cancel(){
         //
     }
 
-    public function subscribe(){
+    public function subscribe(Request $request){
         //To payment form
-        return view('dashboard.payment.pay');
+        $amount = $request->get('price');
+        return view('dashboard.payment.pay', compact('amount'));
     }
 
     //admin

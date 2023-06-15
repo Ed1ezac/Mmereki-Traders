@@ -125,7 +125,7 @@
                 </div>
                 <div class="px-2 space-y-2 col-span-4">
                     <div class="flex flex-wrap">
-                        @for($i=0; $i<count($company->qualifications); $i++)
+                        @for($i=0; $i< count($company->qualifications); $i++)
                         <div class="flex flex-col w-16 mr-5">
                             <div class="h-20 border border-gray-500 rounded-sm">
                                 <div class="flex justify-center items-center h-full w-full">
