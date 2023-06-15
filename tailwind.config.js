@@ -15,8 +15,8 @@ module.exports = {
         }
       },
       fontFamily:{
-        'headings':[ 'system-ui', '-apple-system', 'ui-sans-serif'],
-        'body':['system-ui', '-apple-system', 'ui-sans-serif'],
+        'headings':['system-ui', '-apple-system', 'ui-sans-serif'],
+        'body':['Niramit','system-ui', '-apple-system', 'ui-sans-serif'],
       },
     },
   },
