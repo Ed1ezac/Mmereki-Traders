@@ -25,4 +25,19 @@ class UserController extends Controller
         return back()->with('status', 'Your user data has been updated successfully!');
     }
 
+    //------- Administrator
+    public function list(){
+        $users = User::paginate(12);
+
+        return view('admin.users.list', compact('users'));
+    }
+
+    public function makeModerator(){
+
+    }
+
+    public function makeAdministrator(){
+
+    }
+    
 }

@@ -58,6 +58,8 @@ Route::middleware(['auth'])->group(function () {
 
 Route::group(['prefix' =>'admin', 'middleware' =>'auth'], function () {
     // 'middleware' =>'admin'
+    Route::get('/users', [UserController::class, 'list']);
+    //
     Route::get('/companies', [CompanyController::class, 'adminCompaniesList']);
     Route::post('/company/verify/', [CompanyController::class, 'adminVerifyCompany']);
     Route::post('/company/unverify/', [CompanyController::class, 'adminUnverifyCompany']);
