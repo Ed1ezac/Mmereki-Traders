@@ -8,12 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Membership extends Model
 {
     use HasFactory;
+
+    const Trial = 'Trial';
     const Standard = 'Standard';
     const Professional = 'Professional';
-    const Pending = 'pending';
-    const Accepted = 'accepted';
+    const Active = 'active';
     const Expired = 'expired';
-    const Revoked = 'revoked';
+    const Elevated = 'elevated';
+    const Disabled = 'disabled';
 
     protected $fillable = [
         'code',
@@ -21,7 +23,7 @@ class Membership extends Model
         'type',
         'billing',
         'status',
-        'expiration'
+        'expiry',
     ];
 
     public function scopeForCompany($query, $company){
