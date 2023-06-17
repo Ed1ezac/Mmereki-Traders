@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Throwable;
 use \Carbon\Carbon;
 use App\Models\User;
 use App\Models\Trade;
@@ -84,21 +85,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        DB::transaction(function() use ($data) {
-            $this->user = User::create([
-                'name' => trim($data['first-name']).' '.trim($data['last-name']),
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-            //
-            $company = $this->registerCompany($this->user->id, $data);
-            //trades
-            $this->registerCompanyTrades($company->id, $data);
-            //membership
-            $this->registerMembership($company->id);
-            //roles
-            $this->user->assignRole(User::Trader);
-        }, 5);
+        try {
+            DB::transaction(function() use ($data) {
+                $this->user = User::create([
+                    'name' => trim($data['first-name']).' '.trim($data['last-name']),
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                ]);
+                //
+                $company = $this->registerCompany($this->user->id, $data);
+                //trades
+                $this->registerCompanyTrades($company->id, $data);
+                //membership
+                $this->registerMembership($company->id);
+                //roles
+                $this->user->assignRole(User::Trader);
+            }, 5);
+        } catch (\Illuminate\Database\QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == 1062){
+                // houston, we have a duplicate entry problem
+                return redirect()->back()
+                    ->withErrors('The email you entered has been used to create an account. Please enter a different one.');
+            }
+        }
 
         return $this->user;
     }
@@ -118,11 +128,10 @@ class RegisterController extends Controller
 
     private function registerCompanyTrades($companyId, array $data){
         $trades = $data['trades'];
-        
         //trades is an array of arrays;
         foreach($trades as $trade){
             foreach($trade as $key => $val){
-                if($key  == "id"){
+                if($key == "id"){
                     CompanyTrades::create([
                         'company_id' => $companyId,
                         'trade_id' => $val,
@@ -144,7 +153,7 @@ class RegisterController extends Controller
         return Membership::create([
             'code' => 'MT'.$memb_id,
             'company_id' => $companyId,
-            'expiration' => $time_now->addDays(184),//6 months
+            'expiry' => $time_now->addDays(31),//1 month
         ]);
     }
 }
