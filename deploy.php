@@ -21,10 +21,9 @@ add('writable_dirs', []);
 host('143.198.190.94')
     ->set('remote_user', 'deployer')
     ->set('identity_file','~/.ssh/dep')
-    ->set('deploy_path', 'var/www/mmereki');
+    ->set('deploy_path', '/var/www/mmereki');
 
 // Hooks
-
 after('deploy:failed', 'deploy:unlock');
 
 
