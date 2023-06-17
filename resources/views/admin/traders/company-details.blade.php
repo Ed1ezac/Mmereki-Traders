@@ -1,7 +1,7 @@
 @extends('layouts.dashboard-header')
 
 @section('features')
-
+<section class="my-section">
 <div class="mt-4 mb-3">
     <div class="flex justify-between items-end">
         <h3 class="text-lg font-semibold leading-6 text-gray-900">Verify Company</h3>
@@ -145,5 +145,7 @@
         </div>
     </div>
 </div>
+</section>
 
+@include('components.footer-large')
 @endsection

@@ -1,7 +1,8 @@
 @extends('layouts.dashboard-header')
 
 @section('features')
-<div class="mr-4 xl:mr-6 mt-8 xl:mt-10">
+<section class="my-section mb-20">
+    <div class="mr-4 xl:mr-6 mt-8 xl:mt-10">
     <div class="-my-2 sm:-mx-6 lg:-mx-8">
         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
             <div class="max-w-7xl shadow border-b border-gray-200 sm:rounded">
@@ -31,7 +32,7 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                     <div class="text-sm truncate">
-                                        <a href="{{'company/'.$com->id.'/details'}}" class="text-gray-500 hover:underline font-semibold hover:text-blue-800">
+                                        <a href="{{'company/'.$com->id.'/details'}}" class="text-gray-500 hover:underline font-semibold my-link">
                                             {{ $com->name }}
                                         </a>
                                     </div>
@@ -68,5 +69,8 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
+</section>
+
+@include('components.footer-large')
 @endsection

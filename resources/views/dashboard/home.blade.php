@@ -1,6 +1,8 @@
 @extends('layouts.dashboard-header')
 
 @section('features')
+<section class="my-section">
+
 
 @if($company->about == null || $company->logo == null)
 <div class="p-2 mb-4 border-t-2 border-primary-300">
@@ -11,14 +13,14 @@
 <div class="bg-white mt-4 shadow max-w-2xl rounded-lg p-4">
     <div class="text-gray-500 py-8 px-8">
         <span class="text-lg font-semibold underline">{{ $company->name }}</span> of membership 
-        <span class="text-lg font-semibold underline">{{ $membership->code }}</span> registered on the &copy;Mmereki Traders platform 
+        <span class="text-lg font-semibold underline">{{ $membership->code }}</span> registered on the &copy;Mmereki Trades platform 
         subject to termination upon breach of the <a href="#code-of-conduct" class="my-link">Traders Code of Conduct</a>
         and the <a href="/terms" class="my-link">Terms of Service</a> and the <a href="/privacy-policy" class="my-link">Privacy Policy</a>.
     </div>
 </div>
-
+</section>
 <!---Profile Edit---->
-<section class="my-2 py-4">
+<section class="my-2 py-4 my-section">
     <h3 class="my-4 text-center text-xl font-semibold">Quick Profile Overview</h3>
     <div class="flex flex-col">
         <div class="flex flex-wrap space-y-6 mb-6">
@@ -88,7 +90,7 @@
     </div>
 </section>
 
-<section id="#code-of-conduct">
+<section class="my-section" id="#code-of-conduct">
     <div class="bg-white border border-gray-300 rounded-md my-14 overflow-scroll mx-8 sm:mx-16 py-12 px-16">
         <h3 class="mb-12 text-center text-3xl font-semibold">Members Code of Conduct</h3>
         <p class="">
@@ -101,5 +103,7 @@
         </p>
     </div>
 </section>
+
+@include('components.footer-large')
 @endsection
 

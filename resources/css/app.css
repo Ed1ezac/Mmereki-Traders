@@ -33,4 +33,8 @@
     .my-btn-small{
         @apply text-white text-xs bg-gray-500 p-1 border border-transparent hover:bg-gray-700 focus:outline-none focus:ring-gray-600 focus:ring-1 focus:ring-offset-2;
     }
+
+    .my-section{
+        @apply px-8 sm:px-16 max-w-7xl 2xl:mx-auto;
+    }
 }

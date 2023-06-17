@@ -1,6 +1,7 @@
 @extends('layouts.dashboard-header')
 
 @section('features')
+<section class="my-section">
 <div class="mt-4 mb-4">
     <div class="flex justify-between items-end">
         <h3 class="text-lg font-semibold leading-6 text-gray-900">Edit Profile</h3>
@@ -212,7 +213,7 @@
     </div>
 </div>
 
-<!---Logo--->
+<!---Qualification--->
 <section class="mt-10 sm:mt-0 mb-16">
     <form action="/upload-document" method="post" enctype="multipart/form-data">
         @csrf
@@ -271,4 +272,7 @@
         </div>
     </form>
 </section>
+</section>
+
+@include('components.footer-large')
 @endsection
