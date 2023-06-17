@@ -36,7 +36,10 @@
                                 </div>
                             </div>
                             <div class="sm:col-span-7">
-                                <upload-field hint="(Image) .jpg or .png file less than 5MB."></upload-field>
+                                <upload-field 
+                                    identity="logo"
+                                    hint="(Image) .jpg or .png file less than 5MB.">
+                                </upload-field>
                             </div>
                             
                         </div>
@@ -235,7 +238,7 @@
                             <div class="sm:col-span-3">
                                 <div class="">
                                 @for($i=0; $i< count($qualifications); $i++)
-                                    <div class="flex px-3 py-1 mb-2 bg-gray-700 items-center justify-between rounded-sm">
+                                    <div class="flex px-3 py-1 mb-2 bg-primary-600 items-center justify-between rounded-sm">
                                         <div class="text-white text-sm">
                                             {{ "Document".($i+1) }}
                                         </div>
@@ -260,7 +263,10 @@
                                 </div>
                             </div>
                             <div class="sm:col-span-6">
-                                <upload-field hint="(Document) .doc/.docx or .pdf file less than 2MB."></upload-field>
+                                <upload-field 
+                                    identity="cert"
+                                    hint="(Document) .doc/.docx or .pdf file less than 2MB.">
+                                </upload-field>
                             </div>
                         </div>
                         <div class="flex justify-end items-center">
