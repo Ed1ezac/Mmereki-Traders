@@ -6,8 +6,8 @@
             enter-to-class="opacity-100 scale-100"
             leave-active-class="transform-gpu duration-700"
             leave-class="opacity-100 scale-100"
-            leave-to-class="opacity-0 scale-0"
-        >
+            leave-to-class="opacity-0 scale-0">
+            
             <div v-show="!hasSelected" @dragover="dragover" @dragleave="dragleave" @drop="drop"
             class="mt-1 flex z-0 justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                 <div class="space-y-1 text-center">
@@ -15,9 +15,9 @@
                             <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                         </svg>
                     <div class="flex text-sm text-gray-600">
-                        <label for="data-file" class="relative cursor-pointer rounded-md font-medium text-accent-800 hover:text-accent-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-accent-500">
+                        <label :for="identity+'-file'" class="relative cursor-pointer rounded-sm font-medium text-primary-800 hover:text-primary-400 focus-within:outline-none focus-within:ring-1 focus-within:ring-offset-1 focus-within:ring-primary-500">
                             <span>Click to select a file</span>
-                            <input id="file" name="file" type="file" multiple required ref="file" @change="onChange" class="sr-only"><!--  -->
+                            <input :id="identity+'-file'" name="file" type="file" multiple required ref="file" @change="onChange" class="sr-only">
                         </label>
                         <p class="pl-1">or drag and drop</p>
                     </div>
@@ -32,9 +32,9 @@
             leave-active-class="transform-gpu duration-1000"
             leave-class="opacity-100 translate-y-0"
             leave-to-class="opacity-0 translate-y-20">
-            <div v-show="hasSelected" class="absolute top-0 p-2 bg-gray-600 hover:bg-gray-500 rounded-md w-full">
+            <div v-show="hasSelected" class="absolute top-0 p-2 bg-primary-600 hover:bg-primary-400 rounded-md w-full">
                 <div class="flex justify-start items-center">
-                    <button @click="remove(filelist.indexOf(file))" type="button" class="bg-gray-800 rounded-full border-2 border-white text-white hover:bg-white">
+                    <button @click="remove(filelist.indexOf(file))" type="button" class="bg-gray-800 rounded-full border-2 border-white text-white hover:bg-primary-200">
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -70,7 +70,8 @@
             hint:{
                 type: String,
                 default: '',
-            }
+            },
+            identity: String,
         },
         methods: {
             onChange() {
