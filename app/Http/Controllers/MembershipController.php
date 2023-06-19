@@ -10,9 +10,11 @@ class MembershipController extends Controller
 {
     //
     public function index(){
-        $membership = Membership::forCompany(Auth::user()->company);
+        $company = Auth::user()->company;
+        $membership = Membership::forCompany($company);
         //($membership);
-        return view('dashboard.membership', compact('membership'));
+        $subs = Membership::where('company_id', $company->id)->latest()->paginate(8);
+        return view('dashboard.membership', compact('membership', 'subs'));
     }
 
     public function cancel(){
