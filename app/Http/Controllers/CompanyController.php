@@ -77,11 +77,45 @@ class CompanyController extends Controller
     }
 
     public function uploadLogo(ImageUploadRequest $request){
-        $path = $request->file('file')->store('images');
         $company = Company::forUser(Auth::user());
+        if($company->logo != null){
+            //delete previous file
+            try{
+                $this->deleteLogoFile($company->logo);
+            }catch(Throwable $t){
+                return back()->withErrors('An error occurred while trying to delete the previous logo. Please try again.');
+            }
+        }
+
+        $path = Storage::disk('public')->putFile('/images', $request->file('file')); 
         $company->updateLogo($path);
 
         return back()->with('status', 'Your Logo has been updated successfully.');
+    }
+
+    private function uploadNewLogo(){
+        $req = request();
+        return $req->file('file')->store('images');
+    }
+
+    public function removeLogo(){
+        $company = Company::forUser(Auth::user());
+        if($company->logo != null){
+            try{
+                //delete file
+                $this->deleteLogoFile($company->logo);
+            }catch(Throwable $t){
+                return back()->withErrors('An error occurred when deleting the logo. Please try again.');
+            }
+            //remove record
+            $company->updateLogo(Null);
+            return back()->with('status', 'Logo removed successfully.');
+        }
+        return back()->withErrors('There is no logo to remove.');
+    }
+
+    private function deleteLogoFile($path){
+        Storage::disk('public')->delete($path);
     }
 
     public function deleteCompany(){

@@ -102,7 +102,7 @@ class Company extends Model
         return $this->trades()->sync($ids);
     }
 
-    public function updateLogo(string $path){
+    public function updateLogo($path){
         return $this->update([
             'logo' => $path
         ]);  
