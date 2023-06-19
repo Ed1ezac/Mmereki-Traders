@@ -35,6 +35,6 @@
     }
 
     .my-section{
-        @apply px-8 sm:px-16 max-w-7xl 2xl:mx-auto;
+        @apply px-8 sm:pl-16 max-w-7xl 2xl:mx-auto;
     }
 }
