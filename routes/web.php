@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/update-tel', [CompanyController::class, 'updateTel']);
     Route::post('/update-mobile', [CompanyController::class, 'updateMobile']);
     Route::post('/update-about', [CompanyController::class, 'updateAbout']);
+    Route::get('/remove-logo', [CompanyController::class, 'removeLogo']);
     //user
     Route::get('/settings', [UserController::class, 'editUser']);
     Route::post('/settings/update-user', [UserController::class, 'updateUser']);
@@ -56,8 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin']);
 });
 
-Route::group(['prefix' =>'admin', 'middleware' =>'auth'], function () {
-    // 'middleware' =>'admin'
+Route::group(['prefix' =>'admin', 'middleware' =>'admin'], function () {
     Route::get('/users', [UserController::class, 'list']);
     //
     Route::get('/companies', [CompanyController::class, 'adminCompaniesList']);
