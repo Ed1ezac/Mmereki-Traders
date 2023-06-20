@@ -7,6 +7,7 @@
 require('./bootstrap');
 import { createApp } from 'vue';
 import Navbar from './components/navbar.vue';
+import UserOptions from './components/user-options.vue';
 import ErrorBanner from './components/error-banner.vue';
 import StatusBanner from './components/status-banner.vue';
 import UploadField from './components/file-upload-field.vue';
@@ -19,6 +20,7 @@ import TradeSelector from './components/trade-selector.vue';
  const app = createApp({
      components:{
         Navbar,
+        UserOptions,
         UploadField,
         ErrorBanner,
         StatusBanner,

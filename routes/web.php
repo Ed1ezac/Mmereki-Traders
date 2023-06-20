@@ -56,7 +56,12 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::group(['prefix' =>'admin', 'middleware' =>'admin'], function () {
+    //user
     Route::get('/users', [UserController::class, 'list']);
+    Route::get('users/user/{id?}/promote/admin', [UserController::class, 'makeAdmin']);
+    Route::get('/users/user/{id?}/promote/moderator', [UserController::class, 'makeModerator']);
+    Route::get('/users/user/{id?}/demote-to-trader', [UserController::class, 'demoteToTrade']);
+    Route::post('users/user/{id?}/disable/account', [UserController::class, 'deactivate']);
     //
     Route::get('/companies', [CompanyController::class, 'adminCompaniesList']);
     Route::post('/company/verify/', [CompanyController::class, 'adminVerifyCompany']);
@@ -65,6 +70,7 @@ Route::group(['prefix' =>'admin', 'middleware' =>'admin'], function () {
     Route::get('/document/{id?}/download', [TradeQualificationController::class, 'adminDownloadQualification']);
     Route::get('/membership/{id?}/revoke', [MembershipController::class, 'adminRevokeMembership']);
     Route::get('/membership/{id?}/invoke-expiry', [MembershipController::class, 'adminSetMembershipAsExpired']);
+
 });
 
 Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin'])->middleware(['auth', 'verified']);

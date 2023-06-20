@@ -32,11 +32,19 @@ class UserController extends Controller
         return view('admin.users.list', compact('users'));
     }
 
-    public function makeModerator(){
+    public function makeAdmin($id){
 
     }
 
-    public function makeAdministrator(){
+    public function makeModerator($id){
+
+    }
+
+    public function demoteToTrade($id){
+
+    }
+
+    public function deactivate(Request $request){
 
     }
     

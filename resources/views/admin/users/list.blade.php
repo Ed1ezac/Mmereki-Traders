@@ -48,18 +48,8 @@
                                         {{ $usr->company->name }}
                                     </a>
                                 </td>
-                                <td>
-                                    <!-- div class="flex items-center pl-5">
-                                        @if($usr->verification == 'pending')
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-gray-800">
-                                            {{ $usr->verification }}
-                                        </span>
-                                        @elseif($usr->verification == 'verified')
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            {{ $usr->verification }}
-                                        </span>
-                                        @endif
-                                    </div -->
+                                <td class="px-6 py-4 overflow-visible text-right text-sm font-medium">
+                                    <user-options v-bind:user-id="{{ json_encode($usr->id) }}"></users-table-options>
                                 </td>
                             </tr>
                         @endforeach
