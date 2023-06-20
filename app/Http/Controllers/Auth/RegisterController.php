@@ -63,8 +63,8 @@ class RegisterController extends Controller
             'company-name' => ['required', 'string', 'max:100'],
             'intro' => ['required', 'string', 'max:160'],
             'address' => ['required','string', 'max:100'],
-            'location' => ['required','string', 'max:60'],
-            'trades' => ['required',],
+            'location' => ['required'],//'string', 'max:60'
+            'trades' => ['required'],
             'tel' => ['required', 'numeric', 'min:6'],
             'mobile' => ['required', 'numeric', 'min:8'],
             'birthday' => [new EmptyField],
@@ -85,6 +85,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        dd($data);
+        
         try {
             DB::transaction(function() use ($data) {
                 $this->user = User::create([
@@ -119,7 +121,7 @@ class RegisterController extends Controller
             'name' => $data['company-name'],
             'intro' => $data['intro'],
             'email' => $data['company-email'],
-            'location' => $data['location'],
+            'location' => $data['location'][1],
             'address' => $data['address'],
             'telephone' => $data['tel'],
             'mobile' => $data['mobile'],

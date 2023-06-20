@@ -11,16 +11,6 @@
 @section('content')
 
 <section class="max-w-7xl 2xl:mx-auto">
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-        <div class="py-2 px-2 bg-red-500 text-white">
-            {{  $error }}
-        </div>
-        @endforeach
-    @endif
-    <section>
-    <!--Hero Section--->
-    </section>
 
     <section class="mt-10 px-8 max-w-7xl 2xl:mx-auto">
         <form action="{{ route('register') }}" method="post">
@@ -84,7 +74,11 @@
                                 <!---location-->
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="location" class="block text-sm font-medium text-gray-700">Location of Operation</label>
-                                    <input type="text" name="location" value="{{ old('location') }}" required autocomplete="location" class="mt-1 my-form-input required">
+                                    <location-selector
+                                        v-bind:locations="{{ json_encode(\App\Models\Location::get(['id', 'name'])) }}"
+                                        v-bind:my-location="{{ json_encode(old('location')) }}">
+                                    </location-selector>
+                                    <!-- input type="text" name="location" value="" class="mt-1 my-form-input required" -->
                                     @error('location')
                                     <span class="text-xs font-normal text-red-500" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -101,6 +95,15 @@
                                     <trade-selector
                                         v-bind:trades="{{ json_encode(\App\Models\Trade::get(['id', 'name'])) }}">
                                     </trade-selector>
+                                    @error('trades')
+                                    <span class="text-xs font-normal text-red-500" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @else    
+                                        <p class="mt-2 text-sm text-gray-500">
+                                            Start typing to select your trade. You may choose more than one.
+                                        </p>
+                                    @endif
                                 </div>
                                 <!--telephone-->
                                 <div class="col-span-6 sm:col-span-3">
