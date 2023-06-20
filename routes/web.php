@@ -9,6 +9,8 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\TradeQualificationController;
 
+use App\Models\User;
+use Illuminate\Auth\Notifications\VerifyEmail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +22,8 @@ use App\Http\Controllers\TradeQualificationController;
 |
 */
 
+Auth::routes(['verify'=>true]);
+
 Route::get('/', [SearchProcessor::class, 'search']);
 Route::get('/about', [SearchProcessor::class, 'about']);
 Route::get('/terms', [SearchProcessor::class, 'terms']);
@@ -28,8 +32,6 @@ Route::get('/refund-policy', [SearchProcessor::class, 'refunds']);
 
 Route::get('/trader/{id?}/details', [SearchProcessor::class, 'traderDetails']);
 Route::get('/results', [SearchProcessor::class, 'processSearchRequest'])->name('search.results');
-
-Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     //middleware - 'verified'
@@ -54,7 +56,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/document/{id?}/delete', [TradeQualificationController::class, 'deleteQualification']);
     //
     Route::get('/membership/subscribe', [MembershipController::class, 'subscribe']);
-    Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin']);
 });
 
 Route::group(['prefix' =>'admin', 'middleware' =>'admin'], function () {
@@ -67,4 +68,15 @@ Route::group(['prefix' =>'admin', 'middleware' =>'admin'], function () {
     Route::get('/document/{id?}/download', [TradeQualificationController::class, 'adminDownloadQualification']);
     Route::get('/membership/{id?}/revoke', [MembershipController::class, 'adminRevokeMembership']);
     Route::get('/membership/{id?}/invoke-expiry', [MembershipController::class, 'adminSetMembershipAsExpired']);
+});
+
+Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin'])->middleware(['auth', 'verified']);
+
+
+Route::get('/notification', function () {
+    //$invoice = Invoice::find(1);
+    $user = User::first();
+
+    return (new VerifyEmail())
+                ->toMail($user);
 });
