@@ -8,9 +8,6 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\TradeQualificationController;
-
-use App\Models\User;
-use Illuminate\Auth\Notifications\VerifyEmail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,11 +69,11 @@ Route::group(['prefix' =>'admin', 'middleware' =>'admin'], function () {
 
 Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin'])->middleware(['auth', 'verified']);
 
-
-Route::get('/notification', function () {
+//mail test
+/*Route::get('/notification', function () {
     //$invoice = Invoice::find(1);
     $user = User::first();
 
     return (new VerifyEmail())
                 ->toMail($user);
-});
+});*/
