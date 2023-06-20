@@ -106,6 +106,7 @@ export default {
         }
     },
     mounted(){
+        //Initial population, if user already has trades
         if(this.myTrades !== undefined && this.myTrades.length > 0){
             for(let i=0; i<this.myTrades.length; i++){
                 //lets deal with this.trades only
