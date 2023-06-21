@@ -9,6 +9,14 @@
         
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+        <!-- Favicons-->
+        <link rel="shortcut icon" type="image/png" href="{{ asset('icon/icon-32.png') }}">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ asset('icon/favicon.ico') }}">
+        <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('icon/apple-icon-60.png') }}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('icon/apple-icon-76.png') }}">
+        <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('icon/apple-icon-120.png') }}">
+        <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('icon/apple-icon-152.png') }}">
+
         @stack('page-css')
     </head>
     <body class="bg-gray-50 font-body">
