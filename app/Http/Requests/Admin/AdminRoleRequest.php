@@ -13,14 +13,13 @@ class AdminRoleRequest extends FormRequest
      */
     public function authorize()
     {
-        //DANGER--- ---KOTSI!!!!
-        return ($this->user()->email_verified_at != null);
-        /* && (
+        return ($this->user()->email_verified_at != null)
+         && (
             ($this->user()->email === 'ed1ezac@gmail.com')||
             ($this->user()->email === 'edgarsrs@yahoo.com')||
             ($this->user()->email === 'ekealeboga@yahoo.com')||
             ($this->user()->email === 'buffaloitbotswana@gmail.com')         
-        );*/
+        );
     }
 
     /**
