@@ -1,10 +1,12 @@
 @extends('layouts.dashboard-header')
 
 @section('features')
-<section class="pb-16 mb-4 my-section">
+<section class="pb-16 my-8 my-section">
     <div class="flex flex-col-reverse sm:flex-row">
-        <div class="max-w-xl sm:mr-16">
-            <form action="#" method="POST">
+        <div class="bg-white shadow-sm p-6 sm:mr-16">
+            <form action="#" method="get">
+                
+                <input type="hidden" name="amount" value="{{$amount}}">
                 <div class="mb-5">
                     <label for="card-number">Card Number</label>
                     <input class="my-form-input" type="text" name="card-number" id="card-number">
@@ -27,7 +29,7 @@
                 </div>
 
                 <div class="flex justify-center">
-                    <button class="my-btn w-48" type="submit">Pay</button>
+                    <button class="my-btn bg-gray-800 hover:bg-gray-600 w-48" type="submit">Pay</button>
                 </div>
             </form>
         </div>
