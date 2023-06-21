@@ -9,6 +9,7 @@ use App\Models\Trade;
 use App\Models\Company;
 use App\Rules\EmptyField;
 use App\Models\Membership;
+use App\Models\Subscription;
 use App\Models\CompanyTrades;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -85,7 +86,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        dd($data);
+        //dd($data, $data['location']['id']);
         
         try {
             DB::transaction(function() use ($data) {
@@ -99,7 +100,7 @@ class RegisterController extends Controller
                 //trades
                 $this->registerCompanyTrades($company->id, $data);
                 //membership
-                $this->registerMembership($company->id);
+                $this->registerMembershipWithTrial($company->id);
                 //roles
                 $this->user->assignRole(User::Trader);
             }, 5);
@@ -121,7 +122,7 @@ class RegisterController extends Controller
             'name' => $data['company-name'],
             'intro' => $data['intro'],
             'email' => $data['company-email'],
-            'location' => $data['location'][1],
+            'location_id' => $data['location']['id'],
             'address' => $data['address'],
             'telephone' => $data['tel'],
             'mobile' => $data['mobile'],
@@ -143,7 +144,7 @@ class RegisterController extends Controller
         }
     }
 
-    private function registerMembership($companyId){
+    private function registerMembershipWithTrial($companyId){
         $time_now = Carbon::now('+2.00');
         $memb_id = $companyId;
         if($memb_id < 100){
@@ -152,10 +153,38 @@ class RegisterController extends Controller
             $memb_id = sprintf('%03d', $memb_id);
         }
         //Absent fields are handled by Defaults
-        return Membership::create([
+        $member = Membership::create([
             'code' => 'MT'.$memb_id,
             'company_id' => $companyId,
+        ]);
+
+        return Subscription::create([
+            'membership_id' => $member->id,
+            'company_id' => $companyId,
             'expiry' => $time_now->addDays(31),//1 month
+        ]);
+    }
+
+    private function registerMembershipNoTrial($companyId){
+        $time_now = Carbon::now('+2.00');
+        $memb_id = $companyId;
+        if($memb_id < 100){
+            //if the company ID is less than 100 we add
+            //leading zeros to it: 5 becomes 005, 23 becomes 023...
+            $memb_id = sprintf('%03d', $memb_id);
+        }
+        //Absent fields are handled by Defaults
+        $member = Membership::create([
+            'code' => 'MT'.$memb_id,
+            'company_id' => $companyId,
+        ]);
+
+        return Subscription::create([
+            'membership_id' => $member->id,
+            'company_id' => $companyId,
+            'status' => 'expired',
+            'type' => 'Standard',
+            'expiry' => $time_now,
         ]);
     }
 }
