@@ -5,37 +5,37 @@
     
     <div class="sm:grid grid-cols-10">
         <div class="col col-span-7">
-            <div class="bg-white rounded shadow p-4 max-w-2xl">
+            <div class="bg-white rounded shadow p-6 max-w-2xl">
                 <div class="flex justify-between divide-x-2 space-x-4">
                     <div>
                         <h6 class="text-gray-400 text-xs font-bold">{{ $membership->code }}</h6>
-                        <h3 class="text-gray-800 font-semibold text-base">{{ Auth::user()->company->name }}</h3>
+                        <h3 class="text-gray-800 my-1 font-semibold text-base">{{ Auth::user()->company->name }}</h3>
                         <p class="text-sm text-gray-500">{{ Auth::user()->name }}</p>
                     </div>
                     <div class="pl-8 pr-0">
                         <h6 class="text-gray-400 text-xs font-bold">Type</h6>
-                        <h3 class="text-gray-800 font-semibold text-base">{{ $membership->type }} Membership</h3>
-                        @if($membership->billing == 0)
+                        <h3 class="text-gray-800 my-1 font-semibold text-base">{{ $currentSub->type }} Membership</h3>
+                        @if($currentSub->amount == 0)
                         <p class="text-sm text-gray-500">Free</p>
                         @else
-                        <p class="text-sm text-gray-500">P{{ $membership->billing }}</p>
+                        <p class="text-sm text-gray-500">P{{ $currentSub->amount }}</p>
                         @endif
                     </div>
                     <div class="px-8">
                         <h6 class="text-gray-400 text-xs font-bold">Status</h6>
-                        @if($membership->status == 'accepted')
-                        <h3 class="text-gray-800 font-semibold text-base">{{ $membership->status }}</h3>
+                        @if($currentSub->status == 'active')
+                        <h3 class="text-green-700 my-1 font-semibold text-base">{{ $currentSub->status }}</h3>
                         @else
-                        <h3 class="text-red-600 font-semibold text-base">{{ $membership->status }}</h3>
+                        <h3 class="text-red-600 my-1 font-semibold text-base">{{ $currentSub->status }}</h3>
                         @endif
                         <!---Expiry date---->
-                        <p class="text-sm text-gray-500">Valid til: {{ $membership->expiry }}</p>
+                        <p class="text-sm text-gray-500">Valid til: {{ $currentSub->expiry }}</p>
                     </div>
                 </div>
             </div>
 
             <div class="mb-16">
-                @if (isset($subs) && count($subs) > 1)
+                @if (isset($allSubs) && count($allSubs) > 1)
                 <div class="mr-4 xl:mr-6 mt-8 xl:mt-10">
                     <div class="-my-2 sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -44,7 +44,7 @@
                                     <thead class="bg-gray-50">
                                     <tr>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
-                                            Membership Type
+                                            Subscription Type
                                         </th>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">
                                             Amount
@@ -58,26 +58,30 @@
                                     </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
-                                        @foreach ($subs as $sub)
+                                        @foreach ($allSubs as $sub)
                                             <tr>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                     {{ $sub->type }}
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    {{ $sub->billing }}
+                                                    P{{ $sub->amount }}
                                                 </td>
                                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                                     {{ $sub->expiry }}
                                                 </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    {{ $sub->status }}
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm">
+                                                    @if($sub->status == 'active')
+                                                    <span class="text-green-500 font-semibold">{{ $sub->status }}</span>
+                                                    @else
+                                                    <span class="text-gray-500">{{ $sub->status }}</span>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
-                                @if(count($subs) >= 12)
-                                    <div class="px-4 py-2">{{ $subs->links() }}</div>
+                                @if($allSubs->hasPages())
+                                    <div class="px-4 py-2">{{ $allSubs->links() }}</div>
                                 @endif
                             </div>
                         </div>
@@ -98,13 +102,13 @@
         </div>
         <div class="col col-span-3 mb-8">
             <div class="flex justify-end">
-                <div class="hidden md:block mr-16 border-l border-gray-200"></div>
+                <div class="hidden md:block mr-8 border-l border-dashed border-gray-200"></div>
                 <div class="flex flex-row sm:flex-col">
                     <div class="sm:mb-4 mr-3 sm:mr-0">
                         <div class="bg-white shadow-md rounded-b-lg px-8 py-3 border-t-8 border-yellow-400">
                             <p class="text-gray-700 text-sm uppercase mb-2 font-semibold">3 Months</p>
                             <h3 class="text-gray-900 text-4xl mb-1 font-light">P90</h3>
-                            <p class="text-gray-500 text-sm text-lg mb-3">P<span class="font-bold">30</span>/mo</p>
+                            <p class="text-gray-500 text-sm mb-3">P<span class="font-bold">30</span>/mo</p>
                             
                             <div class="flex justify-center">
                                 <form method="get" action="/membership/subscribe">
@@ -120,7 +124,7 @@
                         <div class="bg-white shadow-md rounded-b-lg px-8 py-3 border-t-8 border-purple-400">
                             <p class="text-gray-700 text-sm uppercase mb-2 font-semibold">6 Months</p>
                             <h3 class="text-gray-900 text-4xl mb-1 font-light">P162</h3>
-                            <p class="text-gray-500 text-sm text-lg mb-3">P<span class="font-bold">27</span>/mo, save <span class="font-bold">11</span>%</p>
+                            <p class="text-gray-500 text-sm mb-3">P<span class="font-bold">27</span>/mo, save <span class="font-bold">11</span>%</p>
                           
                             <div class="flex justify-center">
                                 <form method="get" action="/membership/subscribe">
