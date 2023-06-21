@@ -46,14 +46,21 @@ class Company extends Model
         });
     }
 
-    public function scopeAtLocation($query, $loc)
-    {
-        return $query->where('location', 'LIKE', '%'.$loc.'%');
+    public function scopeWithActiveMembership($query){
+        return $query->whereHas('membership', function ($inner) {
+                $inner->where('status', 'active');
+        });
     }
 
-    public function scopeAtExactLocation($query, $loc)
+    public function scopeWithActiveSubscription($query){
+        return $query->whereHas('subscriptions', function ($inner) {
+                $inner->where('status', 'active');
+        });
+    }
+
+    public function scopeAtLocation($query, $loc)
     {
-        return $query->where('location', $loc);
+        return $query->where('location_id', $loc);
     }
 
     public function trades(){
@@ -70,6 +77,10 @@ class Company extends Model
 
     public function membership(){
         return $this->hasOne(Membership::class);
+    }
+
+    public function subscriptions(){
+        return $this->hasMany(Subscription::class);
     }
 
     public function qualifications(){
