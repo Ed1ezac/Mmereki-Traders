@@ -19,7 +19,7 @@ class Company extends Model
         'verification',
         'about', 
         'email', 
-        'location', 
+        'location_id', 
         'address',
         'telephone',
         'mobile'
@@ -64,12 +64,12 @@ class Company extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function membership(){
-        return $this->hasOne(Membership::class);
+    public function location(){
+        return $this->belongsTo(Location::class);
     }
 
-    public function subscriptions(){
-        return null;//hasMany(Subscriptions)
+    public function membership(){
+        return $this->hasOne(Membership::class);
     }
 
     public function qualifications(){
