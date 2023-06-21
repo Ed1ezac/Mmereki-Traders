@@ -26,7 +26,7 @@ class SearchRequest extends FormRequest
         return [
             //
             'trader' => 'required|string|max:100',
-            'location' => 'required|string|max:70'
+            'location' => 'required'
         ];
     }
 }

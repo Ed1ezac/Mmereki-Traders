@@ -9,11 +9,21 @@
             <div class="w-56 sm:w-52 lg:w-60">
               <input type="text" name="trader" class="my-form-input" placeholder="Trader e.g. plumber" required>
             </div>
-            <div class="w-56 sm:w-52 lg:w-60">
-              <input type="text" name="location" class="my-form-input" placeholder="Location, e.g. Gaborone" required>
+            <div class="w-56 sm:w-52 lg:w-60 -mt-1">
+              <location-selector
+                  v-bind:locations="{{ json_encode($locations) }}"
+                  v-bind:my-location="{{ json_encode(old('location')) }}">
+              </location-selector>
             </div>
             <div class="w-56 sm:w-52 lg:w-60">
-              <button type="submit" class="px-4 py-2 rounded w-full my-btn">Search</button>
+              <button type="submit" class="px-4 py-2 rounded w-full my-btn">
+                <span class="mr-3 flex items-center">
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd" />
+                    </svg>
+                </span>
+                Search
+              </button>
             </div>
           </div>  
         </form>
@@ -44,7 +54,7 @@
             </div>
 
             @if($result->logo != null)
-              <img class="object-cover w-32 h-32 md:flex-shrink-0 hidden md:block" src="{{ url('storage/'.$result->logo) }}" alt="trade logo">
+              <img class="border border-primary-500 object-cover w-32 h-32 md:flex-shrink-0 hidden md:block" src="{{ url('storage/'.$result->logo) }}" alt="trade logo">
             @else
             <div class="border-primary-700 border-dashed border-2 w-32 h-32 bg-gray-100 md:flex-shrink-0 hidden md:block">          
               <svg xmlns="http://www.w3.org/2000/svg" class="text-primary-700 h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -62,7 +72,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
               </svg>
 
-              {{ $result->location }}
+              {{ $result->location->name }}
             </div>
             <div class="flex text-sm font-bold flex-1 p-1 text-gray-900 border-gray-200 border-solid border-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-primary-600 h-6 w-6 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -86,7 +96,11 @@
         </div>
         @endforeach
         <!--- pagination  --->
-        {{ $results->links() }}
+        @if($results->hasPages())
+          <div class="">
+          {{ $results->appends(array('trader' => $trader, 'location' => $location))->links() }}
+          </div>
+        @endif
       </div>
     </div>
   @else

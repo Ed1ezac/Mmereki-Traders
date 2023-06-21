@@ -9,7 +9,7 @@
                     focus-visible:ring-offset-gray-300 sm:text-sm">
                     <ComboboxInput class="w-full bg-gray-300 pl-3 pr-10 text-sm leading-5 font-semibold text-gray-900 border-none "
                         :displayValue="(location) => location.name"
-                        @change="query = $event.target.value"/>
+                        @change="query = $event.target.value" placeholder="Location, e.g. Gaborone"/>
                 </div>
                 <!---Options--->
                 <TransitionRoot leave="transition ease-in duration-100"
