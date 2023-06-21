@@ -9,21 +9,14 @@ class Membership extends Model
 {
     use HasFactory;
 
-    const Trial = 'Trial';
-    const Standard = 'Standard';
-    const Professional = 'Professional';
     const Active = 'active';
-    const Expired = 'expired';
     const Elevated = 'elevated';
     const Disabled = 'disabled';
 
     protected $fillable = [
         'code',
         'company_id',
-        'type',
-        'billing',
         'status',
-        'expiry',
     ];
 
     public function scopeForCompany($query, $company){
@@ -34,6 +27,10 @@ class Membership extends Model
         return $this->update([
             'status' => $newStatus
         ]);
+    }
+
+    public function subscriptions(){
+        return $this->hasMany(Subscription::class);
     }
 
 }

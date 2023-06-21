@@ -17,10 +17,7 @@ class CreateMembershipsTable extends Migration
             $table->id();
             $table->string('code');
             $table->foreignId('company_id');
-            $table->enum('type', ['Trial', 'Standard', 'Professional'] )->default("Trial");
-            $table->integer('billing')->default("0");
-            $table->enum('status', ['active','expired','elevated','disabled'])->default("active");
-            $table->date('expiry');
+            $table->enum('status', ['active','elevated','disabled'])->default("active");
             $table->timestamps();
         });
     }
