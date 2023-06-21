@@ -21,10 +21,18 @@
                 <div class="py-4 bg-white border border-gray-200 max-w-sm lg:max-w-5xl rounded-sm shadow-md px-4">
                     <div class="flex flex-col items-center justify-center lg:flex-row gap-10">
                         <div class="w-80">
-                            <input type="text" name="trader" class="my-form-input" placeholder="Trade e.g. plumber" required>
+                            <input type="text" name="trader" class="my-form-input" placeholder="Trade e.g. plumber" required>                            
                         </div>
-                        <div class="w-80">
-                            <input type="text" name="location" class="my-form-input" placeholder="Location, e.g. Gaborone" required>
+                        <div class="flex-col h-full w-80 -mt-1">
+                            <location-selector
+                                v-bind:locations="{{ json_encode($locations) }}"
+                                v-bind:my-location="{{ json_encode(old('location')) }}">
+                            </location-selector>
+                            @error('location')
+                            <span class="-mb-4 text-xs font-normal text-red-500" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="flex w-80">
                             <button type="submit" class="px-4 py-2 group rounded w-full my-btn">

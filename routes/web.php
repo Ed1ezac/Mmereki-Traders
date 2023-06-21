@@ -7,8 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\TradeQualificationController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,16 +20,16 @@ use App\Http\Controllers\TradeQualificationController;
 |
 */
 
+Auth::routes(['verify'=>true]);
+
 Route::get('/', [SearchProcessor::class, 'search']);
 Route::get('/about', [SearchProcessor::class, 'about']);
 Route::get('/terms', [SearchProcessor::class, 'terms']);
 Route::get('/privacy-policy', [SearchProcessor::class, 'privacy']);
 Route::get('/refund-policy', [SearchProcessor::class, 'refunds']);
 
-Route::get('/trader/{id?}/details', [SearchProcessor::class, 'traderDetails']);
+Route::get('/trader/{id?}/details', [SearchProcessor::class, 'companyDetails']);
 Route::get('/results', [SearchProcessor::class, 'processSearchRequest'])->name('search.results');
-
-Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
     //middleware - 'verified'
@@ -41,9 +41,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/update-profile', [CompanyController::class, 'update']);
     Route::post('/update-intro', [CompanyController::class, 'updateIntro']);
     Route::post('/update-location', [CompanyController::class, 'updateLocation']);
-    Route::post('/update-tel', [CompanyController::class, 'updateTel']);
     Route::post('/update-mobile', [CompanyController::class, 'updateMobile']);
     Route::post('/update-about', [CompanyController::class, 'updateAbout']);
+    Route::get('/remove-logo', [CompanyController::class, 'removeLogo']);
     //user
     Route::get('/settings', [UserController::class, 'editUser']);
     Route::post('/settings/update-user', [UserController::class, 'updateUser']);
@@ -53,11 +53,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/document/{id?}/delete', [TradeQualificationController::class, 'deleteQualification']);
     //
     Route::get('/membership/subscribe', [MembershipController::class, 'subscribe']);
-    Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin']);
+    Route::post('/membership/process-subscription', [SubscriptionController::class, 'subscribe'])->name('pay');
 });
 
-Route::group(['prefix' =>'admin', 'middleware' =>'auth'], function () {
-    // 'middleware' =>'admin'
+Route::group(['prefix' =>'admin', 'middleware' =>'admin'], function () {
+    //user
+    Route::get('/users', [UserController::class, 'list']);
+    Route::get('users/user/{id?}/promote/admin', [UserController::class, 'makeAdmin']);
+    Route::get('/users/user/{id?}/promote/moderator', [UserController::class, 'makeModerator']);
+    Route::get('/users/user/{id?}/demote-to-trader', [UserController::class, 'demoteToTrade']);
+    Route::post('users/user/{id?}/disable/account', [UserController::class, 'deactivate']);
+    //
     Route::get('/companies', [CompanyController::class, 'adminCompaniesList']);
     Route::post('/company/verify/', [CompanyController::class, 'adminVerifyCompany']);
     Route::post('/company/unverify/', [CompanyController::class, 'adminUnverifyCompany']);
@@ -66,3 +72,14 @@ Route::group(['prefix' =>'admin', 'middleware' =>'auth'], function () {
     Route::get('/membership/{id?}/revoke', [MembershipController::class, 'adminRevokeMembership']);
     Route::get('/membership/{id?}/invoke-expiry', [MembershipController::class, 'adminSetMembershipAsExpired']);
 });
+
+Route::get('/challenge/create/first-administrator', [AdminController::class, 'createFirstAdmin'])->middleware(['auth', 'verified']);
+
+//mail test
+/*Route::get('/notification', function () {
+    //$invoice = Invoice::find(1);
+    $user = User::first();
+    return (new VerifyEmail())
+                ->toMail($user);
+    });
+*/

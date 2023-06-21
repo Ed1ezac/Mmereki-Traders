@@ -11,9 +11,9 @@ class AdminController extends Controller
 {
     //
     public function createFirstAdmin(AdminRoleRequest $request){
-        Auth::user()->assignRole([User::Moderator, User::Administrator]);
-        return back()->with('status', 'Super-Admin priviledges have been granted to your account!');
-    }
+        Auth::user()->assignRole(User::Administrator);
+        return back()->with('status', 'Super-Admin privileges have been granted to your account!');
+    } 
 
     //for the Future!
     public function giveUserRole(){

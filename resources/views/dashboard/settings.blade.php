@@ -1,14 +1,14 @@
 @extends('layouts.dashboard-header')
 
 @section('features')
-<div class="mt-4 mb-4">
+<div class="mt-4 mb-4 my-section">
     <h3 class="text-lg font-semibold mb-6 leading-6 text-gray-900">Manage Account</h3>
    
     <div class="border-t-2 border-gray-300 my-4"></div>
 </div>
 
 
-<section class="mb-16">
+<section class="my-section mb-16">
     <form action="/settings/update-user" method="post">
         @csrf
         <div>
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="hidden sm:block" aria-hidden="true">
+            <!-- div class="hidden sm:block" aria-hidden="true">
                 <div class="py-5">
                     <div class="border-t border-gray-200"></div>
                 </div>
@@ -182,9 +182,11 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div -->
 
         </div>
     </form>
-</section>        
+</section>
+
+@include('components.footer-large')
 @endsection

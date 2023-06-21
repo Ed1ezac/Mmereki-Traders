@@ -19,7 +19,7 @@ class Company extends Model
         'verification',
         'about', 
         'email', 
-        'location', 
+        'location_id', 
         'address',
         'telephone',
         'mobile'
@@ -46,14 +46,21 @@ class Company extends Model
         });
     }
 
-    public function scopeAtLocation($query, $loc)
-    {
-        return $query->where('location', 'LIKE', '%'.$loc.'%');
+    public function scopeWithActiveMembership($query){
+        return $query->whereHas('membership', function ($inner) {
+                $inner->where('status', 'active');
+        });
     }
 
-    public function scopeAtExactLocation($query, $loc)
+    public function scopeWithActiveSubscription($query){
+        return $query->whereHas('subscriptions', function ($inner) {
+                $inner->where('status', 'active');
+        });
+    }
+
+    public function scopeAtLocation($query, $loc)
     {
-        return $query->where('location', $loc);
+        return $query->where('location_id', $loc);
     }
 
     public function trades(){
@@ -64,12 +71,16 @@ class Company extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function location(){
+        return $this->belongsTo(Location::class);
+    }
+
     public function membership(){
         return $this->hasOne(Membership::class);
     }
 
     public function subscriptions(){
-        return null;//hasMany(Subscriptions)
+        return $this->hasMany(Subscription::class);
     }
 
     public function qualifications(){
@@ -82,7 +93,7 @@ class Company extends Model
             'intro' => $values['intro'],
             'about' => $values['about'], 
             'email' => $values['company-email'], 
-            'location' => $values['location'], 
+            'location_id' => $values['location']['id'], 
             'address' => $values['address'],
             'telephone' => $values['tel'],
             'mobile' => $values['mobile']
@@ -102,7 +113,7 @@ class Company extends Model
         return $this->trades()->sync($ids);
     }
 
-    public function updateLogo(string $path){
+    public function updateLogo($path){
         return $this->update([
             'logo' => $path
         ]);  

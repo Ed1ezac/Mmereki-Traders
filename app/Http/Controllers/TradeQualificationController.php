@@ -10,7 +10,6 @@ use App\Http\Requests\DocumentUploadRequest;
 
 class TradeQualificationController extends Controller
 {
-
     public function uploadQualification(DocumentUploadRequest $request){
         $path = $request->file('file')->store('docs');
         TradeQualification::create([
@@ -21,7 +20,6 @@ class TradeQualificationController extends Controller
 
         return back()->with('status', 'Your Document has been uploaded successfully.');
     }
-
 
     public function downloadQualification($file_id){
         $item = TradeQualification::find($file_id);

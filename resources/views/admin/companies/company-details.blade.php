@@ -1,7 +1,7 @@
 @extends('layouts.dashboard-header')
 
 @section('features')
-
+<section class="my-section">
 <div class="mt-4 mb-3">
     <div class="flex justify-between items-end">
         <h3 class="text-lg font-semibold leading-6 text-gray-900">Verify Company</h3>
@@ -56,7 +56,7 @@
                         {{$company->address}}
                     </div>
                     <div class="text-sm text-gray-500">
-                        {{$company->location}}
+                        {{ $company->location->name }}
                     </div>
                     <div class="text-sm text-gray-500">
                         {{$company->telephone.', '.$company->mobile}}
@@ -70,20 +70,16 @@
                         </div>
 
                         <div class="ml-8">
-                            @if($company->membership->status == 'pending')
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-gray-700">
-                                {{$company->membership->status}}
-                            </span>
-                            @elseif($company->membership->status == 'accepted')
+                            @if($company->membership->status == 'active')
                             <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                                 {{ $company->membership->status }}
-                            </span>
-                            @elseif($company->membership->status == 'expired')
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-600">
+                            </span> 
+                            @elseif($company->membership->status == 'disabled')
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-red-700">
                                 {{ $company->membership->status }}
                             </span>
-                            @elseif($company->membership->status == 'revoked')
-                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-200 text-red-700">
+                            @else($company->membership->status == 'expired')
+                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-600">
                                 {{ $company->membership->status }}
                             </span>
                             @endif
@@ -93,11 +89,11 @@
                         {{$company->membership->type.' Membership'}}
                     </div>
                     <div class="text-sm text-gray-500">
-                        {{'Valid until '.$company->membership->expiration}}
+                        {{'Valid until '.$company->membership->expiry}}
                     </div>
                     <div class="pt-4 flex flex-wrap">
                         <a class="mr-3 mb-2 my-btn-small" href="/admin/membership/{{$company->membership->id}}/invoke-expiry">Set As Expired</a>
-                        <a class="mr-3 mb-2 my-btn-small hover:bg-red-600" href="/admin/membership/{{$company->membership->id}}/revoke">Revoke Memebership</a>
+                        <a class="mr-3 mb-2 my-btn-small hover:bg-red-600" href="/admin/membership/{{$company->membership->id}}/revoke">Disable Membership</a>
                     </div>
                 </div>
             </div>
@@ -109,21 +105,17 @@
     <div class="shadow sm:rounded-md sm:overflow-hidden">
         <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
             <div class="flex flex-col sm:grid sm:grid-cols-6 gap-6 sm:divide-x">
-                <div class="px-2 space-y-2 space-x-2 col-span-2">
+                <h3 class="text-lg text-gray-900">Company Certification</h3>
+                <!--div class="px-2 space-y-2 space-x-2 col-span-2">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-gray-700">
                         {{$company->verification}}
                     </span>
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-gray-700">
                         {{$company->verification}}
                     </span>
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-gray-700">
-                        {{$company->verification}}
-                    </span>
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-gray-700">
-                        {{$company->verification}}
-                    </span>
-                </div>
+                </div -->
                 <div class="px-2 space-y-2 col-span-4">
+                    @if(count($company->qualifications) > 0)
                     <div class="flex flex-wrap">
                         @for($i=0; $i< count($company->qualifications); $i++)
                         <div class="flex flex-col w-16 mr-5">
@@ -140,10 +132,15 @@
                         </div>
                         @endfor
                     </div>
+                    @else
+                    <p class="text-gray-400 py-4 text-center">All the relevant company certification will appear here.</p>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
+</section>
 
+@include('components.footer-large')
 @endsection
