@@ -8,20 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Membership extends Model
 {
     use HasFactory;
-    const Standard = 'Standard';
-    const Professional = 'Professional';
-    const Pending = 'pending';
-    const Accepted = 'accepted';
-    const Expired = 'expired';
-    const Revoked = 'revoked';
+
+    const Active = 'active';
+    const Elevated = 'elevated';
+    const Disabled = 'disabled';
 
     protected $fillable = [
         'code',
         'company_id',
-        'type',
-        'billing',
         'status',
-        'expiration'
     ];
 
     public function scopeForCompany($query, $company){
@@ -32,6 +27,10 @@ class Membership extends Model
         return $this->update([
             'status' => $newStatus
         ]);
+    }
+
+    public function subscriptions(){
+        return $this->hasMany(Subscription::class);
     }
 
 }

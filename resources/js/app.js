@@ -9,8 +9,10 @@ import { createApp } from 'vue';
 import Navbar from './components/navbar.vue';
 import ErrorBanner from './components/error-banner.vue';
 import StatusBanner from './components/status-banner.vue';
-import UploadField from './components/file-upload-field.vue';
 import TradeSelector from './components/trade-selector.vue';
+import UploadField from './components/file-upload-field.vue';
+import UserOptions from './components/admin/user-options.vue';
+import LocationSelector from './components/location-selector.vue';
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -19,10 +21,12 @@ import TradeSelector from './components/trade-selector.vue';
  const app = createApp({
      components:{
         Navbar,
+        UserOptions,
         UploadField,
         ErrorBanner,
         StatusBanner,
         TradeSelector,
+        LocationSelector,
      }
  });
  app.mount("#app");

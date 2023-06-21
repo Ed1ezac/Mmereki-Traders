@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Throwable;
 use \Carbon\Carbon;
 use App\Models\User;
 use App\Models\Trade;
 use App\Models\Company;
 use App\Rules\EmptyField;
 use App\Models\Membership;
+use App\Models\Subscription;
 use App\Models\CompanyTrades;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -62,8 +64,8 @@ class RegisterController extends Controller
             'company-name' => ['required', 'string', 'max:100'],
             'intro' => ['required', 'string', 'max:160'],
             'address' => ['required','string', 'max:100'],
-            'location' => ['required','string', 'max:60'],
-            'trades' => ['required',],
+            'location' => ['required'],//'string', 'max:60'
+            'trades' => ['required'],
             'tel' => ['required', 'numeric', 'min:6'],
             'mobile' => ['required', 'numeric', 'min:8'],
             'birthday' => [new EmptyField],
@@ -84,21 +86,32 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        DB::transaction(function() use ($data) {
-            $this->user = User::create([
-                'name' => trim($data['first-name']).' '.trim($data['last-name']),
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-            //
-            $company = $this->registerCompany($this->user->id, $data);
-            //trades
-            $this->registerCompanyTrades($company->id, $data);
-            //membership
-            $this->registerMembership($company->id);
-            //roles
-            $this->user->assignRole(User::Trader);
-        }, 5);
+        //dd($data, $data['location']['id']);
+        
+        try {
+            DB::transaction(function() use ($data) {
+                $this->user = User::create([
+                    'name' => trim($data['first-name']).' '.trim($data['last-name']),
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                ]);
+                //
+                $company = $this->registerCompany($this->user->id, $data);
+                //trades
+                $this->registerCompanyTrades($company->id, $data);
+                //membership
+                $this->registerMembershipWithTrial($company->id);
+                //roles
+                $this->user->assignRole(User::Trader);
+            }, 5);
+        } catch (\Illuminate\Database\QueryException $e) {
+            $errorCode = $e->errorInfo[1];
+            if($errorCode == 1062){
+                // houston, we have a duplicate entry problem
+                return redirect()->back()
+                    ->withErrors('The email you entered has been used to create an account. Please enter a different one.');
+            }
+        }
 
         return $this->user;
     }
@@ -109,7 +122,7 @@ class RegisterController extends Controller
             'name' => $data['company-name'],
             'intro' => $data['intro'],
             'email' => $data['company-email'],
-            'location' => $data['location'],
+            'location_id' => $data['location']['id'],
             'address' => $data['address'],
             'telephone' => $data['tel'],
             'mobile' => $data['mobile'],
@@ -118,11 +131,10 @@ class RegisterController extends Controller
 
     private function registerCompanyTrades($companyId, array $data){
         $trades = $data['trades'];
-        
         //trades is an array of arrays;
         foreach($trades as $trade){
             foreach($trade as $key => $val){
-                if($key  == "id"){
+                if($key == "id"){
                     CompanyTrades::create([
                         'company_id' => $companyId,
                         'trade_id' => $val,
@@ -132,7 +144,7 @@ class RegisterController extends Controller
         }
     }
 
-    private function registerMembership($companyId){
+    private function registerMembershipWithTrial($companyId){
         $time_now = Carbon::now('+2.00');
         $memb_id = $companyId;
         if($memb_id < 100){
@@ -141,10 +153,38 @@ class RegisterController extends Controller
             $memb_id = sprintf('%03d', $memb_id);
         }
         //Absent fields are handled by Defaults
-        return Membership::create([
+        $member = Membership::create([
             'code' => 'MT'.$memb_id,
             'company_id' => $companyId,
-            'expiration' => $time_now->addDays(184),//6 months
+        ]);
+
+        return Subscription::create([
+            'membership_id' => $member->id,
+            'company_id' => $companyId,
+            'expiry' => $time_now->addDays(31),//1 month
+        ]);
+    }
+
+    private function registerMembershipNoTrial($companyId){
+        $time_now = Carbon::now('+2.00');
+        $memb_id = $companyId;
+        if($memb_id < 100){
+            //if the company ID is less than 100 we add
+            //leading zeros to it: 5 becomes 005, 23 becomes 023...
+            $memb_id = sprintf('%03d', $memb_id);
+        }
+        //Absent fields are handled by Defaults
+        $member = Membership::create([
+            'code' => 'MT'.$memb_id,
+            'company_id' => $companyId,
+        ]);
+
+        return Subscription::create([
+            'membership_id' => $member->id,
+            'company_id' => $companyId,
+            'status' => 'expired',
+            'type' => 'Standard',
+            'expiry' => $time_now,
         ]);
     }
 }

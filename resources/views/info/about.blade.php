@@ -85,9 +85,9 @@
                 @endif
             @endfor
             </div>
-            @foreach ($trades as $trade)
-            @endforeach
+            <p class="text-center mt-8 text-gray-500">Don't see your trade here, contact us and we'll add it.</p>
         </div>
+        
     </div>
 </section>
 

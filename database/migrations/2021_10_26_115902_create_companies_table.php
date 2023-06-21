@@ -22,7 +22,7 @@ class CreateCompaniesTable extends Migration
             $table->enum('verification', ['verified', 'pending'])->default('pending');
             $table->text('about')->nullable();
             $table->string('email');
-            $table->string('location');
+            $table->foreignId('location_id');
             $table->string('address');
             $table->string('telephone');
             $table->string('mobile');
@@ -32,9 +32,8 @@ class CreateCompaniesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
      * @return void
-     */
+     **/
     public function down()
     {
         Schema::dropIfExists('companies');

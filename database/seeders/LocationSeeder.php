@@ -14,7 +14,6 @@ class LocationSeeder extends Seeder
     
      public function run()
     {
-
         Location::create(['name' => 'Artisia']);
         Location::create(['name' => 'Bobonong']);
         Location::create(['name' => 'Bokaa']);
@@ -31,7 +30,9 @@ class LocationSeeder extends Seeder
         Location::create(['name' => 'Dutlwe']);
         Location::create(['name' => 'Etsha 13']);
         Location::create(['name' => 'Etsha 6']);
+        Location::create(['name' => 'Francistown']);
         Location::create(['name' => 'Gabane']);
+        Location::create(['name' => 'Gaborone']);
         Location::create(['name' => 'Ghanzi']);
         Location::create(['name' => 'Gojwane']);
         Location::create(['name' => 'Good Hope']);
@@ -40,8 +41,9 @@ class LocationSeeder extends Seeder
         Location::create(['name' => 'Gumare']);
         Location::create(['name' => 'Gweta']);
         Location::create(['name' => 'Hukuntsi']);
-        Location::create(['name' => 'Jackalas']);
-        Location::create(['name' => 'Jackalas']);
+        Location::create(['name' => 'Jackalas 1']);
+        Location::create(['name' => 'Jackalas 2']);
+        Location::create(['name' => 'Jwaneng']);
         Location::create(['name' => 'Kalamare']);
         Location::create(['name' => 'Kang']);
         Location::create(['name' => 'Kanye']);
@@ -65,6 +67,7 @@ class LocationSeeder extends Seeder
         Location::create(['name' => 'Lesenepole']);
         Location::create(['name' => 'Letlhakane']);
         Location::create(['name' => 'Letlhakeng']);
+        Location::create(['name' => 'Lobatse']);
         Location::create(['name' => 'Lokgwabe']);
         Location::create(['name' => 'Lotlhakane']);
         Location::create(['name' => 'Lotlhakane West']);
@@ -151,6 +154,7 @@ class LocationSeeder extends Seeder
         Location::create(['name' => 'Nxamasere']);
         Location::create(['name' => 'Omaweneno']);
         Location::create(['name' => 'Oodi']);
+        Location::create(['name' => 'Orapa']);
         Location::create(['name' => 'Otse']);
         Location::create(['name' => 'Paje']);
         Location::create(['name' => 'Palapye']);
@@ -176,6 +180,7 @@ class LocationSeeder extends Seeder
         Location::create(['name' => 'Sefophe']);
         Location::create(['name' => 'Sehithwa']);
         Location::create(['name' => 'Sekoma']);
+        Location::create(['name' => 'Selibe Phikwe']);
         Location::create(['name' => 'Selokolela']);
         Location::create(['name' => 'Semolale']);
         Location::create(['name' => 'Senete']);
@@ -194,6 +199,7 @@ class LocationSeeder extends Seeder
         Location::create(['name' => 'Sikwane']);
         Location::create(['name' => 'Siviya']);
         Location::create(['name' => 'Sojwe']);
+        Location::create(['name' => 'Sowa Town']);
         Location::create(['name' => 'Takatokwa]);ne']);
         Location::create(['name' => 'Tamasane']);
         Location::create(['name' => 'Tati Siding']);

@@ -8,19 +8,24 @@
                 </a>
 
                 <div class="hidden md:flex md:ml-12 md:space-x-12">
-                    <a v-if="isAuth" href="/home" v-bind:class="currentUrl == 'home' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-white py-1'" class="my-navbar-link">
+                    <a v-if="isAuth" href="/home" v-bind:class="currentUrl == 'home' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-primary-200 py-1'" class="my-navbar-link">
                         <div class="text-sm font-bold">                           
                             Dashboard
                         </div>
                     </a>
-                    <a v-if="isAuth" href="/edit-profile" v-bind:class="currentUrl == 'edit-profile' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-white py-1'" class="my-navbar-link">
+                    <a v-if="isAuth" href="/edit-profile" v-bind:class="currentUrl == 'edit-profile' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-primary-200 py-1'" class="my-navbar-link">
                         <div class="text-sm font-bold">
                             Edit Profile
                         </div>
                     </a>
-                    <a v-if="isAuth" href="/membership" v-bind:class="currentUrl == 'membership' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-white py-1'" class="my-navbar-link">
+                    <a v-if="isAuth" href="/membership" v-bind:class="currentUrl == 'membership' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-primary-200 py-1'" class="my-navbar-link">
                         <div class="text-sm font-bold">
                             Membership
+                        </div>
+                    </a>
+                     <a v-if="isAuth && isAdmin" href="/admin/users" v-bind:class="currentUrl == 'users' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-primary-200 py-1'" class="my-navbar-link">
+                        <div class="text-sm font-bold">
+                            Users
                         </div>
                     </a>
                     <a v-if="isAuth && isAdmin" href="/admin/companies" v-bind:class="currentUrl == 'companies' ? 'text-white border-b-4 border-white':'text-primary-300 hover:text-white py-1'" class="my-navbar-link">

@@ -15,6 +15,12 @@ class CreateSubscriptionsTable extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('company_id');
+            $table->foreignId('membership_id');
+            $table->integer('amount')->default("0");
+            $table->enum('status', ['active','expired',])->default("active");
+            $table->enum('type', ['Trial', 'Standard', 'Professional'] )->default("Trial");
+            $table->date('expiry');
             $table->timestamps();
         });
     }

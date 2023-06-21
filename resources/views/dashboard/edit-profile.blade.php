@@ -1,6 +1,7 @@
 @extends('layouts.dashboard-header')
 
 @section('features')
+<section class="my-section">
 <div class="mt-4 mb-4">
     <div class="flex justify-between items-end">
         <h3 class="text-lg font-semibold leading-6 text-gray-900">Edit Profile</h3>
@@ -28,14 +29,29 @@
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6 shadow sm:rounded-md">
                         <div class="sm:grid sm:grid-cols-9 sm:gap-6">
                             <div class="sm:col-span-2">
-                                <div class="h-24 w-24 bg-green-100">
-                                    <img class="w-24 h-24" 
+                                @if($company->logo == null)
+                                <div class="border-primary-700 border-dashed border-2 w-32 h-32 bg-gray-100 md:flex-shrink-0 hidden md:block">          
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="text-primary-700 h-full w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                @else
+                                <div class="flex flex-col">
+                                    <img class="border border-primary-500 object-cover w-32 h-32 md:flex-shrink-0" 
                                     src="{{ url('storage/'.$company->logo) }}" 
                                     alt="">
+                                    <div>
+                                        <a href="/remove-logo" class="text-xs text-gray-500 mt-1 uppercase font-semibold hover:text-primary-500">Remove Photo</a>
+                                    </div>
                                 </div>
+                                @endif
                             </div>
                             <div class="sm:col-span-7">
-                                <upload-field hint="(Image) .jpg or .png file less than 5MB."></upload-field>
+                                <upload-field 
+                                    identity="logo"
+                                    hint="(Image) .jpg or .png file less than 5MB.">
+                                </upload-field>
                             </div>
                             
                         </div>
@@ -139,8 +155,10 @@
                             <!---location-->
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
-                                <input type="text" name="location" value="{{ $company->location }}" required autocomplete="location" class="mt-1 my-form-input 
-                                @error('location') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror">
+                                <location-selector
+                                    v-bind:locations="{{ json_encode($locations) }}"
+                                    v-bind:my-location="{{ json_encode($company->location) }}">
+                                </location-selector>
                                 @error('location')
                                 <span class="text-xs font-normal text-red-500" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -212,7 +230,7 @@
     </div>
 </div>
 
-<!---Logo--->
+<!---Qualification--->
 <section class="mt-10 sm:mt-0 mb-16">
     <form action="/upload-document" method="post" enctype="multipart/form-data">
         @csrf
@@ -234,7 +252,7 @@
                             <div class="sm:col-span-3">
                                 <div class="">
                                 @for($i=0; $i< count($qualifications); $i++)
-                                    <div class="flex px-3 py-1 mb-2 bg-gray-700 items-center justify-between rounded-sm">
+                                    <div class="flex px-3 py-1 mb-2 bg-primary-600 items-center justify-between rounded-sm">
                                         <div class="text-white text-sm">
                                             {{ "Document".($i+1) }}
                                         </div>
@@ -259,7 +277,10 @@
                                 </div>
                             </div>
                             <div class="sm:col-span-6">
-                                <upload-field hint="(Document) .doc/.docx or .pdf file less than 2MB."></upload-field>
+                                <upload-field 
+                                    identity="cert"
+                                    hint="(Document) .doc/.docx or .pdf file less than 2MB.">
+                                </upload-field>
                             </div>
                         </div>
                         <div class="flex justify-end items-center">
@@ -271,4 +292,7 @@
         </div>
     </form>
 </section>
+</section>
+
+@include('components.footer-large')
 @endsection

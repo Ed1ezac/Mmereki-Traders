@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trade;
 use App\Models\Company;
+use App\Models\Location;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\TradeQualification;
@@ -18,13 +19,14 @@ class CompanyController extends Controller
     public function edit(){
         $trades = Trade::all('id', 'name');
         $company = Company::forUser(Auth::user());
+        $locations = Location::get(['id', 'name']);
         $my_trades = [];
         $qualifications = TradeQualification::forUser(Auth::user());
         //--
         foreach($company->trades()->get() as $item){
             $my_trades[] = Trade::find($item->id, ['id', 'name']);
         }
-        return view('dashboard.edit-profile' , compact('company', 'qualifications', 'trades', 'my_trades'));
+        return view('dashboard.edit-profile' , compact('company', 'locations','qualifications','trades', 'my_trades'));
     }
 
     public function update(CompanyUpdateRequest $request){
@@ -60,28 +62,50 @@ class CompanyController extends Controller
         return redirect('/home')->with('status', 'About updated successfully.');
     }
 
-    public function updateTel(Request $request){
-        $company = Auth::user()->company;
-        $company->update([
-            'telephone' => $request->get('telephone')
-        ]);
-        return redirect('/home')->with('status', 'Telephone updated successfully.');
-    }
-
     public function updateLocation(Request $request){
         $company = Auth::user()->company;
+
         $company->update([
-            'location' => $request->get('location')
+            'location_id' => $request->get('location')['id']
         ]);
         return redirect('/home')->with('status', 'Location updated successfully.');
     }
 
     public function uploadLogo(ImageUploadRequest $request){
-        $path = $request->file('file')->store('images');
         $company = Company::forUser(Auth::user());
+        if($company->logo != null){
+            //delete previous file
+            try{
+                $this->deleteLogoFile($company->logo);
+            }catch(Throwable $t){
+                return back()->withErrors('An error occurred while trying to delete the previous logo. Please try again.');
+            }
+        }
+
+        $path = Storage::disk('public')->putFile('/images', $request->file('file')); 
         $company->updateLogo($path);
 
         return back()->with('status', 'Your Logo has been updated successfully.');
+    }
+
+    public function removeLogo(){
+        $company = Company::forUser(Auth::user());
+        if($company->logo != null){
+            try{
+                //delete file
+                $this->deleteLogoFile($company->logo);
+            }catch(Throwable $t){
+                return back()->withErrors('An error occurred when deleting the logo. Please try again.');
+            }
+            //remove record
+            $company->updateLogo(Null);
+            return back()->with('status', 'Logo removed successfully.');
+        }
+        return back()->withErrors('There is no logo to remove.');
+    }
+
+    private function deleteLogoFile($path){
+        Storage::disk('public')->delete($path);
     }
 
     public function deleteCompany(){
@@ -91,12 +115,12 @@ class CompanyController extends Controller
     //--------------Admin
     public function adminCompaniesList(){
         $companies = Company::latest()->take(8)->get();
-        return view('admin.traders.companies', compact('companies'));
+        return view('admin.companies.list', compact('companies'));
     }
 
     public function adminCompanyDetail($id){
         $company = Company::find($id);
-        return view('admin.traders.company-details', compact('company'));
+        return view('admin.companies.company-details', compact('company'));
     }
     
     public function adminVerifyCompany(Request $request){

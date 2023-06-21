@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Membership;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,9 +11,13 @@ class MembershipController extends Controller
 {
     //
     public function index(){
-        $membership = Membership::forCompany(Auth::user()->company);
+        $company = Auth::user()->company;
+        $membership = Membership::forCompany($company);
         //($membership);
-        return view('dashboard.membership', compact('membership'));
+        $currentSub = Subscription::forCompany($company)->latest()->first(); 
+        $allSubs = Subscription::forCompany($company)->latest()->paginate(8);
+
+        return view('dashboard.membership', compact('membership','currentSub','allSubs'));
     }
 
     public function cancel(){
