@@ -5,8 +5,8 @@
 
 
 @if($company->about == null || $company->logo == null)
-<div class="p-2 mb-4 border-t-2 border-primary-300">
-    Your profile is incomplete <a href="/edit-profile" class="inline-flex ml-8 my-btn">Complete Your Profile</a>
+<div class="flex flex-wrap p-2 mb-4 border-t-2 border-primary-300">
+    <p class="mr-8">Your profile is incomplete</p><a href="/edit-profile" class="my-btn">Complete Your Profile</a>
 </div>
 @endif
 
@@ -59,7 +59,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
                 </svg>
-                {{ $company->location }}
+                {{ $company->location->name }}
             </div>
             <div class="flex text-sm font-bold flex-1 p-1 text-gray-900 border-gray-200 border-solid border-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-primary-600 h-6 w-6 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -84,61 +84,52 @@
 </section>
 
 <!---Profile Edit---->
-<section class="mb-8 my-section">
-    <h3 class="mt-4 mb-2 text-center text-xl font-semibold">Quick Profile Edit</h3>
-    <p class="text-sm mb-4 text-gray-400 text-center">Edit your profile's basic information below.</p>
-
+<section class="mb-16 my-section">
+    <h3 class="mt-4 mb-2  text-xl font-semibold">Quick Profile Edit</h3>
+    <p class="text-sm mb-4 text-gray-400">Edit your profile's basic information below.</p>
+    
     <div class="flex flex-col max-w-4xl">
-        <div class="flex flex-wrap space-y-6 mb-6">
-            <form method="POST" class="max-w-md sm:mr-8 mt-6" action="/update-intro">
+        <div class="flex flex-col sm:grid sm:grid-cols-2 sm:space-x-4 max-w-2xl mb-6">
+            <div class="mb-3 sm:col">
+                <form method="POST" action="/update-location">
+                    @csrf
+                    <div class="flex flex-col">
+                        <label for="intro">Location</label>
+                        <location-selector
+                            v-bind:locations="{{ json_encode($locations) }}"
+                            v-bind:my-location="{{ json_encode($company->location) }}">
+                        </location-selector>
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="mt-2 my-btn">Update</button>
+                    </div>
+                </form>
+            </div>
+            <div class="sm:col">
+                <form method="POST" action="/update-mobile">
+                    @csrf
+                    <div class="flex flex-col">
+                        <label for="mob">Mobile</label>
+                        <input type="text" name="mobile" id="mob" class="my-form-input mt-1" value="{{ $company->mobile }}">
+                    </div>
+                    <div class="flex justify-end">
+                        <button type="submit" class="mt-2 my-btn">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <form method="POST" class="mt-6" action="/update-intro">
                 @csrf
-                <div class="flex flex-col">
+                <div class="flex flex-col max-w-2xl">
                     <label for="intro">Intro</label>
                     <textarea class="my-form-input rounded" type="text" name="intro" id="intro" cols="40" rows="3">{{ $company->intro }}</textarea>
                 </div>
-                <div class="flex justify-end">
+                <div class="flex justify-end max-w-2xl">
                     <button type="submit" class="mt-2 my-btn">Update</button>
                 </div>                    
             </form>
-
-            <div class="flex">
-                <div class="mr-6">
-                    <form method="POST" action="/update-location">
-                        @csrf
-                        <div class="flex flex-col">
-                            <label for="intro">Location</label>
-                            <input type="text" name="location" id="intro" class="my-form-input rounded" value="{{ $company->location }}">
-                        </div>
-                        <div class="flex justify-end">
-                            <button type="submit" class="mt-2 my-btn">Update</button>
-                        </div>
-                    </form>
-                </div>
-                <!--- div class="mr-5">
-                    <form method="POST" action="/update-tel">
-                        @csrf
-                        <div class="flex flex-col">
-                            <label for="tel">Telephone</label>
-                            <input type="text" name="telephone"  id="tel" class="my-form-input rounded" value="{{ $company->telephone }}">
-                        </div>
-                        <div class="flex justify-end">
-                            <button type="submit" class="mt-2 my-btn">Update</button>
-                        </div>
-                    </form>
-                </div -->
-                <div>
-                    <form method="POST" action="/update-mobile">
-                        @csrf
-                        <div class="flex flex-col">
-                            <label for="mob">Mobile</label>
-                            <input type="text" name="mobile" id="mob" class="my-form-input rounded" value="{{ $company->mobile }}">
-                        </div>
-                        <div class="flex justify-end">
-                            <button type="submit" class="mt-2 my-btn">Update</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
         </div>
         
         <div class="">
@@ -146,7 +137,7 @@
                 @csrf
                 <div class="flex flex-col max-w-2xl">
                     <label for="about">About</label>
-                    <textarea name="about" id="" cols="30" rows="6" class="my-form-input rounded">{{ $company->about }}</textarea>
+                    <textarea name="about" id="about" cols="40" rows="6" class="my-form-input rounded">{{ $company->about }}</textarea>
                 </div>
                 <div class="flex justify-end max-w-2xl">
                     <button type="submit" class="mt-2 my-btn">Update</button>

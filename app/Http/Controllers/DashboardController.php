@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Location;
 use App\Models\Membership;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,8 +20,9 @@ class DashboardController extends Controller
     {
         $company = Company::forUser(Auth::user());
         $membership = Membership::forCompany($company);
+        $locations = Location::get(['id', 'name']);
 
-        return view('dashboard.home', compact('company', 'membership'));
+        return view('dashboard.home', compact('company', 'locations', 'membership'));
     }
 
 

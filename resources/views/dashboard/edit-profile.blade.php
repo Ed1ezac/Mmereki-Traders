@@ -155,8 +155,10 @@
                             <!---location-->
                             <div class="col-span-6 sm:col-span-3">
                                 <label for="location" class="block text-sm font-medium text-gray-700">Location</label>
-                                <input type="text" name="location" value="{{ $company->location }}" required autocomplete="location" class="mt-1 my-form-input 
-                                @error('location') bg-red-300 border-red-400 focus:border-red-500 focus:ring-red-500 @enderror">
+                                <location-selector
+                                    v-bind:locations="{{ json_encode($locations) }}"
+                                    v-bind:my-location="{{ json_encode($company->location) }}">
+                                </location-selector>
                                 @error('location')
                                 <span class="text-xs font-normal text-red-500" role="alert">
                                     <strong>{{ $message }}</strong>

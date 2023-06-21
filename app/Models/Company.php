@@ -82,7 +82,7 @@ class Company extends Model
             'intro' => $values['intro'],
             'about' => $values['about'], 
             'email' => $values['company-email'], 
-            'location' => $values['location'], 
+            'location_id' => $values['location']['id'], 
             'address' => $values['address'],
             'telephone' => $values['tel'],
             'mobile' => $values['mobile']

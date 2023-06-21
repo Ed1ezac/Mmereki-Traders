@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Trade;
 use App\Models\Company;
+use App\Models\Location;
 use App\Models\Membership;
 use Illuminate\Http\Request;
 use App\Models\TradeQualification;
@@ -18,13 +19,14 @@ class CompanyController extends Controller
     public function edit(){
         $trades = Trade::all('id', 'name');
         $company = Company::forUser(Auth::user());
+        $locations = Location::get(['id', 'name']);
         $my_trades = [];
         $qualifications = TradeQualification::forUser(Auth::user());
         //--
         foreach($company->trades()->get() as $item){
             $my_trades[] = Trade::find($item->id, ['id', 'name']);
         }
-        return view('dashboard.edit-profile' , compact('company', 'qualifications', 'trades', 'my_trades'));
+        return view('dashboard.edit-profile' , compact('company', 'locations','qualifications','trades', 'my_trades'));
     }
 
     public function update(CompanyUpdateRequest $request){
@@ -70,8 +72,9 @@ class CompanyController extends Controller
 
     public function updateLocation(Request $request){
         $company = Auth::user()->company;
+
         $company->update([
-            'location' => $request->get('location')
+            'location_id' => $request->get('location')['id']
         ]);
         return redirect('/home')->with('status', 'Location updated successfully.');
     }
