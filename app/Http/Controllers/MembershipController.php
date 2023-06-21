@@ -17,8 +17,6 @@ class MembershipController extends Controller
         $currentSub = Subscription::forCompany($company)->latest()->first(); 
         $allSubs = Subscription::forCompany($company)->latest()->paginate(8);
 
-        //dd($currentSub, $allSubs);
-
         return view('dashboard.membership', compact('membership','currentSub','allSubs'));
     }
 

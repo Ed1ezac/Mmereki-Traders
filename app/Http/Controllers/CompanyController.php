@@ -62,14 +62,6 @@ class CompanyController extends Controller
         return redirect('/home')->with('status', 'About updated successfully.');
     }
 
-    public function updateTel(Request $request){
-        $company = Auth::user()->company;
-        $company->update([
-            'telephone' => $request->get('telephone')
-        ]);
-        return redirect('/home')->with('status', 'Telephone updated successfully.');
-    }
-
     public function updateLocation(Request $request){
         $company = Auth::user()->company;
 
@@ -94,11 +86,6 @@ class CompanyController extends Controller
         $company->updateLogo($path);
 
         return back()->with('status', 'Your Logo has been updated successfully.');
-    }
-
-    private function uploadNewLogo(){
-        $req = request();
-        return $req->file('file')->store('images');
     }
 
     public function removeLogo(){

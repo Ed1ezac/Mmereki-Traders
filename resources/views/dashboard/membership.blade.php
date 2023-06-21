@@ -93,7 +93,7 @@
                     <p class="text-xl text-gray-500 max-w-md mb-8">Subscribe to one of our plans to make sure your company is visible at all times.</p>
 
                     <form action="/membership/subscribe" method="GET">
-                        <input type="hidden" name="amount" value="90">
+                        <input type="hidden" name="price" value="90">
                         <button class="my-btn py-2">Add Subscription</button>
                     </form>
                 </div>

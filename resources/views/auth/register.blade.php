@@ -73,7 +73,7 @@
                                 </div>
                                 <!---location-->
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="location" class="block text-sm font-medium text-gray-700">Location of Operation</label>
+                                    <label for="location" class="block text-sm font-medium text-gray-700">Area of Operation</label>
                                     <location-selector
                                         v-bind:locations="{{ json_encode(\App\Models\Location::get(['id', 'name'])) }}"
                                         v-bind:my-location="{{ json_encode(old('location')) }}">

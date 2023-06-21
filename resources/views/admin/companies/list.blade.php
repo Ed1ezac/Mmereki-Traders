@@ -44,7 +44,7 @@
                                     {{ $com->user->email }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $com->location }}
+                                    {{ $com->location->name }}
                                 </td>
                                 <td>
                                     <div class="flex items-center pl-5">

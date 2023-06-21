@@ -26,7 +26,7 @@ class Subscription extends Model
     ];
 
     public function scopeForCompany($query, $company){
-        return $query->where('company_id', $company->id)->first();
+        return $query->where('company_id', $company->id);
     }
 
     public function updateStatus($newStatus){

@@ -11,11 +11,15 @@
         <div class="p-4 mx-8 bg-white shadow">
             <h3 class="text-gray-800 font-semibold text-base">{{ __('Verify Your Email Address') }}</h3>
             <div class="my-2">
-                {{ __('Before proceeding, please check your email for a verification link.') }}
-                {{ __('If you did not receive the email') }},
-                <form class="inline-flex" method="POST" action="{{ route('verification.resend') }}">
+                <p>
+                    {{ __('Before proceeding, please check your email for a verification link.') }}
+                    {{ __('If you did not receive the email') }}:
+                </p>
+                <form class="" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="bg-gray-700 p-1">{{ __('click here to request another') }}</button>.
+                    <div class="flex justify-end mt-2">
+                        <button type="submit" class="my-btn p-1">{{ __('Click to request another') }}</button>
+                    </div>
                 </form>
             </div>
         </div>
