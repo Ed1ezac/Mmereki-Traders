@@ -16,8 +16,24 @@
     <!---How it works--->
     <div class="flex flex-col items-center lg:max-w-7xl lg:mx-auto">
         <h3 class="text-4xl text-gray-900 py-8 font-semibold">How Does It Work?</h3>
+
+        <h3 class="text-2xl mt-6 text-gray-700 py-8 font-semibold">Searching for a Trade</h3>
+        <div>
+            <div>
+                Fill the form on the landing page to see results. Begin by entering the trade you are 
+                looking for, you can enter the name of the trade you are looking for here as well.
+                <br/><br/>
+                Then begin typing the location of the trade and a pop-up will appear for you to select 
+                the location of the trade. Note that you must only select the location suggested by the 
+                pop-up in oder for the search to show results, or else and error will be shown.
+                <br><br/>
+                You will be shown a list of trades to select from.
+            </div>
+        </div>
+
+        <h3 class="text-2xl mt-6 text-gray-700 py-8 font-semibold">Registering as a Trade</h3>
         <div class="flex flex-col sm:flex-row space-x-16 space-y-6 px-8">
-            <div class="flex flex-col mt-6">
+            <div class="flex flex-col mt-2">
                 <div class="flex items-center ml-6">
                     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary-100">
                         <svg class="w-6 h-6 text-primary-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -32,7 +48,7 @@
                     immediately listed on the platform pending verification.
                 </div>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col mt-2">
                 <div class="flex items-center">
                     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary-100">
                         <svg class="w-6 h-6 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -47,7 +63,7 @@
                     follow up if any exist.
                 </div>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col mt-2">
                 <div class="flex items-center">
                     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary-100">
                         <svg class="w-6 h-6 text-primary-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -63,31 +79,21 @@
                 </div>
             </div>
         </div>
+
+        
     </div>
 </section>
-<section>
+<section class="my-section">
     <!---All AvailableTrades-->
     <div class="py-14">
-        <h3 class="text-4xl text-center py-8 font-semibold">Eligible Trades</h3>
-        <div class="flex flex-col mx-8 max-w-md md:max-w-full items-center md:mx-0 md:flex-row justify-center md:space-x-14">
-            @for ($i=0; $i< count($trades); $i++)
-                @if ($i == 0 || ($i%12 == 0))
-                    @if($i == 0)
-                        <div class="flex-col">
-                    @elseif ($i == count($trades) -1 )
-                        </div>
-                    @else
-                        </div>
-                        <div class="flex-col">
-                    @endif
-                @else    
-                    <div class="bg-white px-5 py-2 mt-3 text-gray-700 font-semibold rounded-md shadow-md">{{ $trades[$i]->name }}</div>
-                @endif
-            @endfor
+        <h3 class="text-4xl text-center py-8 font-semibold">Eligible Trades</h3>        
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+            @foreach($trades as $trade)  
+                <div class="bg-white col-span-1 px-5 py-2 mt-4 mr-4 text-gray-700 font-semibold rounded-md shadow-md">{{ $trade->name }}</div>
+            @endforeach
             </div>
             <p class="text-center mt-8 text-gray-500">Don't see your trade here, contact us and we'll add it.</p>
         </div>
-        
     </div>
 </section>
 
