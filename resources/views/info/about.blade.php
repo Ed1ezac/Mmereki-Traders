@@ -1,12 +1,19 @@
 @extends('layouts.landing-header')
 
+@push('page-css')
+    <style>
+        
+    </style>
+@endpush
+
 @section('content')
-<section class="py-24">
+<section class="-mt-6 pt-16 pb-16 bg-primary-100">
     <!---About--->
     <div class="lg:max-w-7xl lg:mx-auto">
-        <p class="text-center md:text-left px-14 text-xl max-w-5xl">
+        <h3 class="text-center md:text-left text-primary-900 text-xl px-16 font-semibold">About</h3>
+        <p class="text-center md:text-left px-16 text-lg mt-2 max-w-5xl text-primary-800">
             Mmereki Trades is a platform for tradespeople like plumbers, builders 
-            and painter to showcase themselves to potential clients while still 
+            and painters to showcase themselves to potential clients while still 
             allowing potential clients to have a single place to find all the tradespeople 
             they may need for a job that they require to be done.
         </p>
@@ -15,10 +22,85 @@
 <section class="bg-white py-14">
     <!---How it works--->
     <div class="flex flex-col items-center lg:max-w-7xl lg:mx-auto">
-        <h3 class="text-4xl text-gray-900 py-8 font-semibold">How Does It Work?</h3>
-        <div class="flex flex-col sm:flex-row space-x-16 space-y-6 px-8">
-            <div class="flex flex-col mt-6">
-                <div class="flex items-center ml-6">
+        <h3 class="text-4xl text-gray-900 py-8 font-semibold">How does it work?</h3>
+
+        <h3 class="text-2xl text-gray-700 pt-2 pb-8 font-semibold">Searching for a Trade</h3>
+        <div>
+            <div>
+                <p class="text-gray-500 px-16 mb-6">On the landing page you'll see an input form for searching that looks like the one below.</p>
+                <div class="flex justify-center">
+                    <img class="" src="{{ asset('search-bar.png') }}" alt="">
+                </div>
+            </div>
+            <!--- Trade --->
+            <div class="flex space-x-32 mt-24 px-16">
+                <div>
+                    <h3 class="text-primary-800 text-xl font-semibold">Trade Input</h3>
+                    <p class="max-w-md text-gray-500 mt-2">This input field is for entering the Trade you want to find. It is a basic text input 
+                        which can also be used to find a Trade by name.
+                    </p>
+                    <ul class="list-disk pt-8">
+                        <li class="flex mb-8 text-gray-500 font-medium">
+                            <svg class="w-6 h-6 mr-4 text-primary-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Type the type of trade you are looking for
+                        </li>
+                        <li class="flex mb-8 text-gray-500 font-medium">
+                            <svg class="w-6 h-6 mr-4 text-primary-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            You can also enter the name of a Trades-person
+                        </li>
+                        <li class="flex mb-8 text-gray-500 font-medium">
+                            <svg class="w-6 h-6 mr-4 text-primary-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            This field does NOT have pop-up selection
+                        </li>
+                    </ul>
+                </div>
+                <div class="sm:-mt-8">
+                    <img class="w-80 h-80" src="{{ asset('trade-input.png') }}" alt="">
+                </div>
+            </div>
+            <div class="flex justify-end space-x-32 mt-24 px-16">
+                <div class="sm:-mt-8">
+                    <img class="w-80 h-80" src="{{ asset('location-input.png') }}" alt="">
+                </div>
+                <div>
+                    <h3 class="text-primary-800 text-xl font-semibold">Location Input</h3>
+                    <p class="max-w-md text-gray-500 mt-2">This input field is for the location of the Trade. 
+                        It is an enhanced text input that displays a list of major towns and villages in Botswana for you to pick from.
+                    </p>
+                    <ul class="list-disk pt-8 max-w-sm">
+                        <li class="flex mb-8 text-gray-500 font-medium">
+                            <svg class="w-6 h-6 mr-4 text-primary-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Type the location of the trade you are looking for
+                        </li>
+                        <li class="flex mb-8 text-gray-500 font-medium">
+                            <svg class="w-6 h-6 mr-4 text-primary-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Choose a location from the list shown on the pop-up
+                        </li>
+                        <li class="flex mb-8 text-gray-500 font-medium">
+                            <svg class="w-6 h-6 mr-4 text-primary-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            This field has pop-up selection
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-2xl mt-6 text-gray-700 py-8 font-semibold">Registering as a Trade</h3>
+        <div class="flex flex-col md:flex-row md:space-x-8 xl:space-x-16 py-6 px-16">
+            <div class="flex flex-col pt-8 md:pt-0 mt-2">
+                <div class="flex items-center">
                     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary-100">
                         <svg class="w-6 h-6 text-primary-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
@@ -26,13 +108,13 @@
                     </div>
                     <h3 class="ml-3 text-lg text-gray-600 font-semibold">Registration</h3>
                 </div>
-                <div class="ml-6 mt-2 text-gray-500">
+                <div class="mt-2 text-gray-500">
                     A tradesperson registers their account on the platform by filling out the 
                     <span><a class="my-link" href="/register">Registration</a></span> form. Their account is 
                     immediately listed on the platform pending verification.
                 </div>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col pt-8 md:pt-0 mt-2">
                 <div class="flex items-center">
                     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary-100">
                         <svg class="w-6 h-6 text-primary-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -42,12 +124,12 @@
                     <h3 class="ml-3 text-lg text-gray-600 font-semibold">Vetting & Verification</h3>
                 </div>
                 <div class="mt-2 text-gray-500">
-                    Our team will then go through the Tradesperson's information in order
-                    to verify them. This includes an identifty verification and certification 
+                    Our team will then go through the Trade's information in order
+                    to verify them. This includes an identity and certification verification 
                     follow up if any exist.
                 </div>
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col pt-8 md:pt-0 mt-2">
                 <div class="flex items-center">
                     <div class="flex items-center justify-center h-10 w-10 rounded-full bg-primary-100">
                         <svg class="w-6 h-6 text-primary-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -65,29 +147,16 @@
         </div>
     </div>
 </section>
-<section>
+<section class="my-section">
     <!---All AvailableTrades-->
     <div class="py-14">
-        <h3 class="text-4xl text-center py-8 font-semibold">Eligible Trades</h3>
-        <div class="flex flex-col mx-8 max-w-md md:max-w-full items-center md:mx-0 md:flex-row justify-center md:space-x-14">
-            @for ($i=0; $i< count($trades); $i++)
-                @if ($i == 0 || ($i%12 == 0))
-                    @if($i == 0)
-                        <div class="flex-col">
-                    @elseif ($i == count($trades) -1 )
-                        </div>
-                    @else
-                        </div>
-                        <div class="flex-col">
-                    @endif
-                @else    
-                    <div class="bg-white px-5 py-2 mt-3 text-gray-700 font-semibold rounded-md shadow-md">{{ $trades[$i]->name }}</div>
-                @endif
-            @endfor
-            </div>
-            <p class="text-center mt-8 text-gray-500">Don't see your trade here, contact us and we'll add it.</p>
+        <h3 class="text-4xl text-center py-8 font-semibold">Eligible Trades</h3>        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+            @foreach($trades as $trade)  
+                <div class="bg-white col-span-1 max-w-xs px-5 py-2 mt-4 mr-4 text-gray-700 font-semibold rounded-md shadow-md">{{ $trade->name }}</div>
+            @endforeach
         </div>
-        
+        <p class="text-center mt-8 text-gray-500">Don't see your trade here, contact us and we'll add it.</p>
     </div>
 </section>
 
