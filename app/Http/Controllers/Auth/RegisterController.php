@@ -161,7 +161,7 @@ class RegisterController extends Controller
         return Subscription::create([
             'membership_id' => $member->id,
             'company_id' => $companyId,
-            'expiry' => $time_now->addDays(31),//1 month
+            'expiry' => $time_now->addDays(365),//12 month
         ]);
     }
 
