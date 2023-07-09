@@ -7,14 +7,15 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: hsla(0, 0%, 0%, 0.55);
+            background-color: hsla(0, 0%, 0%, 0.45);
             background-image: url("trade.jpg");
+            background-blend-mode: multiply;
         }
     </style>
 @endpush
 
 @section('content')
-<div class="bg-gray-400 h-screen">
+<div class="bg-gradient-to-b from-gray-600 to-slate-100 h-screen">
 <section class="hero">
     <div class="flex flex-col items-center">
         <h2 class="text-center text-primary-200 font-bold text-5xl mt-24 sm:mt-18 px-8 sm:px-0">Search for Tradespeople</h2>
