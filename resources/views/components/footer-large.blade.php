@@ -35,7 +35,7 @@
 
         <div class="px-8 md:px-16 pt-3 pb-3 mt-8">
             <div class="flex justify-between">
-                <p class="text-primary-200">&copy; 2023 Mmereki Trades</p>
+                <p class="text-primary-200">&copy; 2023 Mmereki Tradesmen</p>
                 <div class="">
                     <a class="font-medium text-primary-200 hover:underline hover:text-primary-500" href="#">Created by Buffalo I.T </a>
                 </div>

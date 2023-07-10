@@ -12,7 +12,7 @@
     <div class="lg:max-w-7xl lg:mx-auto">
         <h3 class="text-center md:text-left text-primary-900 text-xl px-16 font-semibold">About</h3>
         <p class="text-center md:text-left px-16 text-lg mt-2 max-w-5xl text-primary-800">
-            Mmereki Trades is a platform for tradespeople like plumbers, builders 
+            Mmereki Tradesmen is a platform for tradespeople like plumbers, builders 
             and painters to showcase themselves to potential clients while still 
             allowing potential clients to have a single place to find all the tradespeople 
             they may need for a job that they require to be done.
