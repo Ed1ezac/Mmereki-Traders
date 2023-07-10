@@ -20,10 +20,10 @@
                 <div> 
                     <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/privacy-policy">Privacy policy</a>
                 </div>  
-               <!--a class="text-gray-400 hover:text-gray-500 hover:underline" href="/terms">Trade directory</a -->
+               <!--a class="text-gray-400 hover:text-gray-500 hover:underline" href="/terms">Trade directory</a>
                 <div> 
                     <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/refund-policy">Payments & Refund Policy</a>
-                </div> 
+                </div --> 
             </div>
 
             <div class="mt-4 sm:mt-0 flex flex-col space-y-3">

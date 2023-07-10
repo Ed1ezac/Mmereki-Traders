@@ -92,9 +92,9 @@
                     <h3 class="text-4xl text-gray-900 mb-4">Add a Subscription</h3>
                     <p class="text-xl text-gray-500 max-w-md mb-8">Subscribe to one of our plans to make sure your company is visible at all times.</p>
 
-                    <form action="/membership/subscribe" method="GET">
+                    <form action="#" method="GET">
                         <input type="hidden" name="price" value="90">
-                        <button class="my-btn py-2">Add Subscription</button>
+                        <button class="my-btn bg-gray-500 hover:bg-gray-800 py-2">Add Subscription</button>
                     </form>
                 </div>
                 @endif
@@ -102,7 +102,7 @@
         </div>
         <div class="col col-span-3 mb-8">
             <div class="flex justify-end">
-                <div class="hidden md:block mr-8 border-l border-dashed border-gray-200"></div>
+                <!-- div class="hidden md:block mr-8 border-l border-dashed border-gray-200"></div>
                 <div class="flex flex-row sm:flex-col">
                     <div class="sm:mb-4 mr-3 sm:mr-0">
                         <div class="bg-white shadow-md rounded-b-lg px-8 py-3 border-t-8 border-yellow-400">
@@ -151,7 +151,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div -->
             </div>
         </div>
     </div>
