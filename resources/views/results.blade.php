@@ -104,7 +104,7 @@
       </div>
     </div>
   @else
-    <!---Invalid/ No result--->
+    <!---Invalid / No result--->
     <div class="text-gray-900 text-2xl mt-32 mb-32 text-center font-medium">No results found for {{$trader}}</div>
   @endif
   </section>
