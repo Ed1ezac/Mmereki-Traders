@@ -4,7 +4,7 @@
         <div class="flex justify-between px-6 h-16 2xl:mx-auto 2xl:max-w-7xl"> 
             <div class="flex">
                 <a href="/" class="self-center">
-                    <img :src="logoUri" class="h-6 w-24 sm:inline-block" alt="logo">
+                    <img :src="logoUri" class="h-10 w-24 sm:inline-block" alt="logo">
                 </a>
 
                 <div class="hidden md:flex md:ml-12 md:space-x-12">

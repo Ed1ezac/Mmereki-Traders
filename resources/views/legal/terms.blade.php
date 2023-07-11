@@ -5,7 +5,7 @@
     <div>
         <h3 class="text-xl font-semibold text-gray-900">Terms of Service</h3>
         <hr/>
-        <p class="mt-2">Mmereki is a registered online application located in Gaborone, Botswana.</p>
+        <p class="mt-2">Mmereki Tradesmen is a registered online application located in Gaborone, Botswana.</p>
     </div>
     <div class="mt-6 ml-4">
         <ul style="list-style-type:disc;">
@@ -16,7 +16,7 @@
             <li>Where we refer to you in these Terms of Use, also includes any person that accesses or 
                 uses our Service on your behalf.
             </li>
-            <li>The “Services” consists of the Website currently located at <a class="my-link" href="/">https://mmereki.co.bw"</a>
+            <li>The “Services” consists of the Website currently located at <a class="my-link" href="/">https://tradesmen.co.bw"</a>
                 , any pages we operate on third party social media applications, and the content and 
                 services we make available through them via the internet, mobile devices including smart phones and tablets.
             </li>
@@ -64,7 +64,7 @@
             By accepting the terms of use you agree to the following:
             <ol type="i">
                 <li>
-                    Your access to and use of <a class="my-link" href="/">https://mmereki.co.bw</a> and its 
+                    Your access to and use of <a class="my-link" href="/">https://tradesmen.co.bw</a> and its 
                     Services are subject exclusively to these Terms and Conditions.
                 </li>
                 <li>
