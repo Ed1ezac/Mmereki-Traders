@@ -2,7 +2,9 @@
 
 @push('page-css')
     <style>
-        .hero{
+        .hero{            
+            width: 100vw;
+            height: 100vh;
             margin-top: -5rem;
             background-size: cover;
             background-position: center;
@@ -15,7 +17,6 @@
 @endpush
 
 @section('content')
-<div class="bg-gradient-to-b from-gray-600 to-slate-100 h-screen">
 <section class="hero">
     <div class="flex flex-col items-center">
         <h2 class="text-center text-primary-200 font-bold text-5xl mt-24 sm:mt-18 px-8 sm:px-0">Search for Tradespeople</h2>
@@ -81,6 +82,5 @@
         </div>
     </div>
 </section>
-</div>
 @endsection
 
