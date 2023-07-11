@@ -62,7 +62,7 @@
                 genuine.
             </p>
             <p class="mt-2">
-                All reviews are posted on <a href="/" class="my-link">https://mmereki.co.bw</a>. The only 
+                All reviews are posted on <a href="/" class="my-link">https://tradesmen.co.bw</a>. The only 
                 information visible on the review post is your name, rating and comment. Your contact 
                 details will never be disclosed to any Trade regarding your review.
             </p>

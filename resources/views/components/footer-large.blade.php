@@ -20,10 +20,10 @@
                 <div> 
                     <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/privacy-policy">Privacy policy</a>
                 </div>  
-               <!--a class="text-gray-400 hover:text-gray-500 hover:underline" href="/terms">Trade directory</a -->
+               <!--a class="text-gray-400 hover:text-gray-500 hover:underline" href="/terms">Trade directory</a>
                 <div> 
                     <a class="font-medium text-primary-500 hover:text-primary-200 hover:underline" href="/refund-policy">Payments & Refund Policy</a>
-                </div> 
+                </div --> 
             </div>
 
             <div class="mt-4 sm:mt-0 flex flex-col space-y-3">
@@ -35,7 +35,7 @@
 
         <div class="px-8 md:px-16 pt-3 pb-3 mt-8">
             <div class="flex justify-between">
-                <p class="text-primary-200">&copy; 2023 Mmereki Trades</p>
+                <p class="text-primary-200">&copy; 2023 Mmereki Tradesmen</p>
                 <div class="">
                     <a class="font-medium text-primary-200 hover:underline hover:text-primary-500" href="#">Created by Buffalo I.T </a>
                 </div>

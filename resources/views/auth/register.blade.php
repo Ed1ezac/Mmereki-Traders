@@ -247,7 +247,7 @@
                                     </div>
                                     <div class="ml-3 text-sm">
                                         <label for="terms" class="font-medium text-gray-700">Terms and Conditions</label>
-                                        <p class="text-gray-500">By clicking accept, you will be agreeing to &copy; Mmereki Trades <a class="my-link" href="/terms">Terms & Conditions</a>&nbsp;, 
+                                        <p class="text-gray-500">By clicking accept, you will be agreeing to &copy; Mmereki Tradesmen <a class="my-link" href="/terms">Terms & Conditions</a>&nbsp;, 
                                         <a class="my-link" href="/privacy-policy">Privacy Policy</a> and code of conduct.
                                         </p>
                                     </div>

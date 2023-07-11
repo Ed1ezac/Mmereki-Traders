@@ -13,7 +13,7 @@
 <div class="bg-white mt-4 shadow max-w-2xl rounded-lg p-4">
     <h3 class="text-gray-700 text-lg font-semibold px-8 mb-3">{{ $company->name }} - {{ $membership->code }}</h3>
     <div class="text-gray-500 px-8">
-        You are registered on the &copy;Mmereki Trades platform, please obey the  
+        You are registered on the &copy;Mmereki Tradesmen platform, please obey the  
         <a href="#code-of-conduct" class="my-link">Traders Code of Conduct</a>
         and the <a href="/terms" class="my-link">Terms of Service</a> and the 
         <a href="/privacy-policy" class="my-link">Privacy Policy</a> to avoid your account being suspended.

@@ -78,8 +78,8 @@ Route::get('/challenge/create/first-administrator', [AdminController::class, 'cr
 //mail test
 /*Route::get('/notification', function () {
     //$invoice = Invoice::find(1);
-    $user = User::first();
-    return (new VerifyEmail())
+    $user = \App\Models\User::first();
+    return (new \Illuminate\Auth\Notifications\VerifyEmail())
                 ->toMail($user);
     });
 */
